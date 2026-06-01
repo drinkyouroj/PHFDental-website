@@ -1,0 +1,2297 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>PREVIEW · Customize — Family Dentists, PLLC</title>
+  <meta name="description" content="Welcoming, modern family dentistry in Port Huron, Michigan. Dr. Jeremy Parrott and Dr. Julie Anne Hengehold." />
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Fraunces:ital,opsz,wght@0,9..144,300;0,9..144,400;0,9..144,500;1,9..144,300;1,9..144,400&family=Figtree:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+  <style>
+    /* ── Tokens ── */
+    :root {
+      /* Sage + warm neutrals — softer than teal, more welcoming */
+      --sage-900: #22332C;
+      --sage-800: #2F4A3F;
+      --sage-700: #3F6051;
+      --sage-600: #577F6C;
+      --sage-400: #9EB5A5;
+      --sage-200: #D6E0D6;
+      --sage-50:  #EEF2EC;
+
+      --cream:    #F6F2EA;
+      --paper:    #FBF9F4;
+      --ivory:    #FFFDF8;
+
+      --terracotta: #C97B5E;   /* warm accent — a single friendly highlight */
+      --terracotta-soft: #F1DDD3;
+
+      --ink:      #1C231F;
+      --ink-mid:  #556159;
+      --ink-soft: #8A938C;
+      --line:     #E6E1D5;
+      --line-soft: #EFEAE0;
+
+      --radius-mul: 1;
+      --radius-sm: calc(10px * var(--radius-mul));
+      --radius:    calc(18px * var(--radius-mul));
+      --radius-lg: calc(28px * var(--radius-mul));
+      --density: 1;
+      --shadow-xs: 0 1px 2px rgba(34,51,44,0.04), 0 2px 6px rgba(34,51,44,0.04);
+      --shadow-sm: 0 4px 18px rgba(34,51,44,0.06);
+      --shadow-md: 0 12px 40px rgba(34,51,44,0.10);
+
+      --nav-h: 64px;
+      --font-serif: 'Fraunces', 'Cormorant Garamond', Georgia, serif;
+      --font-sans:  'Figtree', system-ui, -apple-system, sans-serif;
+
+      --ease: cubic-bezier(.2,.7,.2,1);
+    }
+
+    /* ── Reset ── */
+    *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+    html { scroll-behavior: smooth; -webkit-text-size-adjust: 100%; }
+    body {
+      font-family: var(--font-sans);
+      font-size: 16px;
+      line-height: 1.65;
+      color: var(--ink);
+      background: var(--paper);
+      -webkit-font-smoothing: antialiased;
+      text-rendering: optimizeLegibility;
+      overflow-x: hidden;
+    }
+    img, svg { display: block; max-width: 100%; }
+    a { color: inherit; text-decoration: none; }
+    button { font: inherit; }
+    ::selection { background: var(--sage-200); color: var(--sage-900); }
+
+    /* ── Scroll reveal (gentle) ── */
+    .reveal { opacity: 0; transform: translateY(14px); transition: opacity .9s var(--ease), transform .9s var(--ease); will-change: opacity, transform; }
+    .reveal.in { opacity: 1; transform: none; }
+    .reveal.d1 { transition-delay: .08s; }
+    .reveal.d2 { transition-delay: .16s; }
+    .reveal.d3 { transition-delay: .24s; }
+
+    /* ── Navigation ── */
+    .nav {
+      position: fixed; top: 0; left: 0; right: 0; z-index: 50;
+      height: var(--nav-h);
+      display: flex; align-items: center; justify-content: space-between;
+      padding: 0 20px;
+      background: rgba(251, 249, 244, 0.82);
+      backdrop-filter: saturate(1.1) blur(14px);
+      -webkit-backdrop-filter: saturate(1.1) blur(14px);
+      border-bottom: 1px solid transparent;
+      transition: border-color .3s var(--ease), background .3s var(--ease);
+    }
+    .nav.scrolled {
+      border-bottom-color: var(--line);
+      background: rgba(251, 249, 244, 0.95);
+    }
+    .brand { display: flex; align-items: center; gap: 10px; }
+    .brand-mark {
+      width: 34px; height: 34px; flex: 0 0 auto;
+      display: grid; place-items: center;
+      border-radius: 50%;
+      background: var(--sage-900);
+      color: var(--ivory);
+    }
+    .brand-mark svg { width: 20px; height: 20px; }
+    .brand-name {
+      font-family: var(--font-serif);
+      font-size: 1.02rem;
+      font-weight: 400;
+      color: var(--sage-900);
+      letter-spacing: -0.01em;
+      line-height: 1;
+    }
+    .brand-sub {
+      display: block;
+      font-family: var(--font-sans);
+      font-size: 0.66rem;
+      font-weight: 500;
+      color: var(--ink-soft);
+      letter-spacing: 0.16em;
+      text-transform: uppercase;
+      margin-top: 4px;
+    }
+
+    .nav-links { display: none; list-style: none; gap: 28px; }
+    .nav-links a {
+      position: relative;
+      font-size: 0.9rem; font-weight: 500;
+      color: var(--ink-mid);
+      padding: 8px 2px;
+      transition: color .25s var(--ease);
+    }
+    .nav-links a::after {
+      content: ''; position: absolute;
+      left: 0; right: 100%; bottom: 2px; height: 1px;
+      background: var(--sage-700);
+      transition: right .35s var(--ease);
+    }
+    .nav-links a:hover { color: var(--sage-900); }
+    .nav-links a:hover::after { right: 0; }
+
+    .nav-cta {
+      display: none;
+      align-items: center; gap: 8px;
+      padding: 10px 18px;
+      background: var(--sage-900);
+      color: var(--ivory);
+      border-radius: 999px;
+      font-size: 0.85rem; font-weight: 500;
+      transition: background .25s var(--ease), transform .2s var(--ease);
+    }
+    .nav-cta:hover { background: var(--sage-800); transform: translateY(-1px); }
+    .nav-cta svg { width: 14px; height: 14px; }
+
+    .hamburger {
+      width: 42px; height: 42px;
+      background: transparent; border: none; cursor: pointer;
+      display: grid; place-items: center;
+      border-radius: 12px;
+    }
+    .hamburger:hover { background: var(--sage-50); }
+    .hamburger span {
+      display: block; width: 20px; height: 1.5px;
+      background: var(--sage-900);
+      border-radius: 2px;
+      position: relative;
+      transition: transform .3s var(--ease), opacity .2s var(--ease), top .3s var(--ease);
+    }
+    .hamburger span + span { margin-top: 5px; }
+    .hamburger.open span:nth-child(1) { transform: translateY(6.5px) rotate(45deg); }
+    .hamburger.open span:nth-child(2) { opacity: 0; }
+    .hamburger.open span:nth-child(3) { transform: translateY(-6.5px) rotate(-45deg); }
+
+    /* Mobile drawer */
+    .drawer {
+      position: fixed;
+      top: var(--nav-h); left: 0; right: 0;
+      background: var(--paper);
+      border-bottom: 1px solid var(--line);
+      padding: 24px 20px 28px;
+      transform: translateY(-110%);
+      transition: transform .45s var(--ease);
+      z-index: 49;
+      box-shadow: var(--shadow-md);
+    }
+    .drawer.open { transform: translateY(0); }
+    .drawer ul { list-style: none; display: flex; flex-direction: column; }
+    .drawer a.drawer-link {
+      display: flex; align-items: center; justify-content: space-between;
+      padding: 14px 0;
+      font-family: var(--font-serif);
+      font-size: 1.5rem;
+      font-weight: 400;
+      color: var(--sage-900);
+      border-bottom: 1px solid var(--line-soft);
+    }
+    .drawer a.drawer-link::after {
+      content: '→';
+      color: var(--ink-soft);
+      font-family: var(--font-sans);
+      font-size: 1rem;
+    }
+    .drawer-foot {
+      margin-top: 24px;
+      display: flex; flex-direction: column; gap: 10px;
+    }
+    .drawer-call {
+      display: flex; align-items: center; justify-content: center; gap: 10px;
+      padding: 16px;
+      background: var(--sage-900); color: var(--ivory);
+      border-radius: 12px;
+      font-weight: 500; font-size: 0.95rem;
+    }
+    .drawer-emergency {
+      text-align: center;
+      font-size: 0.82rem; color: var(--ink-mid);
+    }
+    .drawer-emergency a { color: var(--terracotta); font-weight: 600; }
+
+    /* ── Hero ── */
+    .hero {
+      position: relative;
+      padding-top: calc(var(--nav-h) + 28px);
+      padding-bottom: 40px;
+      background: var(--paper);
+      overflow: hidden;
+    }
+    .hero-inner {
+      max-width: 1240px;
+      margin: 0 auto;
+      padding: 0 20px;
+      display: grid;
+      gap: 36px;
+    }
+    .hero-eyebrow {
+      display: inline-flex; align-items: center; gap: 10px;
+      font-size: 0.72rem; font-weight: 500;
+      letter-spacing: 0.2em;
+      text-transform: uppercase;
+      color: var(--sage-700);
+    }
+    .hero-eyebrow::before {
+      content: ''; width: 24px; height: 1px; background: var(--sage-400);
+    }
+    .hero h1 {
+      font-family: var(--font-serif);
+      font-weight: 300;
+      font-size: clamp(2.6rem, 11vw, 4.8rem);
+      line-height: 1.02;
+      letter-spacing: -0.02em;
+      color: var(--sage-900);
+      margin: 18px 0 20px;
+      font-variation-settings: "opsz" 144;
+    }
+    .hero h1 em {
+      font-style: italic;
+      font-weight: 400;
+      color: var(--sage-700);
+    }
+    .hero-desc {
+      font-size: 1.02rem;
+      color: var(--ink-mid);
+      max-width: 42ch;
+      line-height: 1.7;
+    }
+    .hero-actions {
+      display: flex; flex-wrap: wrap; gap: 12px;
+      margin-top: 30px;
+    }
+    .btn {
+      display: inline-flex; align-items: center; justify-content: center; gap: 10px;
+      padding: 16px 26px;
+      border-radius: 999px;
+      font-size: 0.92rem; font-weight: 500;
+      letter-spacing: 0.01em;
+      transition: transform .2s var(--ease), background .25s var(--ease), color .25s var(--ease), box-shadow .3s var(--ease), border-color .25s var(--ease);
+      border: 1px solid transparent;
+      cursor: pointer;
+    }
+    .btn svg { width: 16px; height: 16px; }
+    .btn-primary {
+      background: var(--sage-900); color: var(--ivory);
+    }
+    .btn-primary:hover { background: var(--sage-800); transform: translateY(-2px); box-shadow: var(--shadow-sm); }
+    .btn-ghost {
+      background: transparent; color: var(--sage-900);
+      border-color: var(--sage-400);
+    }
+    .btn-ghost:hover { background: var(--sage-50); border-color: var(--sage-600); }
+
+    /* Hero visual */
+    .hero-media {
+      position: relative;
+      aspect-ratio: 4 / 5;
+      border-radius: var(--radius-lg);
+      overflow: hidden;
+      background: var(--cream);
+      box-shadow: var(--shadow-sm);
+    }
+    .hero-media img {
+      width: 100%; height: 100%; object-fit: cover; object-position: 60% top;
+    }
+    .hero-badge {
+      position: absolute;
+      left: 16px; bottom: 16px;
+      padding: 14px 18px;
+      background: rgba(251, 249, 244, 0.95);
+      backdrop-filter: blur(6px);
+      border-radius: 14px;
+      box-shadow: var(--shadow-sm);
+      display: flex; align-items: center; gap: 12px;
+      max-width: 280px;
+    }
+    .hero-badge-dot {
+      width: 10px; height: 10px; border-radius: 50%;
+      background: #52A77C;
+      box-shadow: 0 0 0 4px rgba(82,167,124,0.15);
+      flex: 0 0 auto;
+      animation: pulse 2.4s ease-in-out infinite;
+    }
+    @keyframes pulse {
+      0%,100% { box-shadow: 0 0 0 4px rgba(82,167,124,0.15); }
+      50% { box-shadow: 0 0 0 8px rgba(82,167,124,0.05); }
+    }
+    .hero-badge-text { font-size: 0.82rem; color: var(--ink); line-height: 1.4; }
+    .hero-badge-text strong { display: block; font-weight: 600; color: var(--sage-900); }
+    .hero-badge-text span { color: var(--ink-mid); }
+
+    /* Trust strip */
+    .trust {
+      background: var(--ivory);
+      border-top: 1px solid var(--line);
+      border-bottom: 1px solid var(--line);
+    }
+    .trust-inner {
+      max-width: 1240px;
+      margin: 0 auto;
+      padding: 22px 20px;
+      display: flex;
+      gap: 28px;
+      overflow-x: auto;
+      scrollbar-width: none;
+    }
+    .trust-inner::-webkit-scrollbar { display: none; }
+    .trust-item {
+      flex: 0 0 auto;
+      display: flex; align-items: center; gap: 10px;
+      font-size: 0.8rem; font-weight: 500;
+      color: var(--ink-mid);
+      letter-spacing: 0.02em;
+      white-space: nowrap;
+    }
+    .trust-item svg { width: 16px; height: 16px; color: var(--sage-700); flex: 0 0 auto; }
+
+    /* ── Section base ── */
+    section { scroll-margin-top: calc(var(--nav-h) + 12px); }
+    .section {
+      padding: calc(72px * var(--density)) 20px;
+    }
+    .comfort { padding: calc(72px * var(--density)) 20px; }
+    .cta { padding: calc(80px * var(--density)) 20px calc(100px * var(--density)); }
+    .wrap {
+      max-width: 1100px;
+      margin: 0 auto;
+    }
+    .wrap-narrow {
+      max-width: 760px;
+      margin: 0 auto;
+    }
+    .section-label {
+      display: inline-flex; align-items: center; gap: 10px;
+      font-size: 0.72rem; font-weight: 500;
+      letter-spacing: 0.2em;
+      text-transform: uppercase;
+      color: var(--sage-700);
+    }
+    .section-label::before {
+      content: ''; width: 20px; height: 1px; background: var(--sage-400);
+    }
+    .section-title {
+      font-family: var(--font-serif);
+      font-weight: 300;
+      font-size: clamp(2rem, 6vw, 3rem);
+      line-height: 1.08;
+      letter-spacing: -0.02em;
+      color: var(--sage-900);
+      margin: 14px 0 20px;
+      font-variation-settings: "opsz" 144;
+    }
+    .section-title em { font-style: italic; font-weight: 400; color: var(--sage-700); }
+    .section-body {
+      font-size: 1.02rem;
+      color: var(--ink-mid);
+      line-height: 1.7;
+      max-width: 56ch;
+    }
+
+    /* ── About ── */
+    .about { background: var(--paper); }
+    .about-grid { display: grid; gap: 40px; }
+    .about-points { display: grid; gap: 14px; margin-top: 28px; }
+    .about-point {
+      display: grid; grid-template-columns: 42px 1fr; gap: 14px; align-items: start;
+      padding: 18px 0;
+      border-top: 1px solid var(--line);
+    }
+    .about-point:last-child { border-bottom: 1px solid var(--line); }
+    .about-point-num {
+      font-family: var(--font-serif);
+      font-style: italic;
+      font-size: 1.4rem;
+      color: var(--sage-600);
+      line-height: 1;
+      padding-top: 2px;
+    }
+    .about-point-title {
+      font-family: var(--font-serif);
+      font-size: 1.18rem;
+      font-weight: 400;
+      color: var(--sage-900);
+      margin-bottom: 4px;
+    }
+    .about-point-desc {
+      font-size: 0.92rem;
+      color: var(--ink-mid);
+      line-height: 1.6;
+    }
+
+    .about-image {
+      position: relative;
+      aspect-ratio: 4 / 5;
+      border-radius: var(--radius-lg);
+      background: var(--cream);
+      overflow: hidden;
+      max-width: 420px;
+      margin: 0 auto;
+    }
+    .about-image-inner {
+      position: absolute;
+      inset: 0;
+      background:
+        repeating-linear-gradient(135deg, transparent 0 8px, rgba(63,96,81,0.06) 8px 9px),
+        linear-gradient(160deg, var(--sage-50), var(--cream));
+      display: grid; place-items: center;
+      color: var(--sage-700);
+      font-family: 'JetBrains Mono', ui-monospace, monospace;
+      font-size: 0.72rem;
+      letter-spacing: 0.1em;
+      text-align: center;
+      padding: 20px;
+      line-height: 1.6;
+    }
+    .about-quote {
+      margin-top: 32px;
+      padding: 28px 24px;
+      background: var(--ivory);
+      border-radius: var(--radius);
+      border: 1px solid var(--line-soft);
+    }
+    .about-quote-text {
+      font-family: var(--font-serif);
+      font-style: italic;
+      font-weight: 300;
+      font-size: 1.3rem;
+      line-height: 1.45;
+      color: var(--sage-900);
+      letter-spacing: -0.01em;
+    }
+    .about-quote-by {
+      margin-top: 14px;
+      font-size: 0.78rem;
+      color: var(--ink-soft);
+      letter-spacing: 0.12em;
+      text-transform: uppercase;
+    }
+
+    /* ── Services ── */
+    .services { background: var(--ivory); }
+    .services-header { margin-bottom: 48px; }
+    .services-grid {
+      display: grid; gap: 14px;
+      grid-template-columns: 1fr;
+    }
+    .service {
+      background: var(--paper);
+      border-radius: var(--radius);
+      padding: 26px 22px;
+      border: 1px solid var(--line-soft);
+      transition: transform .3s var(--ease), box-shadow .3s var(--ease), border-color .3s var(--ease);
+    }
+    .service:hover {
+      transform: translateY(-3px);
+      box-shadow: var(--shadow-sm);
+      border-color: var(--sage-200);
+    }
+    .service-ico {
+      width: 44px; height: 44px;
+      border-radius: 12px;
+      background: var(--sage-50);
+      color: var(--sage-700);
+      display: grid; place-items: center;
+      margin-bottom: 16px;
+    }
+    .service-ico svg { width: 22px; height: 22px; }
+    .service h3 {
+      font-family: var(--font-serif);
+      font-weight: 400;
+      font-size: 1.15rem;
+      color: var(--sage-900);
+      margin-bottom: 6px;
+      letter-spacing: -0.01em;
+    }
+    .service p {
+      font-size: 0.9rem;
+      color: var(--ink-mid);
+      line-height: 1.6;
+    }
+
+    /* ── Doctors ── */
+    .doctors { background: var(--cream); }
+    .doctors-grid {
+      display: grid; gap: 20px;
+      margin-top: 44px;
+      grid-template-columns: 1fr;
+    }
+    .doctor {
+      background: var(--ivory);
+      border-radius: var(--radius-lg);
+      overflow: hidden;
+      border: 1px solid var(--line-soft);
+      transition: transform .3s var(--ease), box-shadow .3s var(--ease);
+    }
+    .doctor:hover { transform: translateY(-2px); box-shadow: var(--shadow-sm); }
+    .doctor-portrait {
+      aspect-ratio: 4 / 3;
+      background:
+        linear-gradient(160deg, var(--sage-50) 0%, var(--terracotta-soft) 100%);
+      position: relative;
+      display: grid; place-items: center;
+      overflow: hidden;
+    }
+    .doctor-portrait::after {
+      content: '';
+      position: absolute; inset: 0;
+      background: repeating-linear-gradient(135deg, transparent 0 10px, rgba(255,255,255,0.15) 10px 11px);
+    }
+    .doctor-portrait-initials {
+      position: relative; z-index: 1;
+      font-family: var(--font-serif);
+      font-weight: 300;
+      font-style: italic;
+      font-size: 4.5rem;
+      color: var(--sage-800);
+      letter-spacing: -0.04em;
+    }
+    .doctor-portrait-label {
+      position: absolute; z-index: 1;
+      bottom: 14px; left: 14px;
+      font-family: ui-monospace, 'JetBrains Mono', monospace;
+      font-size: 0.65rem;
+      letter-spacing: 0.12em;
+      text-transform: uppercase;
+      color: var(--sage-700);
+      background: rgba(251, 249, 244, 0.8);
+      padding: 4px 8px;
+      border-radius: 4px;
+    }
+    .doctor-body { padding: 28px 24px 32px; }
+    .doctor-role {
+      font-size: 0.7rem;
+      font-weight: 500;
+      text-transform: uppercase;
+      letter-spacing: 0.18em;
+      color: var(--sage-600);
+      margin-bottom: 6px;
+    }
+    .doctor-name {
+      font-family: var(--font-serif);
+      font-size: 1.7rem;
+      font-weight: 300;
+      color: var(--sage-900);
+      letter-spacing: -0.02em;
+      margin-bottom: 14px;
+      line-height: 1.1;
+    }
+    .doctor-bio {
+      font-size: 0.94rem;
+      color: var(--ink-mid);
+      line-height: 1.7;
+    }
+
+    /* ── Hours & Contact ── */
+    .contact { background: var(--sage-900); color: var(--ivory); }
+    .contact .section-label { color: var(--sage-400); }
+    .contact .section-label::before { background: var(--sage-600); }
+    .contact .section-title { color: var(--ivory); }
+    .contact .section-title em { color: var(--terracotta-soft); }
+    .contact .section-body { color: rgba(255,253,248,0.72); }
+
+    .contact-grid {
+      display: grid; gap: 36px;
+      margin-top: 48px;
+    }
+    .contact-block h3 {
+      font-family: var(--font-serif);
+      font-size: 1.3rem;
+      font-weight: 400;
+      color: var(--ivory);
+      margin-bottom: 22px;
+      letter-spacing: -0.01em;
+    }
+
+    .hours { list-style: none; }
+    .hours li {
+      display: flex; justify-content: space-between; align-items: baseline;
+      gap: 20px;
+      padding: 12px 0;
+      border-bottom: 1px dashed rgba(255,253,248,0.12);
+      font-size: 0.94rem;
+    }
+    .hours-day { color: rgba(255,253,248,0.7); }
+    .hours-time { color: var(--ivory); font-weight: 500; text-align: right; }
+    .hours-time.closed { color: rgba(255,253,248,0.35); font-weight: 400; }
+    .hours-note { display: block; font-size: 0.74rem; color: rgba(255,253,248,0.45); font-style: italic; margin-top: 2px; }
+    .hours-today {
+      position: relative;
+    }
+    .hours-today::before {
+      content: 'TODAY';
+      position: absolute;
+      left: -8px; top: 50%; transform: translate(-100%, -50%);
+      font-size: 0.6rem; letter-spacing: 0.2em;
+      color: var(--terracotta-soft);
+      font-weight: 600;
+      display: none;
+    }
+    @media (min-width: 480px) {
+      .hours-today::before { display: block; }
+      .hours li { padding-left: 64px; }
+    }
+
+    .contact-list { list-style: none; display: grid; gap: 20px; }
+    .contact-item {
+      display: grid; grid-template-columns: 42px 1fr; gap: 14px; align-items: start;
+    }
+    .contact-item-ico {
+      width: 38px; height: 38px;
+      border-radius: 10px;
+      background: rgba(255,253,248,0.08);
+      border: 1px solid rgba(255,253,248,0.12);
+      display: grid; place-items: center;
+      color: var(--sage-400);
+    }
+    .contact-item-ico svg { width: 16px; height: 16px; }
+    .contact-item-label {
+      font-size: 0.7rem;
+      font-weight: 500;
+      letter-spacing: 0.16em;
+      text-transform: uppercase;
+      color: rgba(255,253,248,0.5);
+      margin-bottom: 2px;
+    }
+    .contact-item-value { color: var(--ivory); font-weight: 500; font-size: 0.98rem; }
+    .contact-item-sub { color: rgba(255,253,248,0.6); font-size: 0.88rem; margin-top: 2px; }
+
+    .emergency {
+      margin-top: 28px;
+      padding: 20px 22px;
+      background: rgba(201,123,94,0.14);
+      border: 1px solid rgba(201,123,94,0.3);
+      border-radius: var(--radius);
+    }
+    .emergency-label {
+      font-size: 0.7rem;
+      letter-spacing: 0.18em;
+      text-transform: uppercase;
+      color: var(--terracotta-soft);
+      font-weight: 600;
+      margin-bottom: 6px;
+    }
+    .emergency-number {
+      font-family: var(--font-serif);
+      font-size: 1.6rem;
+      font-weight: 400;
+      color: var(--ivory);
+      letter-spacing: -0.01em;
+    }
+    .emergency-desc {
+      font-size: 0.84rem;
+      color: rgba(255,253,248,0.65);
+      margin-top: 4px;
+    }
+
+    .map-card {
+      margin-top: 24px;
+      border-radius: var(--radius);
+      background: rgba(255,253,248,0.04);
+      border: 1px solid rgba(255,253,248,0.1);
+      overflow: hidden;
+    }
+    .map-visual {
+      aspect-ratio: 16 / 9;
+      background:
+        radial-gradient(circle at 30% 40%, rgba(158,181,165,0.25), transparent 50%),
+        radial-gradient(circle at 70% 70%, rgba(201,123,94,0.2), transparent 45%),
+        #2A3E34;
+      position: relative;
+    }
+    .map-grid {
+      position: absolute; inset: 0;
+      background-image:
+        linear-gradient(rgba(255,253,248,0.05) 1px, transparent 1px),
+        linear-gradient(90deg, rgba(255,253,248,0.05) 1px, transparent 1px);
+      background-size: 32px 32px;
+    }
+    .map-pin {
+      position: absolute;
+      left: 50%; top: 50%; transform: translate(-50%, -100%);
+      display: flex; flex-direction: column; align-items: center; gap: 6px;
+    }
+    .map-pin-dot {
+      width: 14px; height: 14px;
+      background: var(--terracotta);
+      border: 3px solid var(--ivory);
+      border-radius: 50%;
+      box-shadow: 0 4px 12px rgba(0,0,0,0.3);
+    }
+    .map-pin-label {
+      font-family: ui-monospace, 'JetBrains Mono', monospace;
+      font-size: 0.68rem;
+      background: var(--ivory);
+      color: var(--sage-900);
+      padding: 3px 8px;
+      border-radius: 4px;
+      white-space: nowrap;
+      font-weight: 500;
+    }
+    .map-cta {
+      padding: 16px 20px;
+      display: flex; align-items: center; justify-content: space-between;
+      gap: 12px;
+      font-size: 0.9rem;
+    }
+    .map-cta-addr { color: rgba(255,253,248,0.8); }
+    .map-cta a {
+      color: var(--terracotta-soft);
+      font-weight: 600;
+      display: inline-flex; align-items: center; gap: 6px;
+      white-space: nowrap;
+    }
+
+    /* ── Comfort strip ── */
+    .comfort { background: var(--paper); }
+    .comfort-grid {
+      display: grid; gap: 10px;
+      grid-template-columns: repeat(2, 1fr);
+      margin-top: 40px;
+    }
+    .comfort-item {
+      background: var(--ivory);
+      border: 1px solid var(--line-soft);
+      border-radius: var(--radius);
+      padding: 24px 20px;
+      text-align: left;
+      transition: transform .3s var(--ease), border-color .3s var(--ease);
+    }
+    .comfort-item:hover { transform: translateY(-2px); border-color: var(--sage-200); }
+    .comfort-ico {
+      width: 36px; height: 36px;
+      display: grid; place-items: center;
+      color: var(--sage-700);
+      margin-bottom: 14px;
+    }
+    .comfort-ico svg { width: 22px; height: 22px; }
+    .comfort-title {
+      font-family: var(--font-serif);
+      font-size: 1rem;
+      color: var(--sage-900);
+      margin-bottom: 4px;
+      font-weight: 500;
+    }
+    .comfort-desc { font-size: 0.82rem; color: var(--ink-mid); line-height: 1.5; }
+
+    /* ── Final CTA ── */
+    .cta {
+      background: var(--cream);
+      text-align: center;
+      position: relative;
+      overflow: hidden;
+    }
+    .cta-ornament {
+      font-family: var(--font-serif);
+      color: var(--sage-400);
+      font-size: 2rem;
+      font-style: italic;
+      opacity: 0.6;
+    }
+    .cta h2 {
+      font-family: var(--font-serif);
+      font-weight: 300;
+      font-size: clamp(2rem, 7vw, 3.4rem);
+      line-height: 1.05;
+      letter-spacing: -0.02em;
+      color: var(--sage-900);
+      margin: 18px 0 18px;
+      font-variation-settings: "opsz" 144;
+    }
+    .cta h2 em { font-style: italic; font-weight: 400; color: var(--terracotta); }
+    .cta p {
+      font-size: 1rem;
+      color: var(--ink-mid);
+      max-width: 46ch;
+      margin: 0 auto 36px;
+      line-height: 1.65;
+    }
+    .cta-actions {
+      display: flex; flex-wrap: wrap; gap: 12px;
+      justify-content: center;
+    }
+    .cta-sub {
+      margin-top: 28px;
+      font-size: 0.82rem;
+      color: var(--ink-soft);
+    }
+    .cta-sub strong { color: var(--sage-900); font-weight: 600; }
+
+    /* ── Footer ── */
+    .footer {
+      background: var(--sage-900);
+      color: rgba(255,253,248,0.6);
+      padding: 52px 20px 28px;
+    }
+    .footer-inner { max-width: 1100px; margin: 0 auto; }
+    .footer-grid {
+      display: grid; gap: 32px;
+      grid-template-columns: 1fr;
+      padding-bottom: 36px;
+      border-bottom: 1px solid rgba(255,253,248,0.08);
+    }
+    .footer-brand-name {
+      font-family: var(--font-serif);
+      font-size: 1.4rem;
+      color: var(--ivory);
+      font-weight: 300;
+    }
+    .footer-brand-sub {
+      font-size: 0.7rem;
+      letter-spacing: 0.18em;
+      text-transform: uppercase;
+      color: var(--sage-400);
+      margin-top: 4px;
+      margin-bottom: 14px;
+    }
+    .footer-tagline {
+      font-family: var(--font-serif);
+      font-style: italic;
+      font-size: 1rem;
+      color: rgba(255,253,248,0.55);
+      line-height: 1.5;
+    }
+    .footer-col h4 {
+      font-size: 0.72rem;
+      font-weight: 500;
+      letter-spacing: 0.18em;
+      text-transform: uppercase;
+      color: rgba(255,253,248,0.45);
+      margin-bottom: 16px;
+    }
+    .footer-col ul { list-style: none; display: flex; flex-direction: column; gap: 10px; }
+    .footer-col a {
+      font-size: 0.92rem;
+      color: rgba(255,253,248,0.7);
+      transition: color .25s var(--ease);
+    }
+    .footer-col a:hover { color: var(--ivory); }
+    .footer-bottom {
+      display: flex; flex-direction: column; gap: 8px;
+      padding-top: 24px;
+      font-size: 0.8rem;
+      color: rgba(255,253,248,0.45);
+    }
+
+    /* ── Mobile sticky call bar ── */
+    .mobile-bar {
+      position: fixed;
+      bottom: 0; left: 0; right: 0;
+      z-index: 40;
+      padding: 10px 14px calc(10px + env(safe-area-inset-bottom));
+      background: rgba(251, 249, 244, 0.94);
+      backdrop-filter: blur(12px);
+      -webkit-backdrop-filter: blur(12px);
+      border-top: 1px solid var(--line);
+      display: flex; gap: 8px;
+      transform: translateY(110%);
+      transition: transform .4s var(--ease);
+    }
+    .mobile-bar.show { transform: translateY(0); }
+    .mobile-bar a {
+      flex: 1;
+      display: flex; align-items: center; justify-content: center; gap: 8px;
+      padding: 12px;
+      border-radius: 12px;
+      font-size: 0.88rem; font-weight: 500;
+    }
+    .mobile-bar .mb-call { background: var(--sage-900); color: var(--ivory); }
+    .mobile-bar .mb-emerg {
+      background: var(--terracotta-soft); color: var(--sage-900);
+      border: 1px solid rgba(201,123,94,0.3);
+    }
+    .mobile-bar a svg { width: 14px; height: 14px; }
+
+    /* ── Responsive ── */
+    @media (min-width: 720px) {
+      .section { padding: calc(96px * var(--density)) 32px; }
+      .comfort { padding: calc(96px * var(--density)) 32px; }
+      .cta { padding: calc(110px * var(--density)) 32px calc(130px * var(--density)); }
+      .footer { padding: 60px 32px 32px; }
+      .nav { padding: 0 32px; }
+
+      .hero-inner {
+        grid-template-columns: 1.05fr 1fr;
+        align-items: center;
+        gap: 56px;
+      }
+      .hero-media { aspect-ratio: 4 / 5; }
+
+      .about-grid {
+        grid-template-columns: 1fr 1fr;
+        gap: 60px;
+        align-items: start;
+      }
+
+      .services-grid { grid-template-columns: 1fr 1fr; gap: 16px; }
+      .doctors-grid { grid-template-columns: 1fr 1fr; gap: 24px; }
+      .comfort-grid { grid-template-columns: repeat(4, 1fr); }
+      .footer-grid { grid-template-columns: 2fr 1fr 1fr; gap: 48px; }
+      .footer-bottom { flex-direction: row; justify-content: space-between; align-items: center; }
+
+      .mobile-bar { display: none; }
+    }
+
+    @media (min-width: 960px) {
+      .hamburger { display: none; }
+      .nav-links { display: flex; }
+      .nav-cta { display: inline-flex; }
+
+      .hero { padding-top: calc(var(--nav-h) + 56px); padding-bottom: 80px; }
+      .hero-inner { gap: 72px; }
+
+      .services-grid { grid-template-columns: repeat(3, 1fr); }
+      .contact-grid { grid-template-columns: 1.1fr 1fr 1fr; gap: 44px; }
+    }
+
+    @media (min-width: 1120px) {
+      .section { padding: calc(120px * var(--density)) 32px; }
+    }
+
+    /* No-motion mode (Tweak) */
+    body.no-motion .reveal { opacity: 1 !important; transform: none !important; transition: none !important; }
+    body.no-motion .hero-badge-dot { animation: none !important; }
+
+    /* Hero layout variants */
+    body[data-hero-layout="image-left"] .hero-inner { direction: rtl; }
+    body[data-hero-layout="image-left"] .hero-inner > * { direction: ltr; }
+    body[data-hero-layout="centered"] .hero-inner { grid-template-columns: 1fr !important; max-width: 760px; text-align: center; }
+    body[data-hero-layout="centered"] .hero-eyebrow { justify-content: center; }
+    body[data-hero-layout="centered"] .hero-desc { margin-left: auto; margin-right: auto; }
+    body[data-hero-layout="centered"] .hero-actions { justify-content: center; }
+    body[data-hero-layout="centered"] .hero-media { max-width: 520px; margin: 0 auto; }
+
+    /* Full-bleed parallax hero */
+    body[data-hero-layout="fullbleed"] .hero {
+      min-height: 88svh;
+      padding-top: calc(var(--nav-h) + 80px);
+      padding-bottom: 80px;
+      background: #111;
+      display: flex; align-items: flex-end;
+    }
+    body[data-hero-layout="fullbleed"] .hero-bg {
+      position: absolute; inset: 0;
+      overflow: hidden;
+      pointer-events: none;
+      z-index: 0;
+    }
+    body[data-hero-layout="fullbleed"] .hero-bg img {
+      position: absolute;
+      top: -10%; left: 0; width: 100%; height: 120%;
+      object-fit: cover; object-position: 60% center;
+      transform: translate3d(0, var(--parallax, 0px), 0) scale(1.06);
+      will-change: transform;
+    }
+    body[data-hero-layout="fullbleed"] .hero-bg::after {
+      content: '';
+      position: absolute; inset: 0;
+      background:
+        linear-gradient(180deg, rgba(0,0,0,0.25) 0%, rgba(0,0,0,0.1) 40%, rgba(0,0,0,0.75) 100%),
+        linear-gradient(95deg, rgba(0,0,0,0.55) 0%, rgba(0,0,0,0.1) 55%, transparent 100%);
+    }
+    body[data-hero-layout="fullbleed"] .hero-inner {
+      position: relative; z-index: 2;
+      grid-template-columns: 1fr !important;
+      max-width: none;
+      width: 100%;
+      padding-left: clamp(24px, 8vw, 220px);
+      padding-right: clamp(24px, 8vw, 220px);
+      gap: 24px;
+    }
+    body[data-hero-layout="fullbleed"] .hero-copy { max-width: clamp(480px, 42vw, 780px); }
+    body[data-hero-layout="fullbleed"] .hero-eyebrow { color: rgba(255,255,255,0.85); }
+    body[data-hero-layout="fullbleed"] .hero-eyebrow::before { background: rgba(255,255,255,0.5); }
+    body[data-hero-layout="fullbleed"] .hero h1 { color: #fff; }
+    body[data-hero-layout="fullbleed"] .hero h1 em { color: var(--terracotta-soft, #F1DDD3); }
+    body[data-hero-layout="fullbleed"] .hero-desc { color: rgba(255,255,255,0.88); max-width: 60ch; }
+    body[data-hero-layout="fullbleed"] .btn-ghost { color: #fff; border-color: rgba(255,255,255,0.55); }
+    body[data-hero-layout="fullbleed"] .btn-ghost:hover { background: rgba(255,255,255,0.1); border-color: #fff; }
+    body[data-hero-layout="fullbleed"] .hero-media { display: none; }
+
+    /* Text block position within fullbleed hero */
+    body[data-hero-layout="fullbleed"][data-hero-text="left"] .hero-inner {
+      justify-items: start;
+    }
+    body[data-hero-layout="fullbleed"][data-hero-text="center"] .hero-inner {
+      justify-items: center;
+    }
+    body[data-hero-layout="fullbleed"][data-hero-text="center"] .hero-bg img {
+      object-position: center center;
+    }
+    body[data-hero-layout="fullbleed"][data-hero-text="center"] .hero-bg::after {
+      background:
+        linear-gradient(180deg, rgba(0,0,0,0.4) 0%, rgba(0,0,0,0.25) 40%, rgba(0,0,0,0.75) 100%),
+        radial-gradient(ellipse 60% 70% at center 45%, rgba(0,0,0,0.5), transparent 70%);
+    }
+    body[data-hero-layout="fullbleed"][data-hero-text="right"] .hero-inner {
+      justify-items: end;
+    }
+    body[data-hero-layout="fullbleed"][data-hero-text="right"] .hero-bg img {
+      object-position: 40% center;
+    }
+    body[data-hero-layout="fullbleed"][data-hero-text="right"] .hero-bg::after {
+      background:
+        linear-gradient(180deg, rgba(0,0,0,0.25) 0%, rgba(0,0,0,0.1) 40%, rgba(0,0,0,0.75) 100%),
+        linear-gradient(-95deg, rgba(0,0,0,0.55) 0%, rgba(0,0,0,0.1) 55%, transparent 100%);
+    }
+    body[data-hero-layout="fullbleed"] .hero-badge-float {
+      position: relative;
+      display: inline-flex; align-items: center; gap: 12px;
+      margin-top: 22px;
+      padding: 12px 16px;
+      background: rgba(255,255,255,0.12);
+      border: 1px solid rgba(255,255,255,0.2);
+      backdrop-filter: blur(10px);
+      -webkit-backdrop-filter: blur(10px);
+      border-radius: 12px;
+      color: #fff;
+      font-size: 0.82rem;
+      max-width: 340px;
+    }
+    body[data-hero-layout="fullbleed"] .hero-badge-float strong { display: block; font-weight: 600; margin-bottom: 2px; }
+    body[data-hero-layout="fullbleed"] .hero-badge-float span { color: rgba(255,255,255,0.75); }
+    body[data-hide-badge="true"] .hero-badge-float { display: none !important; }
+
+    /* Non-fullbleed hides the bg layer */
+    .hero-bg { display: none; }
+    body[data-hero-layout="fullbleed"] .hero-bg { display: block; }
+
+    /* Hidden sections (Tweak) */
+    body[data-hide-trust="true"] .trust,
+    body[data-hide-about="true"] #about,
+    body[data-hide-services="true"] #services,
+    body[data-hide-doctors="true"] #doctors,
+    body[data-hide-comfort="true"] .comfort,
+    body[data-hide-contact="true"] #contact,
+    body[data-hide-cta="true"] .cta,
+    body[data-hide-badge="true"] .hero-badge,
+    body[data-hide-callbar="true"] .mobile-bar { display: none !important; }
+
+    /* ── Tweaks panel ── */
+    .tw-fab {
+      position: fixed; right: 16px; bottom: 80px; z-index: 90;
+      width: 52px; height: 52px; border-radius: 50%;
+      background: var(--sage-900); color: var(--ivory);
+      border: none; cursor: pointer;
+      display: none;
+      align-items: center; justify-content: center;
+      box-shadow: 0 10px 30px rgba(34,51,44,0.25);
+      transition: transform .2s var(--ease);
+    }
+    .tw-fab:hover { transform: scale(1.06); }
+    .tw-fab svg { width: 22px; height: 22px; }
+    body.tw-on .tw-fab { display: flex; }
+    @media (min-width: 720px) { .tw-fab { bottom: 24px; } }
+
+    .tw-panel {
+      position: fixed; top: 0; right: 0; bottom: 0;
+      width: min(380px, 100vw);
+      z-index: 95;
+      background: #1A241F;
+      color: #EAEFEB;
+      border-left: 1px solid rgba(255,255,255,0.08);
+      box-shadow: -10px 0 40px rgba(0,0,0,0.25);
+      transform: translateX(110%);
+      transition: transform .35s var(--ease);
+      display: flex; flex-direction: column;
+      font-family: var(--font-sans);
+    }
+    .tw-panel.open { transform: none; }
+    .tw-header {
+      display: flex; align-items: center; justify-content: space-between;
+      padding: 18px 20px;
+      border-bottom: 1px solid rgba(255,255,255,0.08);
+    }
+    .tw-title { font-family: var(--font-serif); font-size: 1.2rem; font-weight: 400; letter-spacing: -0.01em; }
+    .tw-title small { display: block; font-family: var(--font-sans); font-size: 0.68rem; letter-spacing: 0.14em; color: rgba(255,255,255,0.4); text-transform: uppercase; margin-top: 2px; }
+    .tw-close {
+      width: 34px; height: 34px; border-radius: 10px;
+      background: rgba(255,255,255,0.06); color: #fff;
+      border: none; cursor: pointer;
+      display: grid; place-items: center;
+    }
+    .tw-close:hover { background: rgba(255,255,255,0.12); }
+    .tw-body { flex: 1; overflow-y: auto; padding: 8px 20px 24px; }
+    .tw-body::-webkit-scrollbar { width: 6px; }
+    .tw-body::-webkit-scrollbar-thumb { background: rgba(255,255,255,0.15); border-radius: 3px; }
+
+    .tw-group { border-bottom: 1px solid rgba(255,255,255,0.06); padding: 14px 0; }
+    .tw-group-head {
+      width: 100%;
+      display: flex; align-items: center; justify-content: space-between;
+      background: none; border: none; color: inherit; cursor: pointer;
+      padding: 4px 0; font-family: inherit;
+      text-align: left;
+    }
+    .tw-group-head h4 {
+      font-size: 0.72rem; font-weight: 600; letter-spacing: 0.16em; text-transform: uppercase;
+      color: rgba(255,255,255,0.85);
+    }
+    .tw-group-head .tw-chev { transition: transform .2s var(--ease); opacity: 0.5; }
+    .tw-group.collapsed .tw-chev { transform: rotate(-90deg); }
+    .tw-group.collapsed .tw-content { display: none; }
+    .tw-content { padding-top: 14px; display: grid; gap: 14px; }
+
+    .tw-row { display: grid; gap: 6px; }
+    .tw-label {
+      font-size: 0.72rem; color: rgba(255,255,255,0.55);
+      letter-spacing: 0.04em;
+      display: flex; justify-content: space-between; align-items: center;
+    }
+    .tw-label .tw-val { color: rgba(255,255,255,0.9); font-variant-numeric: tabular-nums; }
+    .tw-input, .tw-textarea, .tw-select {
+      width: 100%;
+      background: rgba(255,255,255,0.05);
+      color: #fff;
+      border: 1px solid rgba(255,255,255,0.1);
+      border-radius: 8px;
+      padding: 9px 11px;
+      font-size: 0.88rem;
+      font-family: inherit;
+      transition: border-color .2s var(--ease), background .2s var(--ease);
+    }
+    .tw-textarea { resize: vertical; min-height: 64px; line-height: 1.4; }
+    .tw-input:focus, .tw-textarea:focus, .tw-select:focus {
+      outline: none;
+      border-color: rgba(255,255,255,0.35);
+      background: rgba(255,255,255,0.08);
+    }
+    .tw-select {
+      -webkit-appearance: none; appearance: none;
+      background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='10' height='6' viewBox='0 0 10 6'%3E%3Cpath d='M1 1l4 4 4-4' stroke='white' stroke-opacity='.6' stroke-width='1.5' fill='none' stroke-linecap='round'/%3E%3C/svg%3E");
+      background-repeat: no-repeat; background-position: right 12px center;
+      padding-right: 32px;
+    }
+
+    /* Color swatch grid */
+    .tw-swatches { display: grid; grid-template-columns: repeat(6, 1fr); gap: 8px; }
+    .tw-swatch {
+      position: relative;
+      aspect-ratio: 1;
+      border-radius: 8px;
+      border: 2px solid transparent;
+      cursor: pointer;
+      transition: transform .15s var(--ease), border-color .2s var(--ease);
+    }
+    .tw-swatch:hover { transform: scale(1.06); }
+    .tw-swatch.active { border-color: #fff; }
+    .tw-swatch.active::after {
+      content: '✓';
+      position: absolute; inset: 0;
+      display: grid; place-items: center;
+      color: #fff; font-size: 0.85rem; font-weight: 700;
+      text-shadow: 0 1px 3px rgba(0,0,0,0.4);
+    }
+
+    /* Slider */
+    .tw-slider {
+      -webkit-appearance: none; appearance: none;
+      width: 100%; height: 4px;
+      background: rgba(255,255,255,0.12);
+      border-radius: 3px;
+      outline: none;
+    }
+    .tw-slider::-webkit-slider-thumb {
+      -webkit-appearance: none; appearance: none;
+      width: 18px; height: 18px; border-radius: 50%;
+      background: #fff;
+      border: none; cursor: pointer;
+      box-shadow: 0 2px 6px rgba(0,0,0,0.3);
+    }
+    .tw-slider::-moz-range-thumb {
+      width: 18px; height: 18px; border-radius: 50%;
+      background: #fff; border: none; cursor: pointer;
+    }
+
+    /* Toggle */
+    .tw-toggle-row {
+      display: flex; align-items: center; justify-content: space-between;
+      padding: 4px 0;
+    }
+    .tw-toggle-row span {
+      font-size: 0.86rem; color: rgba(255,255,255,0.85);
+    }
+    .tw-toggle {
+      position: relative;
+      width: 38px; height: 22px; border-radius: 11px;
+      background: rgba(255,255,255,0.14);
+      border: none; cursor: pointer; padding: 0;
+      transition: background .2s var(--ease);
+    }
+    .tw-toggle::after {
+      content: '';
+      position: absolute;
+      left: 2px; top: 2px;
+      width: 18px; height: 18px; border-radius: 50%;
+      background: #fff;
+      transition: transform .2s var(--ease);
+    }
+    .tw-toggle.on { background: var(--terracotta); }
+    .tw-toggle.on::after { transform: translateX(16px); }
+
+    /* Seg control */
+    .tw-seg {
+      display: grid; grid-auto-flow: column; grid-auto-columns: 1fr;
+      background: rgba(255,255,255,0.05);
+      border: 1px solid rgba(255,255,255,0.08);
+      border-radius: 8px;
+      padding: 3px;
+    }
+    .tw-seg button {
+      background: transparent; color: rgba(255,255,255,0.65);
+      border: none; cursor: pointer;
+      padding: 7px 8px;
+      font-size: 0.76rem; font-weight: 500;
+      border-radius: 6px;
+      font-family: inherit;
+      transition: all .2s var(--ease);
+    }
+    .tw-seg button.active {
+      background: rgba(255,255,255,0.14);
+      color: #fff;
+    }
+
+    .tw-reset {
+      width: 100%;
+      margin-top: 14px;
+      padding: 11px;
+      background: transparent;
+      color: rgba(255,255,255,0.6);
+      border: 1px solid rgba(255,255,255,0.15);
+      border-radius: 10px;
+      cursor: pointer;
+      font-family: inherit;
+      font-size: 0.82rem;
+      transition: all .2s var(--ease);
+    }
+    .tw-reset:hover { background: rgba(255,255,255,0.06); color: #fff; }
+
+    /* ── Preview build additions (client handoff) ── */
+    .tw-hint {
+      margin: 2px 0 12px; padding: 11px 13px;
+      background: rgba(255,255,255,0.05);
+      border: 1px solid rgba(255,255,255,0.09);
+      border-radius: 10px;
+      font-size: 0.8rem; line-height: 1.5;
+      color: rgba(255,255,255,0.74);
+    }
+    .tw-hint strong { color: #fff; font-weight: 600; }
+    .tw-actions { display: grid; gap: 8px; margin-top: 18px; }
+    .tw-actions .tw-reset { margin-top: 0; }
+    .tw-copy {
+      width: 100%; padding: 12px;
+      background: var(--sage-600); color: #fff;
+      border: none; border-radius: 10px;
+      cursor: pointer; font-family: inherit;
+      font-size: 0.9rem; font-weight: 600;
+      transition: filter .2s var(--ease), background .2s var(--ease);
+    }
+    .tw-copy:hover { filter: brightness(1.08); }
+    .tw-copy.copied { background: #3F6051; }
+
+    .tw-backdrop {
+      position: fixed; inset: 0; z-index: 94;
+      background: rgba(20,30,25,0.3);
+      opacity: 0; pointer-events: none;
+      transition: opacity .3s var(--ease);
+      backdrop-filter: blur(2px);
+    }
+    .tw-backdrop.open { opacity: 1; pointer-events: auto; }
+
+    /* ── Reduced motion ── */
+    @media (prefers-reduced-motion: reduce) {
+      .reveal { opacity: 1; transform: none; transition: none; }
+      *, *::before, *::after { transition-duration: 0.01ms !important; animation-duration: 0.01ms !important; animation-iteration-count: 1 !important; }
+      .hero-badge-dot { animation: none; }
+    }
+  </style>
+</head>
+<body>
+
+  <!-- ── Navigation ── -->
+  <nav class="nav" id="nav" role="navigation" aria-label="Main">
+    <a href="#home" class="brand" aria-label="Family Dentists home">
+      <span class="brand-mark" aria-hidden="true">
+        <!-- simple tooth mark -->
+        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round">
+          <path d="M12 3c-3 0-6 1-6 4.5 0 2 .6 3.4 1 5 .4 1.6.4 3 .7 5 .2 1.2.6 3 1.7 3 1.2 0 1.3-2 1.6-3.5.2-1.1.4-2 1-2s.8.9 1 2c.3 1.5.4 3.5 1.6 3.5 1.1 0 1.5-1.8 1.7-3 .3-2 .3-3.4.7-5 .4-1.6 1-3 1-5C18 4 15 3 12 3z"/>
+        </svg>
+      </span>
+      <span>
+        <span class="brand-name" data-tw="brand_name">Family Dentists</span>
+        <span class="brand-sub" data-tw="brand_sub">Port Huron · MI</span>
+      </span>
+    </a>
+
+    <ul class="nav-links">
+      <li><a href="#about">About</a></li>
+      <li><a href="#services">Services</a></li>
+      <li><a href="#doctors">Doctors</a></li>
+      <li><a href="#contact">Visit</a></li>
+    </ul>
+
+    <a href="tel:8109878310" class="nav-cta" data-tw-href="phone">
+      <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M22 16.92v3a2 2 0 0 1-2.18 2 19.79 19.79 0 0 1-8.63-3.07 19.5 19.5 0 0 1-6-6 19.79 19.79 0 0 1-3.07-8.67A2 2 0 0 1 4.11 2h3a2 2 0 0 1 2 1.72c.13.96.37 1.9.72 2.81a2 2 0 0 1-.45 2.11L8.09 9.91a16 16 0 0 0 6 6l1.27-1.27a2 2 0 0 1 2.11-.45c.91.35 1.85.59 2.81.72A2 2 0 0 1 22 16.92z"/></svg>
+      <span data-tw="phone">810-987-8310</span>
+    </a>
+
+    <button class="hamburger" id="hamburger" aria-label="Open menu" aria-expanded="false" aria-controls="drawer">
+      <span></span><span></span><span></span>
+    </button>
+  </nav>
+
+  <!-- Mobile drawer -->
+  <div class="drawer" id="drawer" role="dialog" aria-label="Mobile menu" aria-hidden="true">
+    <ul>
+      <li><a href="#about" class="drawer-link">About</a></li>
+      <li><a href="#services" class="drawer-link">Services</a></li>
+      <li><a href="#doctors" class="drawer-link">Our Doctors</a></li>
+      <li><a href="#contact" class="drawer-link">Visit &amp; Hours</a></li>
+    </ul>
+    <div class="drawer-foot">
+      <a href="tel:8109878310" class="drawer-call">
+        <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M22 16.92v3a2 2 0 0 1-2.18 2 19.79 19.79 0 0 1-8.63-3.07 19.5 19.5 0 0 1-6-6 19.79 19.79 0 0 1-3.07-8.67A2 2 0 0 1 4.11 2h3a2 2 0 0 1 2 1.72c.13.96.37 1.9.72 2.81a2 2 0 0 1-.45 2.11L8.09 9.91a16 16 0 0 0 6 6l1.27-1.27a2 2 0 0 1 2.11-.45c.91.35 1.85.59 2.81.72A2 2 0 0 1 22 16.92z"/></svg>
+        Call 810-987-8310
+      </a>
+      <p class="drawer-emergency">Dental emergency? <a href="tel:8106894809">810-689-4809</a></p>
+    </div>
+  </div>
+
+  <!-- ── Hero ── -->
+  <header class="hero" id="home">
+    <div class="hero-bg" aria-hidden="true">
+      <img src="assets/hero-1.png" alt="" loading="eager" decoding="async" id="heroBgImg" />
+    </div>
+    <div class="hero-inner">
+      <div class="hero-copy">
+        <span class="hero-eyebrow reveal" data-tw="hero_eyebrow">Family dentistry · Port Huron</span>
+        <h1 class="reveal d1" data-tw-html="hero_headline">Gentle, modern care for <em>every smile</em> in the family.</h1>
+        <p class="hero-desc reveal d2" data-tw="hero_desc">
+          Dr. Jeremy Parrott and Dr. Julie Anne Hengehold combine thoughtful,
+          unhurried care with modern techniques — in a practice designed to feel
+          welcoming from the moment you walk in.
+        </p>
+        <div class="hero-actions reveal d3">
+          <a href="tel:8109878310" class="btn btn-primary" data-tw-href="phone">
+            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M22 16.92v3a2 2 0 0 1-2.18 2 19.79 19.79 0 0 1-8.63-3.07 19.5 19.5 0 0 1-6-6 19.79 19.79 0 0 1-3.07-8.67A2 2 0 0 1 4.11 2h3a2 2 0 0 1 2 1.72c.13.96.37 1.9.72 2.81a2 2 0 0 1-.45 2.11L8.09 9.91a16 16 0 0 0 6 6l1.27-1.27a2 2 0 0 1 2.11-.45c.91.35 1.85.59 2.81.72A2 2 0 0 1 22 16.92z"/></svg>
+            <span data-tw="hero_cta">Call to schedule</span>
+          </a>
+          <a href="#services" class="btn btn-ghost">
+            Explore services
+            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M12 5v14M5 12l7 7 7-7"/></svg>
+          </a>
+        </div>
+
+        <div class="hero-badge-float reveal d3">
+          <span class="hero-badge-dot" aria-hidden="true"></span>
+          <span>
+            <strong data-tw="badge_title">Now welcoming new patients</strong>
+            <span data-tw="badge_sub">Same-week appointments often available</span>
+          </span>
+        </div>
+      </div>
+
+      <figure class="hero-media reveal d2">
+        <img src="assets/hero-1.png" alt="Warm, smiling patient" loading="eager" decoding="async" />
+        <figcaption class="hero-badge">
+          <span class="hero-badge-dot" aria-hidden="true"></span>
+          <span class="hero-badge-text">
+            <strong data-tw="badge_title">Now welcoming new patients</strong>
+            <span data-tw="badge_sub">Same-week appointments often available</span>
+          </span>
+        </figcaption>
+      </figure>
+    </div>
+  </header>
+
+  <!-- ── Trust strip ── -->
+  <div class="trust" aria-label="Practice highlights">
+    <div class="trust-inner">
+      <div class="trust-item">
+        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><path d="M20 6 9 17l-5-5"/></svg>
+        Most insurance accepted
+      </div>
+      <div class="trust-item">
+        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><path d="M20 6 9 17l-5-5"/></svg>
+        Interest-free financing
+      </div>
+      <div class="trust-item">
+        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><path d="M20 6 9 17l-5-5"/></svg>
+        Evening &amp; Saturday hours
+      </div>
+      <div class="trust-item">
+        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><path d="M20 6 9 17l-5-5"/></svg>
+        Same-day emergency care
+      </div>
+      <div class="trust-item">
+        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><path d="M20 6 9 17l-5-5"/></svg>
+        Every age welcome
+      </div>
+    </div>
+  </div>
+
+  <!-- ── About ── -->
+  <section class="section about" id="about">
+    <div class="wrap">
+      <div class="about-grid">
+        <div>
+          <span class="section-label reveal">Welcome</span>
+          <h2 class="section-title reveal d1">A practice built around the way care <em>should feel.</em></h2>
+          <p class="section-body reveal d2">
+            From your first hello at the front desk to the moment you leave, our
+            team takes time to listen — so your treatment fits your life, your
+            comfort, and your smile.
+          </p>
+
+          <div class="about-points reveal d2">
+            <div class="about-point">
+              <span class="about-point-num">01</span>
+              <div>
+                <div class="about-point-title">Modern techniques, premium materials</div>
+                <div class="about-point-desc">Digital X-rays, tooth-colored fillings, and crowns that look and feel like your own.</div>
+              </div>
+            </div>
+            <div class="about-point">
+              <span class="about-point-num">02</span>
+              <div>
+                <div class="about-point-title">Flexible financing for real life</div>
+                <div class="about-point-desc">Most insurance accepted, interest-free plans, and multiple payment options so care stays within reach.</div>
+              </div>
+            </div>
+            <div class="about-point">
+              <span class="about-point-num">03</span>
+              <div>
+                <div class="about-point-title">Comfort that's actually considered</div>
+                <div class="about-point-desc">Warm blankets, complimentary hand treatments, in-room TVs, and a gentle, unhurried pace.</div>
+              </div>
+            </div>
+          </div>
+        </div>
+
+        <aside class="reveal d2">
+          <div class="about-image">
+            <div class="about-image-inner">
+              [ practice interior photo<br/>— warm light · plants · front desk ]
+            </div>
+          </div>
+          <div class="about-quote">
+            <p class="about-quote-text">"We want every patient to feel like family — because the best dental care starts with trust."</p>
+            <p class="about-quote-by">— Dr. Parrott &amp; Dr. Hengehold</p>
+          </div>
+        </aside>
+      </div>
+    </div>
+  </section>
+
+  <!-- ── Services ── -->
+  <section class="section services" id="services">
+    <div class="wrap">
+      <div class="services-header">
+        <span class="section-label reveal">What we offer</span>
+        <h2 class="section-title reveal d1">Thoughtful care, from <em>routine</em> to <em>restorative.</em></h2>
+        <p class="section-body reveal d2">
+          Whether it's a check-up for your child or a smile you've been thinking
+          about for years, we're here with an honest conversation and a clear
+          plan.
+        </p>
+      </div>
+
+      <div class="services-grid">
+        <article class="service reveal">
+          <div class="service-ico">
+            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round"><circle cx="11" cy="11" r="7"/><path d="m21 21-4.3-4.3"/></svg>
+          </div>
+          <h3>Exams &amp; cleanings</h3>
+          <p>Comprehensive check-ups with low-radiation digital X-rays and gentle hygiene visits.</p>
+        </article>
+        <article class="service reveal d1">
+          <div class="service-ico">
+            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round"><path d="M12 3c-3 0-6 1-6 4.5 0 2 .6 3.4 1 5 .4 1.6.4 3 .7 5 .2 1.2.6 3 1.7 3 1.2 0 1.3-2 1.6-3.5.2-1.1.4-2 1-2s.8.9 1 2c.3 1.5.4 3.5 1.6 3.5 1.1 0 1.5-1.8 1.7-3 .3-2 .3-3.4.7-5 .4-1.6 1-3 1-5C18 4 15 3 12 3z"/></svg>
+          </div>
+          <h3>Composite fillings</h3>
+          <p>Tooth-colored fillings that blend naturally — no metal, no compromise on strength.</p>
+        </article>
+        <article class="service reveal d2">
+          <div class="service-ico">
+            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round"><path d="M12 3v2M12 19v2M5 12H3M21 12h-2M17.7 6.3l-1.4 1.4M7.7 16.3l-1.4 1.4M17.7 17.7l-1.4-1.4M7.7 7.7 6.3 6.3"/><circle cx="12" cy="12" r="4"/></svg>
+          </div>
+          <h3>Teeth whitening</h3>
+          <p>Professional KöR whitening — dramatic, even results with the care your enamel deserves.</p>
+        </article>
+        <article class="service reveal">
+          <div class="service-ico">
+            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round"><path d="m12 2 3 7 7 .7-5.4 4.8L18 22l-6-4-6 4 1.4-7.5L2 9.7l7-.7z"/></svg>
+          </div>
+          <h3>Porcelain veneers</h3>
+          <p>Hand-matched veneers to refine chips, staining, and gaps into a smile that still feels like yours.</p>
+        </article>
+        <article class="service reveal d1">
+          <div class="service-ico">
+            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round"><path d="M6 10V7a6 6 0 1 1 12 0v3"/><rect x="4" y="10" width="16" height="11" rx="2"/></svg>
+          </div>
+          <h3>Crowns &amp; bridges</h3>
+          <p>Natural-looking restorations that bring back strength, shape, and confidence.</p>
+        </article>
+        <article class="service reveal d2">
+          <div class="service-ico">
+            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round"><path d="M12 2v20M5 12h14"/><circle cx="12" cy="12" r="9"/></svg>
+          </div>
+          <h3>Implant restoration</h3>
+          <p>Lifelike implant crowns and bridges — permanent solutions that feel like your own teeth.</p>
+        </article>
+        <article class="service reveal">
+          <div class="service-ico">
+            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round"><path d="M6 3v18M18 3v18M3 8h18M3 16h18"/></svg>
+          </div>
+          <h3>Extractions</h3>
+          <p>Gentle, precise extractions when they're truly needed — with a calm plan for aftercare.</p>
+        </article>
+        <article class="service reveal d1">
+          <div class="service-ico">
+            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round"><rect x="3" y="4" width="18" height="16" rx="2"/><path d="M3 10h18M9 4v16"/></svg>
+          </div>
+          <h3>Digital diagnostics</h3>
+          <p>Low-radiation digital X-rays and intraoral imaging for early, precise treatment planning.</p>
+        </article>
+        <article class="service reveal d2">
+          <div class="service-ico" style="background: var(--terracotta-soft); color: var(--terracotta);">
+            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round"><path d="M12 9v4M12 17h.01"/><path d="M10.3 3.86 1.82 18a2 2 0 0 0 1.71 3h16.94a2 2 0 0 0 1.71-3L13.71 3.86a2 2 0 0 0-3.42 0z"/></svg>
+          </div>
+          <h3>Emergency care</h3>
+          <p>Dental emergencies can't wait. Call our emergency line and we'll take care of you.</p>
+        </article>
+      </div>
+    </div>
+  </section>
+
+  <!-- ── Doctors ── -->
+  <section class="section doctors" id="doctors">
+    <div class="wrap">
+      <span class="section-label reveal">Meet your doctors</span>
+      <h2 class="section-title reveal d1">Two owner-dentists. <em>One promise.</em></h2>
+      <p class="section-body reveal d2">
+        Dr. Parrott and Dr. Hengehold lead the practice hands-on — you'll see
+        the same faces, every visit, for the long run.
+      </p>
+
+      <div class="doctors-grid">
+        <article class="doctor reveal">
+          <div class="doctor-portrait" aria-hidden="true">
+            <span class="doctor-portrait-initials">JP</span>
+            <span class="doctor-portrait-label">[ portrait · Dr. Parrott ]</span>
+          </div>
+          <div class="doctor-body">
+            <div class="doctor-role">Owner · Dentist</div>
+            <h3 class="doctor-name">Dr. Jeremy Parrott</h3>
+            <p class="doctor-bio">
+              Dr. Parrott is committed to delivering modern, high-quality dental
+              care in a warm and welcoming environment — combining clinical
+              excellence with genuine compassion for every patient.
+            </p>
+          </div>
+        </article>
+
+        <article class="doctor reveal d1">
+          <div class="doctor-portrait" aria-hidden="true">
+            <span class="doctor-portrait-initials">JH</span>
+            <span class="doctor-portrait-label">[ portrait · Dr. Hengehold ]</span>
+          </div>
+          <div class="doctor-body">
+            <div class="doctor-role">Owner · Dentist</div>
+            <h3 class="doctor-name">Dr. Julie Anne Hengehold</h3>
+            <p class="doctor-bio">
+              Dr. Hengehold brings expertise and a gentle touch to every
+              treatment — dedicated to helping patients of every age achieve
+              healthy, beautiful smiles.
+            </p>
+          </div>
+        </article>
+      </div>
+    </div>
+  </section>
+
+  <!-- ── Comfort ── -->
+  <section class="comfort">
+    <div class="wrap-narrow" style="text-align: left;">
+      <span class="section-label reveal">Your comfort</span>
+      <h2 class="section-title reveal d1">Small touches that make a <em>real difference.</em></h2>
+      <p class="section-body reveal d2">
+        We've designed the little things that add up to a calmer, kinder
+        appointment — so even a dental chair can feel relaxing.
+      </p>
+    </div>
+    <div class="wrap">
+      <div class="comfort-grid">
+        <div class="comfort-item reveal">
+          <div class="comfort-ico">
+            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round"><rect x="2" y="5" width="20" height="14" rx="2"/><path d="M8 21h8M12 17v4"/></svg>
+          </div>
+          <div class="comfort-title">In-room TVs</div>
+          <div class="comfort-desc">Watch your show. Before you know it, we're done.</div>
+        </div>
+        <div class="comfort-item reveal d1">
+          <div class="comfort-ico">
+            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round"><path d="M9 3v6a3 3 0 0 0 3 3h0a3 3 0 0 0 3-3V3M9 15h6M12 15v6"/></svg>
+          </div>
+          <div class="comfort-title">Hand treatments</div>
+          <div class="comfort-desc">Complimentary warm paraffin, on the house.</div>
+        </div>
+        <div class="comfort-item reveal d2">
+          <div class="comfort-ico">
+            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round"><path d="M3 9c3 0 3-2 6-2s3 2 6 2 3-2 6-2M3 14c3 0 3-2 6-2s3 2 6 2 3-2 6-2M3 19c3 0 3-2 6-2s3 2 6 2 3-2 6-2"/></svg>
+          </div>
+          <div class="comfort-title">Warm blankets</div>
+          <div class="comfort-desc">For anyone who runs a little cold in the chair.</div>
+        </div>
+        <div class="comfort-item reveal d3">
+          <div class="comfort-ico">
+            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round"><rect x="3" y="4" width="18" height="12" rx="2"/><path d="M8 20h8M12 16v4"/></svg>
+          </div>
+          <div class="comfort-title">Patient portal</div>
+          <div class="comfort-desc">Paperwork, records, and scheduling from your couch.</div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- ── Hours & Contact ── -->
+  <section class="section contact" id="contact">
+    <div class="wrap">
+      <span class="section-label reveal">Visit us</span>
+      <h2 class="section-title reveal d1">Hours &amp; <em>how to find us.</em></h2>
+      <p class="section-body reveal d2">
+        We keep evening and Saturday hours to fit around busy weeks. Give us a
+        call — we'd love to welcome you.
+      </p>
+
+      <div class="contact-grid">
+        <!-- Hours -->
+        <div class="contact-block reveal">
+          <h3>Office hours</h3>
+          <ul class="hours" id="hoursList">
+            <li data-day="1"><span class="hours-day">Monday</span><span class="hours-time">11:00 AM – 7:00 PM</span></li>
+            <li data-day="2"><span class="hours-day">Tuesday</span><span class="hours-time">8:30 AM – 5:00 PM</span></li>
+            <li data-day="3"><span class="hours-day">Wednesday</span><span class="hours-time">8:30 AM – 2:00 PM</span></li>
+            <li data-day="4"><span class="hours-day">Thursday</span><span class="hours-time">8:30 AM – 5:00 PM</span></li>
+            <li data-day="5"><span class="hours-day">Friday</span>
+              <span class="hours-time">8:00 AM – 2:00 PM<span class="hours-note">By appointment</span></span>
+            </li>
+            <li data-day="6"><span class="hours-day">Saturday</span>
+              <span class="hours-time">8:00 AM – 2:00 PM<span class="hours-note">By appointment</span></span>
+            </li>
+            <li data-day="0"><span class="hours-day">Sunday</span><span class="hours-time closed">Closed</span></li>
+          </ul>
+        </div>
+
+        <!-- Contact info -->
+        <div class="contact-block reveal d1">
+          <h3>Get in touch</h3>
+          <ul class="contact-list">
+            <li class="contact-item">
+              <div class="contact-item-ico">
+                <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round"><path d="M22 16.92v3a2 2 0 0 1-2.18 2 19.79 19.79 0 0 1-8.63-3.07 19.5 19.5 0 0 1-6-6 19.79 19.79 0 0 1-3.07-8.67A2 2 0 0 1 4.11 2h3a2 2 0 0 1 2 1.72c.13.96.37 1.9.72 2.81a2 2 0 0 1-.45 2.11L8.09 9.91a16 16 0 0 0 6 6l1.27-1.27a2 2 0 0 1 2.11-.45c.91.35 1.85.59 2.81.72A2 2 0 0 1 22 16.92z"/></svg>
+              </div>
+              <div>
+                <div class="contact-item-label">Main</div>
+                <div class="contact-item-value"><a href="tel:8109878310">810-987-8310</a></div>
+              </div>
+            </li>
+            <li class="contact-item">
+              <div class="contact-item-ico">
+                <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round"><rect x="6" y="14" width="12" height="8" rx="1"/><rect x="6" y="2" width="12" height="6" rx="1"/><path d="M4 8h16a2 2 0 0 1 2 2v4a2 2 0 0 1-2 2H4a2 2 0 0 1-2-2v-4a2 2 0 0 1 2-2z"/></svg>
+              </div>
+              <div>
+                <div class="contact-item-label">Fax</div>
+                <div class="contact-item-value">810-987-2692</div>
+              </div>
+            </li>
+            <li class="contact-item">
+              <div class="contact-item-ico">
+                <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round"><path d="M21 10c0 7-9 13-9 13s-9-6-9-13a9 9 0 0 1 18 0z"/><circle cx="12" cy="10" r="3"/></svg>
+              </div>
+              <div>
+                <div class="contact-item-label">Address</div>
+                <div class="contact-item-value">1936 Holland Avenue</div>
+                <div class="contact-item-sub">Port Huron, Michigan 48060</div>
+              </div>
+            </li>
+          </ul>
+
+          <div class="emergency">
+            <div class="emergency-label">After-hours emergency</div>
+            <div class="emergency-number"><a href="tel:8106894809" style="color: inherit;">810-689-4809</a></div>
+            <div class="emergency-desc">Chipped tooth, swelling, or severe pain — call any time.</div>
+          </div>
+        </div>
+
+        <!-- Map + payments -->
+        <div class="contact-block reveal d2">
+          <h3>Finding us</h3>
+          <div class="map-card">
+            <a href="https://maps.google.com/?q=1936+Holland+Avenue,+Port+Huron,+Michigan+48060" target="_blank" rel="noopener noreferrer" aria-label="Open in Google Maps" style="display:block;">
+              <div class="map-visual" aria-hidden="true">
+                <div class="map-grid"></div>
+                <div class="map-pin">
+                  <span class="map-pin-label">1936 Holland Ave</span>
+                  <span class="map-pin-dot"></span>
+                </div>
+              </div>
+            </a>
+            <div class="map-cta">
+              <span class="map-cta-addr">Port Huron, MI 48060</span>
+              <a href="https://maps.google.com/?q=1936+Holland+Avenue,+Port+Huron,+Michigan+48060" target="_blank" rel="noopener noreferrer">
+                Directions
+                <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M5 12h14M12 5l7 7-7 7"/></svg>
+              </a>
+            </div>
+          </div>
+
+          <ul class="contact-list" style="margin-top: 28px;">
+            <li class="contact-item">
+              <div class="contact-item-ico">
+                <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round"><path d="M20 6 9 17l-5-5"/></svg>
+              </div>
+              <div>
+                <div class="contact-item-label">Insurance</div>
+                <div class="contact-item-value">Most plans accepted</div>
+                <div class="contact-item-sub">We'll verify your benefits.</div>
+              </div>
+            </li>
+            <li class="contact-item">
+              <div class="contact-item-ico">
+                <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round"><rect x="2" y="5" width="20" height="14" rx="2"/><path d="M2 10h20"/></svg>
+              </div>
+              <div>
+                <div class="contact-item-label">Financing</div>
+                <div class="contact-item-value">Interest-free plans</div>
+                <div class="contact-item-sub">Multiple payment options.</div>
+              </div>
+            </li>
+          </ul>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- ── Final CTA ── -->
+  <section class="cta">
+    <div class="wrap-narrow">
+      <div class="cta-ornament reveal">✦</div>
+      <h2 class="reveal d1">Ready for a visit <em>that feels different?</em></h2>
+      <p class="reveal d2">We're accepting new patients of every age — from first tooth to full smile makeovers.</p>
+      <div class="cta-actions reveal d2">
+        <a href="tel:8109878310" class="btn btn-primary">
+          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M22 16.92v3a2 2 0 0 1-2.18 2 19.79 19.79 0 0 1-8.63-3.07 19.5 19.5 0 0 1-6-6 19.79 19.79 0 0 1-3.07-8.67A2 2 0 0 1 4.11 2h3a2 2 0 0 1 2 1.72c.13.96.37 1.9.72 2.81a2 2 0 0 1-.45 2.11L8.09 9.91a16 16 0 0 0 6 6l1.27-1.27a2 2 0 0 1 2.11-.45c.91.35 1.85.59 2.81.72A2 2 0 0 1 22 16.92z"/></svg>
+          Call 810-987-8310
+        </a>
+        <a href="#contact" class="btn btn-ghost">See hours &amp; address</a>
+      </div>
+      <p class="cta-sub reveal d3">Main <strong>810-987-8310</strong> &nbsp;·&nbsp; Emergency <strong>810-689-4809</strong></p>
+    </div>
+  </section>
+
+  <!-- ── Footer ── -->
+  <footer class="footer" role="contentinfo">
+    <div class="footer-inner">
+      <div class="footer-grid">
+        <div>
+          <div class="footer-brand-name" data-tw="footer_brand">Family Dentists, PLLC</div>
+          <div class="footer-brand-sub" data-tw="footer_sub">Port Huron · Michigan</div>
+          <p class="footer-tagline" data-tw="tagline">"Family dentistry that will make you smile."</p>
+        </div>
+        <div class="footer-col">
+          <h4>Practice</h4>
+          <ul>
+            <li><a href="#about">About</a></li>
+            <li><a href="#services">Services</a></li>
+            <li><a href="#doctors">Our doctors</a></li>
+            <li><a href="#contact">Visit &amp; hours</a></li>
+          </ul>
+        </div>
+        <div class="footer-col">
+          <h4>Contact</h4>
+          <ul>
+            <li><a href="tel:8109878310">810-987-8310</a></li>
+            <li><a href="tel:8106894809">810-689-4809 (emergency)</a></li>
+            <li><a href="https://maps.google.com/?q=1936+Holland+Avenue,+Port+Huron,+Michigan+48060" target="_blank" rel="noopener noreferrer">1936 Holland Ave, Port Huron</a></li>
+          </ul>
+        </div>
+      </div>
+      <div class="footer-bottom">
+        <span>© 2026 Family Dentists, PLLC. All rights reserved.</span>
+        <span>Dr. Jeremy Parrott &amp; Dr. Julie Anne Hengehold</span>
+      </div>
+    </div>
+  </footer>
+
+  <!-- ── Mobile sticky call bar ── -->
+  <div class="mobile-bar" id="mobileBar" aria-hidden="true">
+    <a href="tel:8109878310" class="mb-call">
+      <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M22 16.92v3a2 2 0 0 1-2.18 2 19.79 19.79 0 0 1-8.63-3.07 19.5 19.5 0 0 1-6-6 19.79 19.79 0 0 1-3.07-8.67A2 2 0 0 1 4.11 2h3a2 2 0 0 1 2 1.72c.13.96.37 1.9.72 2.81a2 2 0 0 1-.45 2.11L8.09 9.91a16 16 0 0 0 6 6l1.27-1.27a2 2 0 0 1 2.11-.45c.91.35 1.85.59 2.81.72A2 2 0 0 1 22 16.92z"/></svg>
+      Call to schedule
+    </a>
+    <a href="tel:8106894809" class="mb-emerg" aria-label="Dental emergency line">
+      Emergency
+    </a>
+  </div>
+
+  <script>
+    // Nav scroll state
+    const nav = document.getElementById('nav');
+    const mobileBar = document.getElementById('mobileBar');
+    const heroBgImg = document.getElementById('heroBgImg');
+    let lastY = 0;
+    let parallaxTicking = false;
+    const onScroll = () => {
+      const y = window.scrollY;
+      nav.classList.toggle('scrolled', y > 12);
+      // Show mobile bar after the user scrolls past hero
+      if (y > 400) mobileBar.classList.add('show');
+      else mobileBar.classList.remove('show');
+      // Parallax — only when full-bleed hero is active
+      if (!parallaxTicking && document.body.getAttribute('data-hero-layout') === 'fullbleed') {
+        parallaxTicking = true;
+        requestAnimationFrame(() => {
+          if (heroBgImg) heroBgImg.style.setProperty('--parallax', (y * 0.35) + 'px');
+          parallaxTicking = false;
+        });
+      }
+      lastY = y;
+    };
+    window.addEventListener('scroll', onScroll, { passive: true });
+    onScroll();
+
+    // Mobile drawer
+    const hamburger = document.getElementById('hamburger');
+    const drawer = document.getElementById('drawer');
+    const toggleDrawer = (force) => {
+      const willOpen = typeof force === 'boolean' ? force : !drawer.classList.contains('open');
+      hamburger.classList.toggle('open', willOpen);
+      drawer.classList.toggle('open', willOpen);
+      hamburger.setAttribute('aria-expanded', String(willOpen));
+      drawer.setAttribute('aria-hidden', String(!willOpen));
+      document.body.style.overflow = willOpen ? 'hidden' : '';
+    };
+    hamburger.addEventListener('click', () => toggleDrawer());
+    drawer.querySelectorAll('a').forEach(a => a.addEventListener('click', () => toggleDrawer(false)));
+
+    // Scroll reveal
+    const supportsIO = 'IntersectionObserver' in window;
+    if (supportsIO) {
+      const io = new IntersectionObserver((entries) => {
+        entries.forEach(e => {
+          if (e.isIntersecting) {
+            e.target.classList.add('in');
+            io.unobserve(e.target);
+          }
+        });
+      }, { rootMargin: '0px 0px -8% 0px', threshold: 0.08 });
+      document.querySelectorAll('.reveal').forEach(el => io.observe(el));
+    } else {
+      document.querySelectorAll('.reveal').forEach(el => el.classList.add('in'));
+    }
+
+    // Highlight "today" in hours
+    (function markToday() {
+      const today = new Date().getDay();
+      const li = document.querySelector(`#hoursList li[data-day="${today}"]`);
+      if (li) li.classList.add('hours-today');
+    })();
+  </script>
+  <!-- ── Tweaks UI ── -->
+  <div class="tw-backdrop" id="twBackdrop"></div>
+  <button class="tw-fab" id="twFab" aria-label="Open Tweaks" title="Open Tweaks">
+    <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="3"/><path d="M19.4 15a1.65 1.65 0 0 0 .33 1.82l.06.06a2 2 0 1 1-2.83 2.83l-.06-.06a1.65 1.65 0 0 0-1.82-.33 1.65 1.65 0 0 0-1 1.51V21a2 2 0 1 1-4 0v-.09a1.65 1.65 0 0 0-1.08-1.51 1.65 1.65 0 0 0-1.82.33l-.06.06a2 2 0 1 1-2.83-2.83l.06-.06a1.65 1.65 0 0 0 .33-1.82 1.65 1.65 0 0 0-1.51-1H3a2 2 0 1 1 0-4h.09a1.65 1.65 0 0 0 1.51-1.08 1.65 1.65 0 0 0-.33-1.82l-.06-.06a2 2 0 1 1 2.83-2.83l.06.06a1.65 1.65 0 0 0 1.82.33h0a1.65 1.65 0 0 0 1-1.51V3a2 2 0 1 1 4 0v.09a1.65 1.65 0 0 0 1 1.51h0a1.65 1.65 0 0 0 1.82-.33l.06-.06a2 2 0 1 1 2.83 2.83l-.06.06a1.65 1.65 0 0 0-.33 1.82v0a1.65 1.65 0 0 0 1.51 1H21a2 2 0 1 1 0 4h-.09a1.65 1.65 0 0 0-1.51 1z"/></svg>
+  </button>
+
+  <aside class="tw-panel" id="twPanel" aria-label="Tweaks">
+    <div class="tw-header">
+      <div class="tw-title">Tweaks<small>Preview customization</small></div>
+      <button class="tw-close" id="twClose" aria-label="Close">
+        <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M18 6 6 18M6 6l12 12"/></svg>
+      </button>
+    </div>
+    <div class="tw-body" id="twBody"></div>
+  </aside>
+
+  <script>
+    // ── Tweak defaults (persisted between sessions) ──
+    const TWEAK_DEFAULTS = /*EDITMODE-BEGIN*/{
+      "palette": "indigo",
+      "accent": "ink",
+      "paperTone": "mist",
+      "fontSerif": "Libre Caslon Text",
+      "fontSans": "Work Sans",
+      "headingWeight": 400,
+      "baseSize": 16,
+      "density": 1,
+      "radius": 0.9,
+      "heroLayout": "fullbleed",
+      "heroTextAlign": "left",
+      "brand_name": "Family Dentists",
+      "brand_sub": "Port Huron · MI",
+      "footer_brand": "Family Dentists, PLLC",
+      "footer_sub": "Port Huron · Michigan",
+      "tagline": "\"Family dentistry that will make you smile.\"",
+      "phone": "810-987-8310",
+      "emergencyPhone": "810-689-4809",
+      "hero_eyebrow": "Family dentistry · Port Huron",
+      "hero_headline": "Gentle, modern care for \u003cem>every smile\u003c\/em> in the family.",
+      "hero_desc": "Dr. Jeremy Parrott and Dr. Julie Anne Hengehold combine thoughtful, unhurried care with modern techniques — in a practice designed to feel welcoming from the moment you walk in.",
+      "hero_cta": "Call to schedule",
+      "badge_title": "Now welcoming new patients",
+      "badge_sub": "Same-week appointments often available",
+      "hide_trust": false,
+      "hide_about": false,
+      "hide_services": false,
+      "hide_doctors": false,
+      "hide_comfort": false,
+      "hide_contact": false,
+      "hide_cta": false,
+      "hide_badge": false,
+      "hide_callbar": false,
+      "motion": true
+    }/*EDITMODE-END*/;
+
+    // ── Palettes ──
+    const PALETTES = {
+      sage:    { '--sage-900':'#22332C','--sage-800':'#2F4A3F','--sage-700':'#3F6051','--sage-600':'#577F6C','--sage-400':'#9EB5A5','--sage-200':'#D6E0D6','--sage-50':'#EEF2EC', label:'Sage', swatch:'#3F6051' },
+      ocean:   { '--sage-900':'#122E3A','--sage-800':'#1A4354','--sage-700':'#245C72','--sage-600':'#3E7F96','--sage-400':'#8FB4C2','--sage-200':'#CFDFE6','--sage-50':'#EDF3F6', label:'Ocean', swatch:'#245C72' },
+      indigo:  { '--sage-900':'#1E2540','--sage-800':'#2A3358','--sage-700':'#3B4478','--sage-600':'#5B6499','--sage-400':'#9DA4C4','--sage-200':'#D6D9E6','--sage-50':'#EEEFF5', label:'Indigo', swatch:'#3B4478' },
+      plum:    { '--sage-900':'#2E1F36','--sage-800':'#432A4E','--sage-700':'#5B3B69','--sage-600':'#7F5B8D','--sage-400':'#B59FBE','--sage-200':'#E0D5E4','--sage-50':'#F2EDF4', label:'Plum', swatch:'#5B3B69' },
+      slate:   { '--sage-900':'#1F2A30','--sage-800':'#2B3A42','--sage-700':'#3C4F59','--sage-600':'#586F7C','--sage-400':'#9BACB5','--sage-200':'#D2DADE','--sage-50':'#EEF1F3', label:'Slate', swatch:'#3C4F59' },
+      forest:  { '--sage-900':'#1B2A1D','--sage-800':'#27402B','--sage-700':'#385B3E','--sage-600':'#527A59','--sage-400':'#96B09C','--sage-200':'#CFDCD1','--sage-50':'#EDF0EC', label:'Forest', swatch:'#385B3E' }
+    };
+    const ACCENTS = {
+      terracotta: { '--terracotta':'#C97B5E','--terracotta-soft':'#F1DDD3', label:'Terracotta', swatch:'#C97B5E' },
+      amber:      { '--terracotta':'#C69553','--terracotta-soft':'#F3E5CE', label:'Amber',      swatch:'#C69553' },
+      coral:      { '--terracotta':'#D46A6A','--terracotta-soft':'#F3D8D8', label:'Coral',      swatch:'#D46A6A' },
+      gold:       { '--terracotta':'#B8923A','--terracotta-soft':'#EFE3C0', label:'Gold',       swatch:'#B8923A' },
+      dusty:      { '--terracotta':'#A77E7E','--terracotta-soft':'#EADADA', label:'Dusty rose', swatch:'#A77E7E' },
+      ink:        { '--terracotta':'#4B5561','--terracotta-soft':'#DCE1E8', label:'Ink',        swatch:'#4B5561' }
+    };
+    const PAPERS = {
+      cream:   { '--paper':'#FBF9F4','--ivory':'#FFFDF8','--cream':'#F6F2EA','--line':'#E6E1D5','--line-soft':'#EFEAE0', label:'Cream',  swatch:'#FBF9F4' },
+      pure:    { '--paper':'#FFFFFF','--ivory':'#FFFFFF','--cream':'#F4F4F2','--line':'#E5E5E3','--line-soft':'#EFEFEE', label:'Pure',   swatch:'#FFFFFF' },
+      mist:    { '--paper':'#F6F8F7','--ivory':'#FCFDFC','--cream':'#EAEFEC','--line':'#DDE4E1','--line-soft':'#E8EDEB', label:'Mist',   swatch:'#F6F8F7' },
+      blush:   { '--paper':'#FAF6F3','--ivory':'#FEFBF9','--cream':'#F3EAE4','--line':'#E8DCD4','--line-soft':'#F0E6DF', label:'Blush',  swatch:'#FAF6F3' }
+    };
+    const FONTS_SERIF = ['Fraunces','Playfair Display','Lora','DM Serif Display','Libre Caslon Text','Cormorant Garamond'];
+    const FONTS_SANS  = ['Figtree','Inter','DM Sans','Manrope','Work Sans','Nunito Sans'];
+
+    let state = { ...TWEAK_DEFAULTS };
+
+    // ── Apply ──
+    function applyAll() {
+      const root = document.documentElement.style;
+      const body = document.body;
+
+      Object.entries(PALETTES[state.palette] || PALETTES.sage).forEach(([k,v]) => { if (k.startsWith('--')) root.setProperty(k, v); });
+      Object.entries(ACCENTS[state.accent] || ACCENTS.terracotta).forEach(([k,v]) => { if (k.startsWith('--')) root.setProperty(k, v); });
+      Object.entries(PAPERS[state.paperTone] || PAPERS.cream).forEach(([k,v]) => { if (k.startsWith('--')) root.setProperty(k, v); });
+
+      document.querySelector('meta[name="theme-color"]')?.remove();
+      const m = document.createElement('meta'); m.name = 'theme-color'; m.content = PALETTES[state.palette]?.['--sage-900'] || '#22332C'; document.head.appendChild(m);
+
+      root.setProperty('--font-serif', `"${state.fontSerif}", Georgia, serif`);
+      root.setProperty('--font-sans',  `"${state.fontSans}", system-ui, sans-serif`);
+      root.setProperty('--density', String(state.density));
+      root.setProperty('--radius-mul', String(state.radius));
+      body.style.fontSize = state.baseSize + 'px';
+
+      // heading weight on key headings
+      document.querySelectorAll('.section-title, .hero h1, .doctor-name, .cta h2').forEach(el => el.style.fontWeight = String(state.headingWeight));
+
+      body.setAttribute('data-hero-layout', state.heroLayout);
+      body.setAttribute('data-hero-text', state.heroTextAlign || 'left');
+      ['trust','about','services','doctors','comfort','contact','cta','badge','callbar'].forEach(k => body.setAttribute(`data-hide-${k}`, String(!!state['hide_' + k])));
+      body.classList.toggle('no-motion', !state.motion);
+
+      // text bindings
+      document.querySelectorAll('[data-tw]').forEach(el => {
+        const k = el.getAttribute('data-tw');
+        if (state[k] != null) el.textContent = state[k];
+      });
+      document.querySelectorAll('[data-tw-html]').forEach(el => {
+        const k = el.getAttribute('data-tw-html');
+        if (state[k] != null) el.innerHTML = state[k];
+      });
+      // phone tel: hrefs
+      document.querySelectorAll('[data-tw-href="phone"]').forEach(el => {
+        el.setAttribute('href', 'tel:' + String(state.phone).replace(/[^0-9+]/g, ''));
+      });
+    }
+
+    // Font loader
+    const fontLink = document.createElement('link');
+    fontLink.rel = 'stylesheet';
+    document.head.appendChild(fontLink);
+    function loadFonts() {
+      const fams = [state.fontSerif, state.fontSans].map(f => f.replace(/ /g, '+') + ':ital,wght@0,300;0,400;0,500;0,600;0,700;1,400').join('&family=');
+      fontLink.href = `https://fonts.googleapis.com/css2?family=${fams}&display=swap`;
+    }
+
+    function persist(edits) {
+      try { window.parent.postMessage({ type: '__edit_mode_set_keys', edits }, '*'); } catch(e) {}
+    }
+
+    // ── Panel render ──
+    const body = document.getElementById('twBody');
+    function groupEl(name, innerHTML, collapsed=false) {
+      return `<div class="tw-group${collapsed?' collapsed':''}">
+        <button class="tw-group-head" type="button"><h4>${name}</h4><svg class="tw-chev" width="10" height="6" viewBox="0 0 10 6"><path d="M1 1l4 4 4-4" stroke="white" stroke-opacity=".6" stroke-width="1.5" fill="none" stroke-linecap="round"/></svg></button>
+        <div class="tw-content">${innerHTML}</div>
+      </div>`;
+    }
+    function row(label, inner, valHtml='') {
+      return `<div class="tw-row"><label class="tw-label"><span>${label}</span>${valHtml?`<span class="tw-val">${valHtml}</span>`:''}</label>${inner}</div>`;
+    }
+    function swatchGrid(dict, activeKey, onKey) {
+      return `<div class="tw-swatches" data-on="${onKey}">${Object.entries(dict).map(([k,v])=>`<button class="tw-swatch${k===activeKey?' active':''}" data-key="${k}" style="background:${v.swatch}" title="${v.label}"></button>`).join('')}</div>`;
+    }
+    function segControl(opts, active, onKey) {
+      return `<div class="tw-seg" data-on="${onKey}">${opts.map(o=>`<button type="button" data-val="${o.value}" class="${o.value===active?'active':''}">${o.label}</button>`).join('')}</div>`;
+    }
+    function toggle(label, key) {
+      return `<div class="tw-toggle-row"><span>${label}</span><button class="tw-toggle${state[key]?' on':''}" data-tog="${key}" aria-pressed="${!!state[key]}" type="button"></button></div>`;
+    }
+
+    function render() {
+      body.innerHTML = [
+        `<p class="tw-hint">Adjust anything below — the page updates live as you go. When it looks right, tap <strong>Copy my settings</strong> at the bottom and send the copied text to your developer.</p>`,
+        groupEl('Palette',
+          row('Primary color', swatchGrid(PALETTES, state.palette, 'palette')) +
+          row('Accent color',  swatchGrid(ACCENTS,  state.accent,  'accent')) +
+          row('Paper tone',    swatchGrid(PAPERS,   state.paperTone,'paperTone'))
+        ),
+        groupEl('Typography',
+          row('Display font', `<select class="tw-select" data-on="fontSerif">${FONTS_SERIF.map(f=>`<option ${f===state.fontSerif?'selected':''}>${f}</option>`).join('')}</select>`) +
+          row('Body font',    `<select class="tw-select" data-on="fontSans">${FONTS_SANS.map(f=>`<option ${f===state.fontSans?'selected':''}>${f}</option>`).join('')}</select>`) +
+          row('Heading weight', segControl([{label:'Light',value:300},{label:'Regular',value:400},{label:'Medium',value:500}], state.headingWeight, 'headingWeight')) +
+          row('Base text size', `<input class="tw-slider" type="range" min="14" max="19" step="1" value="${state.baseSize}" data-on="baseSize">`, state.baseSize + 'px')
+        ),
+        groupEl('Layout',
+          row('Hero layout', segControl([{label:'Image right',value:'image-right'},{label:'Image left',value:'image-left'},{label:'Centered',value:'centered'},{label:'Full bleed',value:'fullbleed'}], state.heroLayout, 'heroLayout')) +
+          (state.heroLayout === 'fullbleed' ? row('Text block position', segControl([{label:'Left',value:'left'},{label:'Center',value:'center'},{label:'Right',value:'right'}], state.heroTextAlign || 'left', 'heroTextAlign')) : '') +
+          row('Density', `<input class="tw-slider" type="range" min="0.75" max="1.3" step="0.05" value="${state.density}" data-on="density">`, Math.round(state.density*100)+'%') +
+          row('Corner radius', `<input class="tw-slider" type="range" min="0" max="1.6" step="0.1" value="${state.radius}" data-on="radius">`, Math.round(state.radius*100)+'%')
+        ),
+        groupEl('Practice details',
+          row('Short brand name',  `<input class="tw-input" data-on="brand_name" value="${escapeAttr(state.brand_name)}">`) +
+          row('Nav sub-line',      `<input class="tw-input" data-on="brand_sub" value="${escapeAttr(state.brand_sub)}">`) +
+          row('Footer full name',  `<input class="tw-input" data-on="footer_brand" value="${escapeAttr(state.footer_brand)}">`) +
+          row('Footer sub-line',   `<input class="tw-input" data-on="footer_sub" value="${escapeAttr(state.footer_sub)}">`) +
+          row('Tagline',           `<input class="tw-input" data-on="tagline" value="${escapeAttr(state.tagline)}">`) +
+          row('Main phone',        `<input class="tw-input" data-on="phone" value="${escapeAttr(state.phone)}">`) +
+          row('Emergency phone',   `<input class="tw-input" data-on="emergencyPhone" value="${escapeAttr(state.emergencyPhone)}">`)
+        ),
+        groupEl('Hero copy',
+          row('Eyebrow',   `<input class="tw-input" data-on="hero_eyebrow" value="${escapeAttr(state.hero_eyebrow)}">`) +
+          row('Headline (use &lt;em&gt; for italic)', `<textarea class="tw-textarea" data-on="hero_headline">${escapeHtml(state.hero_headline)}</textarea>`) +
+          row('Description', `<textarea class="tw-textarea" data-on="hero_desc">${escapeHtml(state.hero_desc)}</textarea>`) +
+          row('CTA button', `<input class="tw-input" data-on="hero_cta" value="${escapeAttr(state.hero_cta)}">`) +
+          row('Badge title', `<input class="tw-input" data-on="badge_title" value="${escapeAttr(state.badge_title)}">`) +
+          row('Badge subtitle', `<input class="tw-input" data-on="badge_sub" value="${escapeAttr(state.badge_sub)}">`)
+        ),
+        groupEl('Show / hide sections',
+          sectionToggles()
+        , false),
+        groupEl('Behavior',
+          toggle('Scroll animations', 'motion') +
+          inverseToggle('Hero badge', 'hide_badge') +
+          inverseToggle('Mobile call bar', 'hide_callbar')
+        , false),
+        `<div class="tw-actions"><button class="tw-copy" id="twCopy" type="button">📋 Copy my settings</button><button class="tw-reset" id="twReset">Reset all tweaks</button></div>`
+      ].join('');
+      wireInputs();
+    }
+
+    function sectionToggles() {
+      const items = [
+        ['hide_trust','Trust strip'],
+        ['hide_about','About section'],
+        ['hide_services','Services'],
+        ['hide_doctors','Doctors'],
+        ['hide_comfort','Comfort'],
+        ['hide_contact','Visit & hours'],
+        ['hide_cta','Final CTA']
+      ];
+      return items.map(([k,l]) => inverseToggle(l, k)).join('');
+    }
+    function inverseToggle(label, key) {
+      // shown = !state[key]
+      const shown = !state[key];
+      return `<div class="tw-toggle-row"><span>${label}</span><button class="tw-toggle${shown?' on':''}" data-inv-tog="${key}" aria-pressed="${shown}" type="button"></button></div>`;
+    }
+
+    function escapeHtml(s){return String(s).replace(/[&<>]/g, c => ({'&':'&amp;','<':'&lt;','>':'&gt;'}[c]));}
+    function escapeAttr(s){return String(s).replace(/"/g,'&quot;').replace(/&/g,'&amp;');}
+
+    // ── Preview build: export current settings for client handoff ──
+    function buildSettingsText() {
+      const pct = v => Math.round(v * 100) + '%';
+      const hidden = ['trust','about','services','doctors','comfort','contact','cta']
+        .filter(k => state['hide_' + k]).join(', ') || '(none)';
+      return [
+        'Family Dentists — website preview settings',
+        'Generated from the Tweaks panel. Paste this whole message back to your developer.',
+        '',
+        'Primary palette:   ' + state.palette,
+        'Accent color:      ' + state.accent,
+        'Paper tone:        ' + state.paperTone,
+        'Display font:      ' + state.fontSerif,
+        'Body font:         ' + state.fontSans,
+        'Heading weight:    ' + state.headingWeight,
+        'Base text size:    ' + state.baseSize + 'px',
+        'Density:           ' + pct(state.density),
+        'Corner radius:     ' + pct(state.radius),
+        'Hero layout:       ' + state.heroLayout + (state.heroLayout === 'fullbleed' ? ' (text ' + (state.heroTextAlign || 'left') + ')' : ''),
+        'Scroll animations: ' + (state.motion ? 'on' : 'off'),
+        'Hidden sections:   ' + hidden,
+        '',
+        '--- technical details (for the developer) ---',
+        JSON.stringify(state, null, 2)
+      ].join('\n');
+    }
+    function flashCopied(btn) {
+      if (!btn) return;
+      const orig = btn.textContent;
+      btn.textContent = 'Copied ✓ — now paste it to your developer';
+      btn.classList.add('copied');
+      setTimeout(() => { btn.textContent = orig; btn.classList.remove('copied'); }, 2600);
+    }
+    function legacyCopy(text, onDone) {
+      try {
+        const ta = document.createElement('textarea');
+        ta.value = text; ta.setAttribute('readonly', '');
+        ta.style.position = 'fixed'; ta.style.top = '0'; ta.style.left = '0'; ta.style.opacity = '0';
+        document.body.appendChild(ta); ta.focus(); ta.select();
+        const ok = document.execCommand('copy');
+        document.body.removeChild(ta);
+        if (ok) { onDone(); return; }
+      } catch (e) {}
+      window.prompt('Select all (⌘A), copy (⌘C), then paste these settings to your developer:', text);
+    }
+    function copySettings(btn) {
+      const text = buildSettingsText();
+      const done = () => flashCopied(btn);
+      if (navigator.clipboard && navigator.clipboard.writeText) {
+        navigator.clipboard.writeText(text).then(done).catch(() => legacyCopy(text, done));
+      } else {
+        legacyCopy(text, done);
+      }
+    }
+
+    function wireInputs() {
+      body.querySelectorAll('.tw-group-head').forEach(b => b.addEventListener('click', () => b.parentElement.classList.toggle('collapsed')));
+      body.querySelectorAll('.tw-swatches').forEach(grid => {
+        const key = grid.getAttribute('data-on');
+        grid.querySelectorAll('.tw-swatch').forEach(sw => sw.addEventListener('click', () => {
+          grid.querySelectorAll('.tw-swatch').forEach(x => x.classList.remove('active'));
+          sw.classList.add('active');
+          update(key, sw.getAttribute('data-key'));
+        }));
+      });
+      body.querySelectorAll('.tw-seg').forEach(seg => {
+        const key = seg.getAttribute('data-on');
+        seg.querySelectorAll('button').forEach(btn => btn.addEventListener('click', () => {
+          seg.querySelectorAll('button').forEach(x => x.classList.remove('active'));
+          btn.classList.add('active');
+          const v = btn.getAttribute('data-val');
+          update(key, isNaN(+v) || v==='' ? v : +v);
+        }));
+      });
+      body.querySelectorAll('input.tw-slider').forEach(sl => {
+        const key = sl.getAttribute('data-on');
+        sl.addEventListener('input', () => {
+          const v = +sl.value;
+          const label = sl.closest('.tw-row')?.querySelector('.tw-val');
+          if (label) {
+            if (key==='baseSize') label.textContent = v+'px';
+            else label.textContent = Math.round(v*100)+'%';
+          }
+          update(key, v, false);
+        });
+        sl.addEventListener('change', () => persist({ [key]: state[key] }));
+      });
+      body.querySelectorAll('select.tw-select').forEach(sel => {
+        const key = sel.getAttribute('data-on');
+        sel.addEventListener('change', () => { update(key, sel.value); loadFonts(); });
+      });
+      body.querySelectorAll('input.tw-input, textarea.tw-textarea').forEach(inp => {
+        const key = inp.getAttribute('data-on');
+        let t;
+        inp.addEventListener('input', () => { update(key, inp.value, false); clearTimeout(t); t = setTimeout(() => persist({[key]:inp.value}), 500); });
+        inp.addEventListener('blur', () => persist({[key]:inp.value}));
+      });
+      body.querySelectorAll('[data-tog]').forEach(btn => {
+        const key = btn.getAttribute('data-tog');
+        btn.addEventListener('click', () => {
+          const nv = !state[key];
+          btn.classList.toggle('on', nv); btn.setAttribute('aria-pressed', nv);
+          update(key, nv);
+        });
+      });
+      body.querySelectorAll('[data-inv-tog]').forEach(btn => {
+        const key = btn.getAttribute('data-inv-tog'); // hide_* — on button = shown
+        btn.addEventListener('click', () => {
+          const shown = !btn.classList.contains('on');
+          btn.classList.toggle('on', shown); btn.setAttribute('aria-pressed', shown);
+          update(key, !shown);
+        });
+      });
+      document.getElementById('twCopy')?.addEventListener('click', (e) => copySettings(e.currentTarget));
+      document.getElementById('twReset')?.addEventListener('click', () => {
+        state = { ...TWEAK_DEFAULTS };
+        persist(TWEAK_DEFAULTS);
+        loadFonts();
+        applyAll();
+        render();
+      });
+    }
+
+    function update(key, value, shouldPersist=true) {
+      state[key] = value;
+      applyAll();
+      if (shouldPersist) persist({ [key]: value });
+      // Re-render panel so conditional controls appear/hide
+      if (key === 'heroLayout') render();
+    }
+
+    // ── Edit mode protocol ──
+    const panel = document.getElementById('twPanel');
+    const backdrop = document.getElementById('twBackdrop');
+    const fab = document.getElementById('twFab');
+    const openPanel = () => { panel.classList.add('open'); backdrop.classList.add('open'); };
+    const closePanel = () => { panel.classList.remove('open'); backdrop.classList.remove('open'); };
+    fab.addEventListener('click', openPanel);
+    backdrop.addEventListener('click', closePanel);
+    document.getElementById('twClose').addEventListener('click', closePanel);
+
+    window.addEventListener('message', (e) => {
+      const d = e.data;
+      if (!d || typeof d !== 'object') return;
+      if (d.type === '__activate_edit_mode') {
+        document.body.classList.add('tw-on');
+        openPanel();
+      } else if (d.type === '__deactivate_edit_mode') {
+        document.body.classList.remove('tw-on');
+        closePanel();
+      }
+    });
+
+    // init
+    loadFonts();
+    applyAll();
+    render();
+    // ── Preview build: reveal the editor without the builder's parent frame ──
+    document.body.classList.add('tw-on');                      // always show the ⚙ gear (bottom-right)
+    if (window.innerWidth >= 720) panel.classList.add('open'); // open the panel on desktop (no page dim)
+    try { window.parent.postMessage({ type: '__edit_mode_available' }, '*'); } catch(e) {}
+  </script>
+
+</body>
+</html>
