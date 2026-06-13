@@ -753,44 +753,21 @@
     }
     .map-visual {
       aspect-ratio: 16 / 9;
-      background:
-        radial-gradient(circle at 30% 40%, rgba(158,181,165,0.25), transparent 50%),
-        radial-gradient(circle at 70% 70%, rgba(201,123,94,0.2), transparent 45%),
-        #2A3E34;
       position: relative;
+      background: #2A3E34;
     }
-    .map-grid {
-      position: absolute; inset: 0;
-      background-image:
-        linear-gradient(rgba(255,253,248,0.05) 1px, transparent 1px),
-        linear-gradient(90deg, rgba(255,253,248,0.05) 1px, transparent 1px);
-      background-size: 32px 32px;
-    }
-    .map-pin {
+    .map-visual iframe {
       position: absolute;
-      left: 50%; top: 50%; transform: translate(-50%, -100%);
-      display: flex; flex-direction: column; align-items: center; gap: 6px;
-      transition: transform .3s var(--ease);
+      top: 0; left: 0;
+      width: 100%; height: 100%;
+      border: 0;
+      pointer-events: none; /* Let the parent <a> tag handle the click */
+      filter: grayscale(80%) sepia(20%) hue-rotate(40deg) contrast(1.1) brightness(0.85);
+      transition: filter 0.3s var(--ease), transform 0.3s var(--ease);
     }
-    .map-card:hover .map-pin {
-      transform: translate(-50%, calc(-100% - 4px));
-    }
-    .map-pin-dot {
-      width: 14px; height: 14px;
-      background: var(--terracotta);
-      border: 3px solid var(--ivory);
-      border-radius: 50%;
-      box-shadow: 0 4px 12px rgba(0,0,0,0.3);
-    }
-    .map-pin-label {
-      font-family: ui-monospace, 'JetBrains Mono', monospace;
-      font-size: 0.68rem;
-      background: var(--ivory);
-      color: var(--sage-900);
-      padding: 3px 8px;
-      border-radius: 4px;
-      white-space: nowrap;
-      font-weight: 500;
+    .map-card:hover .map-visual iframe {
+      filter: grayscale(40%) sepia(10%) hue-rotate(20deg) contrast(1) brightness(0.95);
+      transform: scale(1.02);
     }
     .map-cta {
       padding: 16px 20px;
@@ -1563,13 +1540,9 @@
         <div class="contact-block" role="region" aria-label="Map and payment info">
           <h3>Finding us</h3>
           <div class="map-card">
-            <a href="https://maps.google.com/?q=1936+Holland+Avenue,+Port+Huron,+Michigan+48060" target="_blank" rel="noopener noreferrer" aria-label="Open location in Google Maps" style="display:block;">
+            <a href="https://maps.google.com/?q=1936+Holland+Avenue,+Port+Huron,+Michigan+48060" target="_blank" rel="noopener noreferrer" aria-label="Open location in Google Maps" style="display:block; overflow: hidden;">
               <div class="map-visual" aria-hidden="true">
-                <div class="map-grid"></div>
-                <div class="map-pin">
-                  <span class="map-pin-label">1936 Holland Ave</span>
-                  <span class="map-pin-dot"></span>
-                </div>
+                <iframe src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d2925.337032731872!2d-82.44106592398462!3d42.99175407114138!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x88259b3628e3b0bf%3A0xc3f8e5f7b8c7e9a8!2s1936%20Holland%20Ave%2C%20Port%20Huron%2C%20MI%2048060!5e0!3m2!1sen!2sus!4v1718281358043!5m2!1sen!2sus" loading="lazy" referrerpolicy="no-referrer-when-downgrade"></iframe>
               </div>
             </a>
             <div class="map-cta">
