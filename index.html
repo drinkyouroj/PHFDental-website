@@ -350,13 +350,14 @@
     .hero-badge-dot {
       width: 10px; height: 10px; border-radius: 50%;
       background: #52A77C;
-      box-shadow: 0 0 0 4px rgba(82,167,124,0.15);
+      box-shadow: 0 0 0 0 rgba(82,167,124,0.4);
       flex: 0 0 auto;
-      animation: pulse 2.4s ease-in-out infinite;
+      animation: pulse 2s ease-out infinite;
     }
     @keyframes pulse {
-      0%,100% { box-shadow: 0 0 0 4px rgba(82,167,124,0.15); }
-      50% { box-shadow: 0 0 0 8px rgba(82,167,124,0.05); }
+      0% { box-shadow: 0 0 0 0 rgba(82,167,124,0.4); }
+      70% { box-shadow: 0 0 0 8px rgba(82,167,124,0); }
+      100% { box-shadow: 0 0 0 0 rgba(82,167,124,0); }
     }
     .hero-badge-text { font-size: 0.82rem; color: var(--ink); line-height: 1.4; }
     .hero-badge-text strong { display: block; font-weight: 600; color: var(--sage-900); }
@@ -769,6 +770,10 @@
       position: absolute;
       left: 50%; top: 50%; transform: translate(-50%, -100%);
       display: flex; flex-direction: column; align-items: center; gap: 6px;
+      transition: transform .3s var(--ease);
+    }
+    .map-card:hover .map-pin {
+      transform: translate(-50%, calc(-100% - 4px));
     }
     .map-pin-dot {
       width: 14px; height: 14px;
@@ -1168,7 +1173,7 @@
     <div class="hero-inner">
       <div class="hero-copy">
         <span class="hero-eyebrow reveal">Family dentistry · Port Huron</span>
-        <h1 class="reveal d1">Gentle, modern care for <em>every smile</em> in the family.</h1>
+        <h1 class="">Gentle, modern care for <em>every smile</em> in the family.</h1>
         <p class="hero-desc reveal d2">
           Dr. Jeremy Parrott and Dr. Julie Anne Hengehold combine thoughtful,
           unhurried care with modern techniques — in a practice designed to feel
@@ -1238,15 +1243,15 @@
     <div class="wrap">
       <div class="about-grid">
         <div>
-          <span class="section-label reveal">Welcome</span>
-          <h2 class="section-title reveal d1" id="about-title">A practice built around the way care <em>should feel.</em></h2>
-          <p class="section-body reveal d2">
+          <span class="section-label">Welcome</span>
+          <h2 class="section-title" id="about-title">A practice built around the way care <em>should feel.</em></h2>
+          <p class="section-body">
             From your first hello at the front desk to the moment you leave, our
             team takes time to listen, ensuring your treatment fits your life, your
             comfort, and your smile.
           </p>
 
-          <div class="about-points reveal d2">
+          <div class="about-points">
             <div class="about-point">
               <div class="about-point-ico" aria-hidden="true">
                 <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><path d="m12 3-1.912 5.886L4.202 10.8l5.886 1.912L12 18.6l1.912-5.886 5.886-1.912-5.886-1.912zM5 3l1.5 1.5M19 3l-1.5 1.5M5 19l1.5-1.5M19 19l-1.5-1.5"/></svg>
@@ -1277,7 +1282,7 @@
           </div>
         </div>
 
-        <aside class="reveal d2" aria-label="Practice atmosphere">
+        <aside class="" aria-label="Practice atmosphere">
           <div class="about-image">
             <img src="https://images.unsplash.com/photo-1629909613654-28e377c37b09?auto=format&fit=crop&w=800&q=80" alt="Modern dental office with calming view and patient comfort features" loading="lazy" />
           </div>
@@ -1294,8 +1299,8 @@
   <section class="section services" id="services" aria-labelledby="services-title">
     <div class="wrap">
       <div class="services-header">
-        <h2 class="section-title reveal d1" id="services-title">Thoughtful care, from <em>routine</em> to <em>restorative.</em></h2>
-        <p class="section-body reveal d2">
+        <h2 class="section-title" id="services-title">Thoughtful care, from <em>routine</em> to <em>restorative.</em></h2>
+        <p class="section-body">
           Whether it's a check-up for your child or a smile you've been thinking
           about for years, we're here with an honest conversation and a clear
           plan.
@@ -1400,9 +1405,9 @@
   <!-- ── Doctors ── -->
   <section class="section doctors" id="doctors" aria-labelledby="doctors-title">
     <div class="wrap">
-      <span class="section-label reveal">Meet your doctors</span>
-      <h2 class="section-title reveal d1" id="doctors-title">Two owner-dentists. <em>One promise.</em></h2>
-      <p class="section-body reveal d2">
+      <span class="section-label">Meet your doctors</span>
+      <h2 class="section-title" id="doctors-title">Two owner-dentists. <em>One promise.</em></h2>
+      <p class="section-body">
         Dr. Parrott and Dr. Hengehold lead the practice hands-on; you'll see
         the same faces, every visit, for the long run.
       </p>
@@ -1444,8 +1449,8 @@
   <!-- ── Comfort ── -->
   <section class="comfort" aria-labelledby="comfort-title">
     <div class="wrap-narrow" style="text-align: left;">
-      <h2 class="section-title reveal d1" id="comfort-title">Small touches that make a <em>real difference.</em></h2>
-      <p class="section-body reveal d2">
+      <h2 class="section-title" id="comfort-title">Small touches that make a <em>real difference.</em></h2>
+      <p class="section-body">
         We've designed the little things that add up to a calmer, kinder
         appointment so even a dental chair can feel relaxing.
       </p>
@@ -1487,16 +1492,16 @@
   <!-- ── Hours & Contact ── -->
   <section class="section contact" id="contact" aria-labelledby="contact-title">
     <div class="wrap">
-      <span class="section-label reveal">Visit us</span>
-      <h2 class="section-title reveal d1" id="contact-title">Hours &amp; <em>how to find us.</em></h2>
-      <p class="section-body reveal d2">
+      <span class="section-label">Visit us</span>
+      <h2 class="section-title" id="contact-title">Hours &amp; <em>how to find us.</em></h2>
+      <p class="section-body">
         We keep evening and Saturday hours to fit around busy weeks. Give us a
         call; we'd love to welcome you.
       </p>
 
       <div class="contact-grid">
         <!-- Hours -->
-        <div class="contact-block reveal" role="region" aria-label="Office hours">
+        <div class="contact-block" role="region" aria-label="Office hours">
           <h3>Office hours</h3>
           <ul class="hours" id="hoursList">
             <li data-day="1"><span class="hours-day">Monday</span><span class="hours-time">11:00 AM – 7:00 PM</span></li>
@@ -1514,7 +1519,7 @@
         </div>
 
         <!-- Contact info -->
-        <div class="contact-block reveal d1" role="region" aria-label="Contact information">
+        <div class="contact-block" role="region" aria-label="Contact information">
           <h3>Get in touch</h3>
           <ul class="contact-list">
             <li class="contact-item">
@@ -1555,7 +1560,7 @@
         </div>
 
         <!-- Map + payments -->
-        <div class="contact-block reveal d2" role="region" aria-label="Map and payment info">
+        <div class="contact-block" role="region" aria-label="Map and payment info">
           <h3>Finding us</h3>
           <div class="map-card">
             <a href="https://maps.google.com/?q=1936+Holland+Avenue,+Port+Huron,+Michigan+48060" target="_blank" rel="noopener noreferrer" aria-label="Open location in Google Maps" style="display:block;">
@@ -1606,17 +1611,17 @@
   <!-- ── Final CTA ── -->
   <section class="cta" aria-labelledby="cta-title">
     <div class="wrap-narrow">
-      <div class="cta-ornament reveal" aria-hidden="true">✦</div>
-      <h2 class="reveal d1" id="cta-title">Ready for a visit <em>that feels different?</em></h2>
-      <p class="reveal d2">We're accepting new patients of every age, from first tooth to full smile makeovers.</p>
-      <div class="cta-actions reveal d2">
+      <div class="cta-ornament" aria-hidden="true">✦</div>
+      <h2 class="" id="cta-title">Ready for a visit <em>that feels different?</em></h2>
+      <p class="">We're accepting new patients of every age, from first tooth to full smile makeovers.</p>
+      <div class="cta-actions">
         <a href="tel:8109878310" class="btn btn-primary">
           <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M22 16.92v3a2 2 0 0 1-2.18 2 19.79 19.79 0 0 1-8.63-3.07 19.5 19.5 0 0 1-6-6 19.79 19.79 0 0 1-3.07-8.67A2 2 0 0 1 4.11 2h3a2 2 0 0 1 2 1.72c.13.96.37 1.9.72 2.81a2 2 0 0 1-.45 2.11L8.09 9.91a16 16 0 0 0 6 6l1.27-1.27a2 2 0 0 1 2.11-.45c.91.35 1.85.59 2.81.72A2 2 0 0 1 22 16.92z"/></svg>
           Call 810-987-8310
         </a>
         <a href="#contact" class="btn btn-ghost">See hours &amp; address</a>
       </div>
-      <p class="cta-sub reveal d3">Main <strong>810-987-8310</strong> &nbsp;·&nbsp; Emergency <strong>810-689-4809</strong></p>
+      <p class="cta-sub">Main <strong>810-987-8310</strong> &nbsp;·&nbsp; Emergency <strong>810-689-4809</strong></p>
     </div>
   </section>
 
