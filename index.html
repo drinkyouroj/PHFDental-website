@@ -5,6 +5,8 @@
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
   <title>Family Dentists, PLLC — Port Huron, Michigan</title>
   <meta name="description" content="Welcoming, modern family dentistry in Port Huron, Michigan. Dr. Jeremy Parrott and Dr. Julie Anne Hengehold." />
+  <link rel="canonical" href="https://porthuronfamilydentists.com" />
+  <link rel="icon" href="data:image/svg+xml,<svg xmlns=%22http://www.w3.org/2000/svg%22 viewBox=%220 0 100 100%22><text y=%22.9em%22 font-size=%2290%22>🦷</text></svg>">
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
   <link href="https://fonts.googleapis.com/css2?family=Libre+Caslon+Text:ital,wght@0,400;0,700;1,400&family=Work+Sans:wght@300;400;500;600;700&display=swap" rel="stylesheet">
@@ -64,10 +66,17 @@
       -webkit-font-smoothing: antialiased;
       text-rendering: optimizeLegibility;
       overflow-x: hidden;
+      overflow-wrap: break-word;
     }
-    img, svg { display: block; max-width: 100%; }
+    img, svg { display: block; max-width: 100%; height: auto; }
     a { color: inherit; text-decoration: none; }
-    button { font: inherit; }
+    button { font: inherit; cursor: pointer; }
+
+    /* ── Accessibility ── */
+    :focus-visible {
+      outline: 2px solid var(--sage-700);
+      outline-offset: 4px;
+    }
 
     /* ── Delight & Interactions ── */
     .btn, .nav-cta, .nav-links a, .service, .doctor, .comfort-item {
@@ -539,11 +548,16 @@
       color: var(--sage-900);
       margin-bottom: 6px;
       letter-spacing: -0.01em;
+      line-height: 1.2;
     }
     .service p {
       font-size: 0.9rem;
       color: var(--ink-mid);
       line-height: 1.6;
+      display: -webkit-box;
+      -webkit-line-clamp: 3;
+      -webkit-box-orient: vertical;
+      overflow: hidden;
     }
 
     .service-emergency {
@@ -553,6 +567,8 @@
       background: var(--sage-50);
       border-color: var(--terracotta-soft);
     }
+    .service-emergency h3 { line-clamp: none; -webkit-line-clamp: none; }
+    .service-emergency p { line-clamp: none; -webkit-line-clamp: none; }
     .service-emergency .service-ico {
       margin-bottom: 0;
       background: var(--terracotta-soft);
@@ -567,12 +583,17 @@
       margin-top: 44px;
       grid-template-columns: 1fr;
     }
+    @media (min-width: 768px) {
+      .doctors-grid { grid-template-columns: 1fr 1fr; }
+    }
     .doctor {
       background: var(--ivory);
       border-radius: var(--radius-lg);
       overflow: hidden;
       border: 1px solid var(--line-soft);
       transition: transform .3s var(--ease), box-shadow .3s var(--ease);
+      display: flex;
+      flex-direction: column;
     }
     .doctor:hover { transform: translateY(-2px); box-shadow: var(--shadow-sm); }
     .doctor-portrait {
@@ -580,13 +601,14 @@
       background: var(--sage-50);
       position: relative;
       overflow: hidden;
+      flex-shrink: 0;
     }
     .doctor-portrait img {
       width: 100%; height: 100%; object-fit: cover;
       transition: transform .6s var(--ease);
     }
     .doctor:hover .doctor-portrait img { transform: scale(1.05); }
-    .doctor-body { padding: 28px 24px 32px; }
+    .doctor-body { padding: 28px 24px 32px; flex-grow: 1; }
     .doctor-role {
       font-size: 0.7rem;
       font-weight: 500;
@@ -1130,9 +1152,9 @@
   </div>
 
   <!-- ── Hero ── -->
-  <header class="hero" id="home">
+  <header class="hero" id="home" role="banner">
     <div class="hero-bg" aria-hidden="true">
-      <img src="assets/hero-1.png" alt="" loading="eager" decoding="async" id="heroBgImg" />
+      <img src="assets/hero-1.png" alt="Friendly dental staff in a modern, sunlit office" loading="eager" decoding="async" id="heroBgImg" />
     </div>
     <div class="hero-inner">
       <div class="hero-copy">
@@ -1164,7 +1186,7 @@
       </div>
 
       <figure class="hero-media reveal d2">
-        <img src="assets/hero-1.png" alt="Warm, smiling patient" loading="eager" decoding="async" />
+        <img src="assets/hero-1.png" alt="Warm, smiling staff member" loading="eager" decoding="async" />
         <figcaption class="hero-badge">
           <span class="hero-badge-dot" aria-hidden="true"></span>
           <span class="hero-badge-text">
@@ -1177,7 +1199,7 @@
   </header>
 
   <!-- ── Trust strip ── -->
-  <div class="trust" aria-label="Practice highlights">
+  <div class="trust" role="complementary" aria-label="Practice highlights">
     <div class="trust-inner">
       <div class="trust-item">
         <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><path d="M20 6 9 17l-5-5"/></svg>
@@ -1203,12 +1225,12 @@
   </div>
 
   <!-- ── About ── -->
-  <section class="section about" id="about">
+  <section class="section about" id="about" aria-labelledby="about-title">
     <div class="wrap">
       <div class="about-grid">
         <div>
           <span class="section-label reveal">Welcome</span>
-          <h2 class="section-title reveal d1">A practice built around the way care <em>should feel.</em></h2>
+          <h2 class="section-title reveal d1" id="about-title">A practice built around the way care <em>should feel.</em></h2>
           <p class="section-body reveal d2">
             From your first hello at the front desk to the moment you leave, our
             team takes time to listen, ensuring your treatment fits your life, your
@@ -1217,7 +1239,7 @@
 
           <div class="about-points reveal d2">
             <div class="about-point">
-              <div class="about-point-ico">
+              <div class="about-point-ico" aria-hidden="true">
                 <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><path d="m12 3-1.912 5.886L4.202 10.8l5.886 1.912L12 18.6l1.912-5.886 5.886-1.912-5.886-1.912zM5 3l1.5 1.5M19 3l-1.5 1.5M5 19l1.5-1.5M19 19l-1.5-1.5"/></svg>
               </div>
               <div>
@@ -1226,7 +1248,7 @@
               </div>
             </div>
             <div class="about-point">
-              <div class="about-point-ico">
+              <div class="about-point-ico" aria-hidden="true">
                 <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><rect width="20" height="14" x="2" y="5" rx="2"/><line x1="2" x2="22" y1="10" y2="10"/></svg>
               </div>
               <div>
@@ -1235,7 +1257,7 @@
               </div>
             </div>
             <div class="about-point">
-              <div class="about-point-ico">
+              <div class="about-point-ico" aria-hidden="true">
                 <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><path d="M19 14c1.49-1.46 3-3.21 3-5.5A5.5 5.5 0 0 0 16.5 3c-1.76 0-3 .5-4.5 2-1.5-1.5-2.74-2-4.5-2A5.5 5.5 0 0 0 2 8.5c0 2.3 1.5 4.05 3 5.5l7 7Z"/></svg>
               </div>
               <div>
@@ -1246,7 +1268,7 @@
           </div>
         </div>
 
-        <aside class="reveal d2">
+        <aside class="reveal d2" aria-label="Practice atmosphere">
           <div class="about-image">
             <img src="https://images.unsplash.com/photo-1629909613654-28e377c37b09?auto=format&fit=crop&w=800&q=80" alt="Modern dental office with calming view and patient comfort features" loading="lazy" />
           </div>
@@ -1260,10 +1282,10 @@
   </section>
 
   <!-- ── Services ── -->
-  <section class="section services" id="services">
+  <section class="section services" id="services" aria-labelledby="services-title">
     <div class="wrap">
       <div class="services-header">
-        <h2 class="section-title reveal d1">Thoughtful care, from <em>routine</em> to <em>restorative.</em></h2>
+        <h2 class="section-title reveal d1" id="services-title">Thoughtful care, from <em>routine</em> to <em>restorative.</em></h2>
         <p class="section-body reveal d2">
           Whether it's a check-up for your child or a smile you've been thinking
           about for years, we're here with an honest conversation and a clear
@@ -1277,14 +1299,14 @@
           <h3 class="group-title">The Essentials</h3>
           <div class="group-grid-2">
             <article class="service reveal">
-              <div class="service-ico">
+              <div class="service-ico" aria-hidden="true">
                 <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round"><circle cx="11" cy="11" r="7"/><path d="m21 21-4.3-4.3"/></svg>
               </div>
               <h3>Exams &amp; cleanings</h3>
               <p>Comprehensive check-ups with low-radiation digital X-rays and gentle hygiene visits.</p>
             </article>
             <article class="service reveal d1">
-              <div class="service-ico">
+              <div class="service-ico" aria-hidden="true">
                 <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round"><rect x="3" y="4" width="18" height="16" rx="2"/><path d="M3 10h18M9 4v16"/></svg>
               </div>
               <h3>Digital diagnostics</h3>
@@ -1298,28 +1320,28 @@
           <h3 class="group-title">Restorative Care</h3>
           <div class="group-grid-4">
             <article class="service reveal">
-              <div class="service-ico">
+              <div class="service-ico" aria-hidden="true">
                 <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round"><path d="M12 3c-3 0-6 1-6 4.5 0 2 .6 3.4 1 5 .4 1.6.4 3 .7 5 .2 1.2.6 3 1.7 3 1.2 0 1.3-2 1.6-3.5.2-1.1.4-2 1-2s.8.9 1 2c.3 1.5.4 3.5 1.6 3.5 1.1 0 1.5-1.8 1.7-3 .3-2 .3-3.4.7-5 .4-1.6 1-3 1-5C18 4 15 3 12 3z"/></svg>
               </div>
               <h3>Composite fillings</h3>
               <p>Tooth-colored fillings that blend naturally, with no metal or compromise on strength.</p>
             </article>
             <article class="service reveal d1">
-              <div class="service-ico">
+              <div class="service-ico" aria-hidden="true">
                 <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round"><path d="M6 10V7a6 6 0 1 1 12 0v3"/><rect x="4" y="10" width="16" height="11" rx="2"/></svg>
               </div>
               <h3>Crowns &amp; bridges</h3>
               <p>Natural-looking restorations that bring back strength, shape, and confidence.</p>
             </article>
             <article class="service reveal d2">
-              <div class="service-ico">
+              <div class="service-ico" aria-hidden="true">
                 <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round"><path d="M12 2v20M5 12h14"/><circle cx="12" cy="12" r="9"/></svg>
               </div>
               <h3>Implant restoration</h3>
               <p>Lifelike implant crowns and bridges: permanent solutions that feel like your own teeth.</p>
             </article>
             <article class="service reveal d3">
-              <div class="service-ico">
+              <div class="service-ico" aria-hidden="true">
                 <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round"><path d="M6 3v18M18 3v18M3 8h18M3 16h18"/></svg>
               </div>
               <h3>Extractions</h3>
@@ -1333,14 +1355,14 @@
           <h3 class="group-title">Cosmetic Care</h3>
           <div class="group-grid-2">
             <article class="service reveal">
-              <div class="service-ico">
+              <div class="service-ico" aria-hidden="true">
                 <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round"><path d="M12 3v2M12 19v2M5 12H3M21 12h-2M17.7 6.3l-1.4 1.4M7.7 16.3l-1.4 1.4M17.7 17.7l-1.4-1.4M7.7 7.7 6.3 6.3"/><circle cx="12" cy="12" r="4"/></svg>
               </div>
               <h3>Teeth whitening</h3>
               <p>Professional KöR whitening for dramatic, even results with the care your enamel deserves.</p>
             </article>
             <article class="service reveal d1">
-              <div class="service-ico">
+              <div class="service-ico" aria-hidden="true">
                 <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round"><path d="m12 2 3 7 7 .7-5.4 4.8L18 22l-6-4-6 4 1.4-7.5L2 9.7l7-.7z"/></svg>
               </div>
               <h3>Porcelain veneers</h3>
@@ -1353,7 +1375,7 @@
         <div class="services-group">
           <h3 class="group-title">Urgent Care</h3>
           <article class="service reveal service-emergency">
-            <div class="service-ico">
+            <div class="service-ico" aria-hidden="true">
               <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round"><path d="M12 9v4M12 17h.01"/><path d="M10.3 3.86 1.82 18a2 2 0 0 0 1.71 3h16.94a2 2 0 0 0 1.71-3L13.71 3.86a2 2 0 0 0-3.42 0z"/></svg>
             </div>
             <div>
@@ -1367,10 +1389,10 @@
   </section>
 
   <!-- ── Doctors ── -->
-  <section class="section doctors" id="doctors">
+  <section class="section doctors" id="doctors" aria-labelledby="doctors-title">
     <div class="wrap">
       <span class="section-label reveal">Meet your doctors</span>
-      <h2 class="section-title reveal d1">Two owner-dentists. <em>One promise.</em></h2>
+      <h2 class="section-title reveal d1" id="doctors-title">Two owner-dentists. <em>One promise.</em></h2>
       <p class="section-body reveal d2">
         Dr. Parrott and Dr. Hengehold lead the practice hands-on; you'll see
         the same faces, every visit, for the long run.
@@ -1411,9 +1433,9 @@
   </section>
 
   <!-- ── Comfort ── -->
-  <section class="comfort">
+  <section class="comfort" aria-labelledby="comfort-title">
     <div class="wrap-narrow" style="text-align: left;">
-      <h2 class="section-title reveal d1">Small touches that make a <em>real difference.</em></h2>
+      <h2 class="section-title reveal d1" id="comfort-title">Small touches that make a <em>real difference.</em></h2>
       <p class="section-body reveal d2">
         We've designed the little things that add up to a calmer, kinder
         appointment so even a dental chair can feel relaxing.
@@ -1422,28 +1444,28 @@
     <div class="wrap">
       <div class="comfort-grid">
         <div class="comfort-item reveal">
-          <div class="comfort-ico">
+          <div class="comfort-ico" aria-hidden="true">
             <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round"><rect x="2" y="5" width="20" height="14" rx="2"/><path d="M8 21h8M12 17v4"/></svg>
           </div>
           <div class="comfort-title">In-room TVs</div>
           <div class="comfort-desc">Watch your show. Before you know it, we're done.</div>
         </div>
         <div class="comfort-item reveal d1">
-          <div class="comfort-ico">
+          <div class="comfort-ico" aria-hidden="true">
             <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round"><path d="M9 3v6a3 3 0 0 0 3 3h0a3 3 0 0 0 3-3V3M9 15h6M12 15v6"/></svg>
           </div>
           <div class="comfort-title">Hand treatments</div>
           <div class="comfort-desc">Complimentary warm paraffin, on the house.</div>
         </div>
         <div class="comfort-item reveal d2">
-          <div class="comfort-ico">
+          <div class="comfort-ico" aria-hidden="true">
             <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round"><path d="M3 9c3 0 3-2 6-2s3 2 6 2 3-2 6-2M3 14c3 0 3-2 6-2s3 2 6 2 3-2 6-2M3 19c3 0 3-2 6-2s3 2 6 2 3-2 6-2"/></svg>
           </div>
           <div class="comfort-title">Warm blankets</div>
           <div class="comfort-desc">For anyone who runs a little cold in the chair.</div>
         </div>
         <div class="comfort-item reveal d3">
-          <div class="comfort-ico">
+          <div class="comfort-ico" aria-hidden="true">
             <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round"><rect x="3" y="4" width="18" height="12" rx="2"/><path d="M8 20h8M12 16v4"/></svg>
           </div>
           <div class="comfort-title">Patient portal</div>
@@ -1454,10 +1476,10 @@
   </section>
 
   <!-- ── Hours & Contact ── -->
-  <section class="section contact" id="contact">
+  <section class="section contact" id="contact" aria-labelledby="contact-title">
     <div class="wrap">
       <span class="section-label reveal">Visit us</span>
-      <h2 class="section-title reveal d1">Hours &amp; <em>how to find us.</em></h2>
+      <h2 class="section-title reveal d1" id="contact-title">Hours &amp; <em>how to find us.</em></h2>
       <p class="section-body reveal d2">
         We keep evening and Saturday hours to fit around busy weeks. Give us a
         call; we'd love to welcome you.
@@ -1465,7 +1487,7 @@
 
       <div class="contact-grid">
         <!-- Hours -->
-        <div class="contact-block reveal">
+        <div class="contact-block reveal" role="region" aria-label="Office hours">
           <h3>Office hours</h3>
           <ul class="hours" id="hoursList">
             <li data-day="1"><span class="hours-day">Monday</span><span class="hours-time">11:00 AM – 7:00 PM</span></li>
@@ -1483,11 +1505,11 @@
         </div>
 
         <!-- Contact info -->
-        <div class="contact-block reveal d1">
+        <div class="contact-block reveal d1" role="region" aria-label="Contact information">
           <h3>Get in touch</h3>
           <ul class="contact-list">
             <li class="contact-item">
-              <div class="contact-item-ico">
+              <div class="contact-item-ico" aria-hidden="true">
                 <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round"><path d="M22 16.92v3a2 2 0 0 1-2.18 2 19.79 19.79 0 0 1-8.63-3.07 19.5 19.5 0 0 1-6-6 19.79 19.79 0 0 1-3.07-8.67A2 2 0 0 1 4.11 2h3a2 2 0 0 1 2 1.72c.13.96.37 1.9.72 2.81a2 2 0 0 1-.45 2.11L8.09 9.91a16 16 0 0 0 6 6l1.27-1.27a2 2 0 0 1 2.11-.45c.91.35 1.85.59 2.81.72A2 2 0 0 1 22 16.92z"/></svg>
               </div>
               <div>
@@ -1496,7 +1518,7 @@
               </div>
             </li>
             <li class="contact-item">
-              <div class="contact-item-ico">
+              <div class="contact-item-ico" aria-hidden="true">
                 <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round"><rect x="6" y="14" width="12" height="8" rx="1"/><rect x="6" y="2" width="12" height="6" rx="1"/><path d="M4 8h16a2 2 0 0 1 2 2v4a2 2 0 0 1-2 2H4a2 2 0 0 1-2-2v-4a2 2 0 0 1 2-2z"/></svg>
               </div>
               <div>
@@ -1505,7 +1527,7 @@
               </div>
             </li>
             <li class="contact-item">
-              <div class="contact-item-ico">
+              <div class="contact-item-ico" aria-hidden="true">
                 <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round"><path d="M21 10c0 7-9 13-9 13s-9-6-9-13a9 9 0 0 1 18 0z"/><circle cx="12" cy="10" r="3"/></svg>
               </div>
               <div>
@@ -1524,10 +1546,10 @@
         </div>
 
         <!-- Map + payments -->
-        <div class="contact-block reveal d2">
+        <div class="contact-block reveal d2" role="region" aria-label="Map and payment info">
           <h3>Finding us</h3>
           <div class="map-card">
-            <a href="https://maps.google.com/?q=1936+Holland+Avenue,+Port+Huron,+Michigan+48060" target="_blank" rel="noopener noreferrer" aria-label="Open in Google Maps" style="display:block;">
+            <a href="https://maps.google.com/?q=1936+Holland+Avenue,+Port+Huron,+Michigan+48060" target="_blank" rel="noopener noreferrer" aria-label="Open location in Google Maps" style="display:block;">
               <div class="map-visual" aria-hidden="true">
                 <div class="map-grid"></div>
                 <div class="map-pin">
@@ -1547,7 +1569,7 @@
 
           <ul class="contact-list" style="margin-top: 28px;">
             <li class="contact-item">
-              <div class="contact-item-ico">
+              <div class="contact-item-ico" aria-hidden="true">
                 <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round"><path d="M20 6 9 17l-5-5"/></svg>
               </div>
               <div>
@@ -1557,7 +1579,7 @@
               </div>
             </li>
             <li class="contact-item">
-              <div class="contact-item-ico">
+              <div class="contact-item-ico" aria-hidden="true">
                 <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round"><rect x="2" y="5" width="20" height="14" rx="2"/><path d="M2 10h20"/></svg>
               </div>
               <div>
@@ -1573,10 +1595,10 @@
   </section>
 
   <!-- ── Final CTA ── -->
-  <section class="cta">
+  <section class="cta" aria-labelledby="cta-title">
     <div class="wrap-narrow">
-      <div class="cta-ornament reveal">✦</div>
-      <h2 class="reveal d1">Ready for a visit <em>that feels different?</em></h2>
+      <div class="cta-ornament reveal" aria-hidden="true">✦</div>
+      <h2 class="reveal d1" id="cta-title">Ready for a visit <em>that feels different?</em></h2>
       <p class="reveal d2">We're accepting new patients of every age, from first tooth to full smile makeovers.</p>
       <div class="cta-actions reveal d2">
         <a href="tel:8109878310" class="btn btn-primary">
@@ -1590,7 +1612,7 @@
   </section>
 
   <!-- ── Footer ── -->
-  <footer class="footer" role="contentinfo">
+  <footer class="footer" role="contentinfo" aria-label="Site footer">
     <div class="footer-inner">
       <div class="footer-grid">
         <div>
@@ -1670,9 +1692,24 @@
       hamburger.setAttribute('aria-expanded', String(willOpen));
       drawer.setAttribute('aria-hidden', String(!willOpen));
       document.body.style.overflow = willOpen ? 'hidden' : '';
+
+      if (willOpen) {
+        // Focus first link in drawer
+        const firstLink = drawer.querySelector('a');
+        if (firstLink) setTimeout(() => firstLink.focus(), 100);
+      } else {
+        hamburger.focus();
+      }
     };
     hamburger.addEventListener('click', () => toggleDrawer());
     drawer.querySelectorAll('a').forEach(a => a.addEventListener('click', () => toggleDrawer(false)));
+
+    // Escape key closes drawer
+    window.addEventListener('keydown', (e) => {
+      if (e.key === 'Escape' && drawer.classList.contains('open')) {
+        toggleDrawer(false);
+      }
+    });
 
     // Scroll reveal
     const supportsIO = 'IntersectionObserver' in window;
