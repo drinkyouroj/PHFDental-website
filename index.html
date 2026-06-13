@@ -7,47 +7,50 @@
   <meta name="description" content="Welcoming, modern family dentistry in Port Huron, Michigan. Dr. Jeremy Parrott and Dr. Julie Anne Hengehold." />
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-  <link href="https://fonts.googleapis.com/css2?family=Fraunces:ital,opsz,wght@0,9..144,300;0,9..144,400;0,9..144,500;1,9..144,300;1,9..144,400&family=Figtree:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+  <link href="https://fonts.googleapis.com/css2?family=Libre+Caslon+Text:ital,wght@0,400;0,700;1,400&family=Work+Sans:wght@300;400;500;600;700&display=swap" rel="stylesheet">
   <style>
     /* ── Tokens ── */
     :root {
-      /* Sage + warm neutrals — softer than teal, more welcoming */
-      --sage-900: #22332C;
-      --sage-800: #2F4A3F;
-      --sage-700: #3F6051;
-      --sage-600: #577F6C;
-      --sage-400: #9EB5A5;
-      --sage-200: #D6E0D6;
-      --sage-50:  #EEF2EC;
+      /* Indigo + Mist neutrals — Calm, professional, and distinctive */
+      --sage-900: #1E2540;
+      --sage-800: #2A3358;
+      --sage-700: #3B4478;
+      --sage-600: #5B6499;
+      --sage-400: #9DA4C4;
+      --sage-200: #D6D9E6;
+      --sage-50:  #EEEFF5;
 
-      --cream:    #F6F2EA;
-      --paper:    #FBF9F4;
-      --ivory:    #FFFDF8;
+      --cream:    #EAEFEC;
+      --paper:    #F6F8F7;
+      --ivory:    #FCFDFC;
 
-      --terracotta: #C97B5E;   /* warm accent — a single friendly highlight */
-      --terracotta-soft: #F1DDD3;
+      --terracotta: #4B5561;   /* ink accent — subtle and professional */
+      --terracotta-soft: #DCE1E8;
 
       --ink:      #1C231F;
       --ink-mid:  #556159;
       --ink-soft: #8A938C;
-      --line:     #E6E1D5;
-      --line-soft: #EFEAE0;
+      --line:     #DDE4E1;
+      --line-soft: #E8EDEB;
 
-      --radius-mul: 1;
+      --radius-mul: 0.9;
       --radius-sm: calc(10px * var(--radius-mul));
       --radius:    calc(18px * var(--radius-mul));
       --radius-lg: calc(28px * var(--radius-mul));
       --density: 1;
-      --shadow-xs: 0 1px 2px rgba(34,51,44,0.04), 0 2px 6px rgba(34,51,44,0.04);
-      --shadow-sm: 0 4px 18px rgba(34,51,44,0.06);
-      --shadow-md: 0 12px 40px rgba(34,51,44,0.10);
+      --shadow-xs: 0 1px 2px rgba(30,37,64,0.04), 0 2px 6px rgba(30,37,64,0.04);
+      --shadow-sm: 0 4px 18px rgba(30,37,64,0.06);
+      --shadow-md: 0 12px 40px rgba(30,37,64,0.10);
 
       --nav-h: 64px;
-      --font-serif: 'Fraunces', 'Cormorant Garamond', Georgia, serif;
-      --font-sans:  'Figtree', system-ui, -apple-system, sans-serif;
+      --font-serif: 'Libre Caslon Text', Georgia, serif;
+      --font-sans:  'Work Sans', system-ui, -apple-system, sans-serif;
 
       --ease: cubic-bezier(.2,.7,.2,1);
     }
+
+    h1, h2, h3 { text-wrap: balance; }
+    p { text-wrap: pretty; }
 
     /* ── Reset ── */
     *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
@@ -65,7 +68,26 @@
     img, svg { display: block; max-width: 100%; }
     a { color: inherit; text-decoration: none; }
     button { font: inherit; }
+
+    /* ── Delight & Interactions ── */
+    .btn, .nav-cta, .nav-links a, .service, .doctor, .comfort-item {
+      cursor: pointer;
+    }
+    .btn:active, .nav-cta:active {
+      transform: translateY(1px) scale(0.98);
+      transition: transform 0.1s var(--ease);
+    }
+    .btn-primary:active { background: var(--sage-900); }
+
+    .service:hover, .doctor:hover, .comfort-item:hover {
+      transform: translateY(-4px);
+      box-shadow: var(--shadow-md);
+      border-color: var(--sage-200);
+    }
+
+    /* Selection delight */
     ::selection { background: var(--sage-200); color: var(--sage-900); }
+    ::-moz-selection { background: var(--sage-200); color: var(--sage-900); }
 
     /* ── Scroll reveal (gentle) ── */
     .reveal { opacity: 0; transform: translateY(14px); transition: opacity .9s var(--ease), transform .9s var(--ease); will-change: opacity, transform; }
@@ -355,23 +377,22 @@
     }
     .comfort { padding: calc(72px * var(--density)) 20px; }
     .cta { padding: calc(80px * var(--density)) 20px calc(100px * var(--density)); }
-    .wrap {
-      max-width: 1100px;
-      margin: 0 auto;
-    }
     .wrap-narrow {
       max-width: 760px;
       margin: 0 auto;
     }
     .section-label {
-      display: inline-flex; align-items: center; gap: 10px;
-      font-size: 0.72rem; font-weight: 500;
-      letter-spacing: 0.2em;
-      text-transform: uppercase;
-      color: var(--sage-700);
+      display: inline-flex; align-items: center; gap: 8px;
+      font-size: 0.65rem; font-weight: 600;
+      letter-spacing: 0.14em; text-transform: uppercase;
+      color: var(--sage-600);
+      margin-bottom: 12px;
     }
     .section-label::before {
-      content: ''; width: 20px; height: 1px; background: var(--sage-400);
+      content: '+';
+      font-family: var(--font-sans);
+      color: var(--sage-400);
+      font-size: 0.8rem;
     }
     .section-title {
       font-family: var(--font-serif);
@@ -401,14 +422,14 @@
       border-top: 1px solid var(--line);
     }
     .about-point:last-child { border-bottom: 1px solid var(--line); }
-    .about-point-num {
-      font-family: var(--font-serif);
-      font-style: italic;
-      font-size: 1.4rem;
+    .about-point-ico {
+      width: 42px; height: 42px;
+      display: grid; place-items: center;
+      border-radius: 12px;
+      background: var(--sage-50);
       color: var(--sage-600);
-      line-height: 1;
-      padding-top: 2px;
     }
+    .about-point-ico svg { width: 20px; height: 20px; }
     .about-point-title {
       font-family: var(--font-serif);
       font-size: 1.18rem;
@@ -431,20 +452,8 @@
       max-width: 420px;
       margin: 0 auto;
     }
-    .about-image-inner {
-      position: absolute;
-      inset: 0;
-      background:
-        repeating-linear-gradient(135deg, transparent 0 8px, rgba(63,96,81,0.06) 8px 9px),
-        linear-gradient(160deg, var(--sage-50), var(--cream));
-      display: grid; place-items: center;
-      color: var(--sage-700);
-      font-family: 'JetBrains Mono', ui-monospace, monospace;
-      font-size: 0.72rem;
-      letter-spacing: 0.1em;
-      text-align: center;
-      padding: 20px;
-      line-height: 1.6;
+    .about-image img {
+      width: 100%; height: 100%; object-fit: cover;
     }
     .about-quote {
       margin-top: 32px;
@@ -473,16 +482,40 @@
     /* ── Services ── */
     .services { background: var(--ivory); }
     .services-header { margin-bottom: 48px; }
-    .services-grid {
+    .services-groups { display: grid; gap: 48px; }
+    .group-title {
+      font-family: var(--font-sans);
+      font-size: 0.72rem;
+      font-weight: 600;
+      letter-spacing: 0.12em;
+      text-transform: uppercase;
+      color: var(--sage-600);
+      margin-bottom: 20px;
+      display: flex; align-items: center; gap: 12px;
+    }
+    .group-title::after { content: ''; flex: 1; height: 1px; background: var(--line-soft); }
+
+    .group-grid-2, .group-grid-4 {
       display: grid; gap: 14px;
       grid-template-columns: 1fr;
     }
+
+    @media (min-width: 640px) {
+      .group-grid-2 { grid-template-columns: 1fr 1fr; }
+      .group-grid-4 { grid-template-columns: 1fr 1fr; }
+    }
+
+    @media (min-width: 960px) {
+      .group-grid-4 { grid-template-columns: repeat(4, 1fr); }
+    }
+
     .service {
       background: var(--paper);
       border-radius: var(--radius);
       padding: 26px 22px;
       border: 1px solid var(--line-soft);
       transition: transform .3s var(--ease), box-shadow .3s var(--ease), border-color .3s var(--ease);
+      display: flex; flex-direction: column;
     }
     .service:hover {
       transform: translateY(-3px);
@@ -496,6 +529,7 @@
       color: var(--sage-700);
       display: grid; place-items: center;
       margin-bottom: 16px;
+      flex: 0 0 auto;
     }
     .service-ico svg { width: 22px; height: 22px; }
     .service h3 {
@@ -511,6 +545,20 @@
       color: var(--ink-mid);
       line-height: 1.6;
     }
+
+    .service-emergency {
+      flex-direction: row;
+      align-items: center;
+      gap: 24px;
+      background: var(--sage-50);
+      border-color: var(--terracotta-soft);
+    }
+    .service-emergency .service-ico {
+      margin-bottom: 0;
+      background: var(--terracotta-soft);
+      color: var(--terracotta);
+    }
+    .service-emergency h3 { color: var(--sage-900); }
 
     /* ── Doctors ── */
     .doctors { background: var(--cream); }
@@ -529,38 +577,15 @@
     .doctor:hover { transform: translateY(-2px); box-shadow: var(--shadow-sm); }
     .doctor-portrait {
       aspect-ratio: 4 / 3;
-      background:
-        linear-gradient(160deg, var(--sage-50) 0%, var(--terracotta-soft) 100%);
+      background: var(--sage-50);
       position: relative;
-      display: grid; place-items: center;
       overflow: hidden;
     }
-    .doctor-portrait::after {
-      content: '';
-      position: absolute; inset: 0;
-      background: repeating-linear-gradient(135deg, transparent 0 10px, rgba(255,255,255,0.15) 10px 11px);
+    .doctor-portrait img {
+      width: 100%; height: 100%; object-fit: cover;
+      transition: transform .6s var(--ease);
     }
-    .doctor-portrait-initials {
-      position: relative; z-index: 1;
-      font-family: var(--font-serif);
-      font-weight: 300;
-      font-style: italic;
-      font-size: 4.5rem;
-      color: var(--sage-800);
-      letter-spacing: -0.04em;
-    }
-    .doctor-portrait-label {
-      position: absolute; z-index: 1;
-      bottom: 14px; left: 14px;
-      font-family: ui-monospace, 'JetBrains Mono', monospace;
-      font-size: 0.65rem;
-      letter-spacing: 0.12em;
-      text-transform: uppercase;
-      color: var(--sage-700);
-      background: rgba(251, 249, 244, 0.8);
-      padding: 4px 8px;
-      border-radius: 4px;
-    }
+    .doctor:hover .doctor-portrait img { transform: scale(1.05); }
     .doctor-body { padding: 28px 24px 32px; }
     .doctor-role {
       font-size: 0.7rem;
@@ -951,19 +976,6 @@
       .section { padding: calc(120px * var(--density)) 32px; }
     }
 
-    /* No-motion mode (Tweak) */
-    body.no-motion .reveal { opacity: 1 !important; transform: none !important; transition: none !important; }
-    body.no-motion .hero-badge-dot { animation: none !important; }
-
-    /* Hero layout variants */
-    body[data-hero-layout="image-left"] .hero-inner { direction: rtl; }
-    body[data-hero-layout="image-left"] .hero-inner > * { direction: ltr; }
-    body[data-hero-layout="centered"] .hero-inner { grid-template-columns: 1fr !important; max-width: 760px; text-align: center; }
-    body[data-hero-layout="centered"] .hero-eyebrow { justify-content: center; }
-    body[data-hero-layout="centered"] .hero-desc { margin-left: auto; margin-right: auto; }
-    body[data-hero-layout="centered"] .hero-actions { justify-content: center; }
-    body[data-hero-layout="centered"] .hero-media { max-width: 520px; margin: 0 auto; }
-
     /* Full-bleed parallax hero */
     body[data-hero-layout="fullbleed"] .hero {
       min-height: 88svh;
@@ -1005,7 +1017,7 @@
     body[data-hero-layout="fullbleed"] .hero-eyebrow { color: rgba(255,255,255,0.85); }
     body[data-hero-layout="fullbleed"] .hero-eyebrow::before { background: rgba(255,255,255,0.5); }
     body[data-hero-layout="fullbleed"] .hero h1 { color: #fff; }
-    body[data-hero-layout="fullbleed"] .hero h1 em { color: var(--terracotta-soft, #F1DDD3); }
+    body[data-hero-layout="fullbleed"] .hero h1 em { color: var(--terracotta-soft, #DCE1E8); }
     body[data-hero-layout="fullbleed"] .hero-desc { color: rgba(255,255,255,0.88); max-width: 60ch; }
     body[data-hero-layout="fullbleed"] .btn-ghost { color: #fff; border-color: rgba(255,255,255,0.55); }
     body[data-hero-layout="fullbleed"] .btn-ghost:hover { background: rgba(255,255,255,0.1); border-color: #fff; }
@@ -1053,230 +1065,10 @@
     }
     body[data-hero-layout="fullbleed"] .hero-badge-float strong { display: block; font-weight: 600; margin-bottom: 2px; }
     body[data-hero-layout="fullbleed"] .hero-badge-float span { color: rgba(255,255,255,0.75); }
-    body[data-hide-badge="true"] .hero-badge-float { display: none !important; }
 
     /* Non-fullbleed hides the bg layer */
     .hero-bg { display: none; }
     body[data-hero-layout="fullbleed"] .hero-bg { display: block; }
-
-    /* Hidden sections (Tweak) */
-    body[data-hide-trust="true"] .trust,
-    body[data-hide-about="true"] #about,
-    body[data-hide-services="true"] #services,
-    body[data-hide-doctors="true"] #doctors,
-    body[data-hide-comfort="true"] .comfort,
-    body[data-hide-contact="true"] #contact,
-    body[data-hide-cta="true"] .cta,
-    body[data-hide-badge="true"] .hero-badge,
-    body[data-hide-callbar="true"] .mobile-bar { display: none !important; }
-
-    /* ── Tweaks panel ── */
-    .tw-fab {
-      position: fixed; right: 16px; bottom: 80px; z-index: 90;
-      width: 52px; height: 52px; border-radius: 50%;
-      background: var(--sage-900); color: var(--ivory);
-      border: none; cursor: pointer;
-      display: none;
-      align-items: center; justify-content: center;
-      box-shadow: 0 10px 30px rgba(34,51,44,0.25);
-      transition: transform .2s var(--ease);
-    }
-    .tw-fab:hover { transform: scale(1.06); }
-    .tw-fab svg { width: 22px; height: 22px; }
-    body.tw-on .tw-fab { display: flex; }
-    @media (min-width: 720px) { .tw-fab { bottom: 24px; } }
-
-    .tw-panel {
-      position: fixed; top: 0; right: 0; bottom: 0;
-      width: min(380px, 100vw);
-      z-index: 95;
-      background: #1A241F;
-      color: #EAEFEB;
-      border-left: 1px solid rgba(255,255,255,0.08);
-      box-shadow: -10px 0 40px rgba(0,0,0,0.25);
-      transform: translateX(110%);
-      transition: transform .35s var(--ease);
-      display: flex; flex-direction: column;
-      font-family: var(--font-sans);
-    }
-    .tw-panel.open { transform: none; }
-    .tw-header {
-      display: flex; align-items: center; justify-content: space-between;
-      padding: 18px 20px;
-      border-bottom: 1px solid rgba(255,255,255,0.08);
-    }
-    .tw-title { font-family: var(--font-serif); font-size: 1.2rem; font-weight: 400; letter-spacing: -0.01em; }
-    .tw-title small { display: block; font-family: var(--font-sans); font-size: 0.68rem; letter-spacing: 0.14em; color: rgba(255,255,255,0.4); text-transform: uppercase; margin-top: 2px; }
-    .tw-close {
-      width: 34px; height: 34px; border-radius: 10px;
-      background: rgba(255,255,255,0.06); color: #fff;
-      border: none; cursor: pointer;
-      display: grid; place-items: center;
-    }
-    .tw-close:hover { background: rgba(255,255,255,0.12); }
-    .tw-body { flex: 1; overflow-y: auto; padding: 8px 20px 24px; }
-    .tw-body::-webkit-scrollbar { width: 6px; }
-    .tw-body::-webkit-scrollbar-thumb { background: rgba(255,255,255,0.15); border-radius: 3px; }
-
-    .tw-group { border-bottom: 1px solid rgba(255,255,255,0.06); padding: 14px 0; }
-    .tw-group-head {
-      width: 100%;
-      display: flex; align-items: center; justify-content: space-between;
-      background: none; border: none; color: inherit; cursor: pointer;
-      padding: 4px 0; font-family: inherit;
-      text-align: left;
-    }
-    .tw-group-head h4 {
-      font-size: 0.72rem; font-weight: 600; letter-spacing: 0.16em; text-transform: uppercase;
-      color: rgba(255,255,255,0.85);
-    }
-    .tw-group-head .tw-chev { transition: transform .2s var(--ease); opacity: 0.5; }
-    .tw-group.collapsed .tw-chev { transform: rotate(-90deg); }
-    .tw-group.collapsed .tw-content { display: none; }
-    .tw-content { padding-top: 14px; display: grid; gap: 14px; }
-
-    .tw-row { display: grid; gap: 6px; }
-    .tw-label {
-      font-size: 0.72rem; color: rgba(255,255,255,0.55);
-      letter-spacing: 0.04em;
-      display: flex; justify-content: space-between; align-items: center;
-    }
-    .tw-label .tw-val { color: rgba(255,255,255,0.9); font-variant-numeric: tabular-nums; }
-    .tw-input, .tw-textarea, .tw-select {
-      width: 100%;
-      background: rgba(255,255,255,0.05);
-      color: #fff;
-      border: 1px solid rgba(255,255,255,0.1);
-      border-radius: 8px;
-      padding: 9px 11px;
-      font-size: 0.88rem;
-      font-family: inherit;
-      transition: border-color .2s var(--ease), background .2s var(--ease);
-    }
-    .tw-textarea { resize: vertical; min-height: 64px; line-height: 1.4; }
-    .tw-input:focus, .tw-textarea:focus, .tw-select:focus {
-      outline: none;
-      border-color: rgba(255,255,255,0.35);
-      background: rgba(255,255,255,0.08);
-    }
-    .tw-select {
-      -webkit-appearance: none; appearance: none;
-      background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='10' height='6' viewBox='0 0 10 6'%3E%3Cpath d='M1 1l4 4 4-4' stroke='white' stroke-opacity='.6' stroke-width='1.5' fill='none' stroke-linecap='round'/%3E%3C/svg%3E");
-      background-repeat: no-repeat; background-position: right 12px center;
-      padding-right: 32px;
-    }
-
-    /* Color swatch grid */
-    .tw-swatches { display: grid; grid-template-columns: repeat(6, 1fr); gap: 8px; }
-    .tw-swatch {
-      position: relative;
-      aspect-ratio: 1;
-      border-radius: 8px;
-      border: 2px solid transparent;
-      cursor: pointer;
-      transition: transform .15s var(--ease), border-color .2s var(--ease);
-    }
-    .tw-swatch:hover { transform: scale(1.06); }
-    .tw-swatch.active { border-color: #fff; }
-    .tw-swatch.active::after {
-      content: '✓';
-      position: absolute; inset: 0;
-      display: grid; place-items: center;
-      color: #fff; font-size: 0.85rem; font-weight: 700;
-      text-shadow: 0 1px 3px rgba(0,0,0,0.4);
-    }
-
-    /* Slider */
-    .tw-slider {
-      -webkit-appearance: none; appearance: none;
-      width: 100%; height: 4px;
-      background: rgba(255,255,255,0.12);
-      border-radius: 3px;
-      outline: none;
-    }
-    .tw-slider::-webkit-slider-thumb {
-      -webkit-appearance: none; appearance: none;
-      width: 18px; height: 18px; border-radius: 50%;
-      background: #fff;
-      border: none; cursor: pointer;
-      box-shadow: 0 2px 6px rgba(0,0,0,0.3);
-    }
-    .tw-slider::-moz-range-thumb {
-      width: 18px; height: 18px; border-radius: 50%;
-      background: #fff; border: none; cursor: pointer;
-    }
-
-    /* Toggle */
-    .tw-toggle-row {
-      display: flex; align-items: center; justify-content: space-between;
-      padding: 4px 0;
-    }
-    .tw-toggle-row span {
-      font-size: 0.86rem; color: rgba(255,255,255,0.85);
-    }
-    .tw-toggle {
-      position: relative;
-      width: 38px; height: 22px; border-radius: 11px;
-      background: rgba(255,255,255,0.14);
-      border: none; cursor: pointer; padding: 0;
-      transition: background .2s var(--ease);
-    }
-    .tw-toggle::after {
-      content: '';
-      position: absolute;
-      left: 2px; top: 2px;
-      width: 18px; height: 18px; border-radius: 50%;
-      background: #fff;
-      transition: transform .2s var(--ease);
-    }
-    .tw-toggle.on { background: var(--terracotta); }
-    .tw-toggle.on::after { transform: translateX(16px); }
-
-    /* Seg control */
-    .tw-seg {
-      display: grid; grid-auto-flow: column; grid-auto-columns: 1fr;
-      background: rgba(255,255,255,0.05);
-      border: 1px solid rgba(255,255,255,0.08);
-      border-radius: 8px;
-      padding: 3px;
-    }
-    .tw-seg button {
-      background: transparent; color: rgba(255,255,255,0.65);
-      border: none; cursor: pointer;
-      padding: 7px 8px;
-      font-size: 0.76rem; font-weight: 500;
-      border-radius: 6px;
-      font-family: inherit;
-      transition: all .2s var(--ease);
-    }
-    .tw-seg button.active {
-      background: rgba(255,255,255,0.14);
-      color: #fff;
-    }
-
-    .tw-reset {
-      width: 100%;
-      margin-top: 14px;
-      padding: 11px;
-      background: transparent;
-      color: rgba(255,255,255,0.6);
-      border: 1px solid rgba(255,255,255,0.15);
-      border-radius: 10px;
-      cursor: pointer;
-      font-family: inherit;
-      font-size: 0.82rem;
-      transition: all .2s var(--ease);
-    }
-    .tw-reset:hover { background: rgba(255,255,255,0.06); color: #fff; }
-
-    .tw-backdrop {
-      position: fixed; inset: 0; z-index: 94;
-      background: rgba(20,30,25,0.3);
-      opacity: 0; pointer-events: none;
-      transition: opacity .3s var(--ease);
-      backdrop-filter: blur(2px);
-    }
-    .tw-backdrop.open { opacity: 1; pointer-events: auto; }
 
     /* ── Reduced motion ── */
     @media (prefers-reduced-motion: reduce) {
@@ -1286,7 +1078,7 @@
     }
   </style>
 </head>
-<body>
+<body data-hero-layout="fullbleed" data-hero-text="left">
 
   <!-- ── Navigation ── -->
   <nav class="nav" id="nav" role="navigation" aria-label="Main">
@@ -1298,8 +1090,8 @@
         </svg>
       </span>
       <span>
-        <span class="brand-name" data-tw="brand_name">Family Dentists</span>
-        <span class="brand-sub" data-tw="brand_sub">Port Huron · MI</span>
+        <span class="brand-name">Family Dentists</span>
+        <span class="brand-sub">Port Huron · MI</span>
       </span>
     </a>
 
@@ -1310,9 +1102,9 @@
       <li><a href="#contact">Visit</a></li>
     </ul>
 
-    <a href="tel:8109878310" class="nav-cta" data-tw-href="phone">
+    <a href="tel:8109878310" class="nav-cta">
       <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M22 16.92v3a2 2 0 0 1-2.18 2 19.79 19.79 0 0 1-8.63-3.07 19.5 19.5 0 0 1-6-6 19.79 19.79 0 0 1-3.07-8.67A2 2 0 0 1 4.11 2h3a2 2 0 0 1 2 1.72c.13.96.37 1.9.72 2.81a2 2 0 0 1-.45 2.11L8.09 9.91a16 16 0 0 0 6 6l1.27-1.27a2 2 0 0 1 2.11-.45c.91.35 1.85.59 2.81.72A2 2 0 0 1 22 16.92z"/></svg>
-      <span data-tw="phone">810-987-8310</span>
+      <span>810-987-8310</span>
     </a>
 
     <button class="hamburger" id="hamburger" aria-label="Open menu" aria-expanded="false" aria-controls="drawer">
@@ -1344,17 +1136,17 @@
     </div>
     <div class="hero-inner">
       <div class="hero-copy">
-        <span class="hero-eyebrow reveal" data-tw="hero_eyebrow">Family dentistry · Port Huron</span>
-        <h1 class="reveal d1" data-tw-html="hero_headline">Gentle, modern care for <em>every smile</em> in the family.</h1>
-        <p class="hero-desc reveal d2" data-tw="hero_desc">
+        <span class="hero-eyebrow reveal">Family dentistry · Port Huron</span>
+        <h1 class="reveal d1">Gentle, modern care for <em>every smile</em> in the family.</h1>
+        <p class="hero-desc reveal d2">
           Dr. Jeremy Parrott and Dr. Julie Anne Hengehold combine thoughtful,
           unhurried care with modern techniques — in a practice designed to feel
           welcoming from the moment you walk in.
         </p>
         <div class="hero-actions reveal d3">
-          <a href="tel:8109878310" class="btn btn-primary" data-tw-href="phone">
+          <a href="tel:8109878310" class="btn btn-primary">
             <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M22 16.92v3a2 2 0 0 1-2.18 2 19.79 19.79 0 0 1-8.63-3.07 19.5 19.5 0 0 1-6-6 19.79 19.79 0 0 1-3.07-8.67A2 2 0 0 1 4.11 2h3a2 2 0 0 1 2 1.72c.13.96.37 1.9.72 2.81a2 2 0 0 1-.45 2.11L8.09 9.91a16 16 0 0 0 6 6l1.27-1.27a2 2 0 0 1 2.11-.45c.91.35 1.85.59 2.81.72A2 2 0 0 1 22 16.92z"/></svg>
-            <span data-tw="hero_cta">Call to schedule</span>
+            <span>Call to schedule</span>
           </a>
           <a href="#services" class="btn btn-ghost">
             Explore services
@@ -1365,8 +1157,8 @@
         <div class="hero-badge-float reveal d3">
           <span class="hero-badge-dot" aria-hidden="true"></span>
           <span>
-            <strong data-tw="badge_title">Now welcoming new patients</strong>
-            <span data-tw="badge_sub">Same-week appointments often available</span>
+            <strong>Now welcoming new patients</strong>
+            <span>Same-week appointments often available</span>
           </span>
         </div>
       </div>
@@ -1376,8 +1168,8 @@
         <figcaption class="hero-badge">
           <span class="hero-badge-dot" aria-hidden="true"></span>
           <span class="hero-badge-text">
-            <strong data-tw="badge_title">Now welcoming new patients</strong>
-            <span data-tw="badge_sub">Same-week appointments often available</span>
+            <strong>Now welcoming new patients</strong>
+            <span>Same-week appointments often available</span>
           </span>
         </figcaption>
       </figure>
@@ -1419,27 +1211,33 @@
           <h2 class="section-title reveal d1">A practice built around the way care <em>should feel.</em></h2>
           <p class="section-body reveal d2">
             From your first hello at the front desk to the moment you leave, our
-            team takes time to listen — so your treatment fits your life, your
+            team takes time to listen, ensuring your treatment fits your life, your
             comfort, and your smile.
           </p>
 
           <div class="about-points reveal d2">
             <div class="about-point">
-              <span class="about-point-num">01</span>
+              <div class="about-point-ico">
+                <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><path d="m12 3-1.912 5.886L4.202 10.8l5.886 1.912L12 18.6l1.912-5.886 5.886-1.912-5.886-1.912zM5 3l1.5 1.5M19 3l-1.5 1.5M5 19l1.5-1.5M19 19l-1.5-1.5"/></svg>
+              </div>
               <div>
                 <div class="about-point-title">Modern techniques, premium materials</div>
                 <div class="about-point-desc">Digital X-rays, tooth-colored fillings, and crowns that look and feel like your own.</div>
               </div>
             </div>
             <div class="about-point">
-              <span class="about-point-num">02</span>
+              <div class="about-point-ico">
+                <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><rect width="20" height="14" x="2" y="5" rx="2"/><line x1="2" x2="22" y1="10" y2="10"/></svg>
+              </div>
               <div>
                 <div class="about-point-title">Flexible financing for real life</div>
                 <div class="about-point-desc">Most insurance accepted, interest-free plans, and multiple payment options so care stays within reach.</div>
               </div>
             </div>
             <div class="about-point">
-              <span class="about-point-num">03</span>
+              <div class="about-point-ico">
+                <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><path d="M19 14c1.49-1.46 3-3.21 3-5.5A5.5 5.5 0 0 0 16.5 3c-1.76 0-3 .5-4.5 2-1.5-1.5-2.74-2-4.5-2A5.5 5.5 0 0 0 2 8.5c0 2.3 1.5 4.05 3 5.5l7 7Z"/></svg>
+              </div>
               <div>
                 <div class="about-point-title">Comfort that's actually considered</div>
                 <div class="about-point-desc">Warm blankets, complimentary hand treatments, in-room TVs, and a gentle, unhurried pace.</div>
@@ -1450,12 +1248,10 @@
 
         <aside class="reveal d2">
           <div class="about-image">
-            <div class="about-image-inner">
-              [ practice interior photo<br/>— warm light · plants · front desk ]
-            </div>
+            <img src="https://images.unsplash.com/photo-1629909613654-28e377c37b09?auto=format&fit=crop&w=800&q=80" alt="Modern dental office with calming view and patient comfort features" loading="lazy" />
           </div>
           <div class="about-quote">
-            <p class="about-quote-text">"We want every patient to feel like family — because the best dental care starts with trust."</p>
+            <p class="about-quote-text">"We want every patient to feel like family; the best dental care starts with trust."</p>
             <p class="about-quote-by">— Dr. Parrott &amp; Dr. Hengehold</p>
           </div>
         </aside>
@@ -1467,7 +1263,6 @@
   <section class="section services" id="services">
     <div class="wrap">
       <div class="services-header">
-        <span class="section-label reveal">What we offer</span>
         <h2 class="section-title reveal d1">Thoughtful care, from <em>routine</em> to <em>restorative.</em></h2>
         <p class="section-body reveal d2">
           Whether it's a check-up for your child or a smile you've been thinking
@@ -1476,70 +1271,97 @@
         </p>
       </div>
 
-      <div class="services-grid">
-        <article class="service reveal">
-          <div class="service-ico">
-            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round"><circle cx="11" cy="11" r="7"/><path d="m21 21-4.3-4.3"/></svg>
+      <div class="services-groups">
+        <!-- Essentials -->
+        <div class="services-group">
+          <h3 class="group-title">The Essentials</h3>
+          <div class="group-grid-2">
+            <article class="service reveal">
+              <div class="service-ico">
+                <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round"><circle cx="11" cy="11" r="7"/><path d="m21 21-4.3-4.3"/></svg>
+              </div>
+              <h3>Exams &amp; cleanings</h3>
+              <p>Comprehensive check-ups with low-radiation digital X-rays and gentle hygiene visits.</p>
+            </article>
+            <article class="service reveal d1">
+              <div class="service-ico">
+                <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round"><rect x="3" y="4" width="18" height="16" rx="2"/><path d="M3 10h18M9 4v16"/></svg>
+              </div>
+              <h3>Digital diagnostics</h3>
+              <p>Low-radiation digital X-rays and intraoral imaging for early, precise treatment planning.</p>
+            </article>
           </div>
-          <h3>Exams &amp; cleanings</h3>
-          <p>Comprehensive check-ups with low-radiation digital X-rays and gentle hygiene visits.</p>
-        </article>
-        <article class="service reveal d1">
-          <div class="service-ico">
-            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round"><path d="M12 3c-3 0-6 1-6 4.5 0 2 .6 3.4 1 5 .4 1.6.4 3 .7 5 .2 1.2.6 3 1.7 3 1.2 0 1.3-2 1.6-3.5.2-1.1.4-2 1-2s.8.9 1 2c.3 1.5.4 3.5 1.6 3.5 1.1 0 1.5-1.8 1.7-3 .3-2 .3-3.4.7-5 .4-1.6 1-3 1-5C18 4 15 3 12 3z"/></svg>
+        </div>
+
+        <!-- Restorative -->
+        <div class="services-group">
+          <h3 class="group-title">Restorative Care</h3>
+          <div class="group-grid-4">
+            <article class="service reveal">
+              <div class="service-ico">
+                <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round"><path d="M12 3c-3 0-6 1-6 4.5 0 2 .6 3.4 1 5 .4 1.6.4 3 .7 5 .2 1.2.6 3 1.7 3 1.2 0 1.3-2 1.6-3.5.2-1.1.4-2 1-2s.8.9 1 2c.3 1.5.4 3.5 1.6 3.5 1.1 0 1.5-1.8 1.7-3 .3-2 .3-3.4.7-5 .4-1.6 1-3 1-5C18 4 15 3 12 3z"/></svg>
+              </div>
+              <h3>Composite fillings</h3>
+              <p>Tooth-colored fillings that blend naturally, with no metal or compromise on strength.</p>
+            </article>
+            <article class="service reveal d1">
+              <div class="service-ico">
+                <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round"><path d="M6 10V7a6 6 0 1 1 12 0v3"/><rect x="4" y="10" width="16" height="11" rx="2"/></svg>
+              </div>
+              <h3>Crowns &amp; bridges</h3>
+              <p>Natural-looking restorations that bring back strength, shape, and confidence.</p>
+            </article>
+            <article class="service reveal d2">
+              <div class="service-ico">
+                <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round"><path d="M12 2v20M5 12h14"/><circle cx="12" cy="12" r="9"/></svg>
+              </div>
+              <h3>Implant restoration</h3>
+              <p>Lifelike implant crowns and bridges: permanent solutions that feel like your own teeth.</p>
+            </article>
+            <article class="service reveal d3">
+              <div class="service-ico">
+                <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round"><path d="M6 3v18M18 3v18M3 8h18M3 16h18"/></svg>
+              </div>
+              <h3>Extractions</h3>
+              <p>Gentle, precise extractions when they're truly needed, with a calm plan for aftercare.</p>
+            </article>
           </div>
-          <h3>Composite fillings</h3>
-          <p>Tooth-colored fillings that blend naturally — no metal, no compromise on strength.</p>
-        </article>
-        <article class="service reveal d2">
-          <div class="service-ico">
-            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round"><path d="M12 3v2M12 19v2M5 12H3M21 12h-2M17.7 6.3l-1.4 1.4M7.7 16.3l-1.4 1.4M17.7 17.7l-1.4-1.4M7.7 7.7 6.3 6.3"/><circle cx="12" cy="12" r="4"/></svg>
+        </div>
+
+        <!-- Aesthetic -->
+        <div class="services-group">
+          <h3 class="group-title">Cosmetic Care</h3>
+          <div class="group-grid-2">
+            <article class="service reveal">
+              <div class="service-ico">
+                <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round"><path d="M12 3v2M12 19v2M5 12H3M21 12h-2M17.7 6.3l-1.4 1.4M7.7 16.3l-1.4 1.4M17.7 17.7l-1.4-1.4M7.7 7.7 6.3 6.3"/><circle cx="12" cy="12" r="4"/></svg>
+              </div>
+              <h3>Teeth whitening</h3>
+              <p>Professional KöR whitening for dramatic, even results with the care your enamel deserves.</p>
+            </article>
+            <article class="service reveal d1">
+              <div class="service-ico">
+                <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round"><path d="m12 2 3 7 7 .7-5.4 4.8L18 22l-6-4-6 4 1.4-7.5L2 9.7l7-.7z"/></svg>
+              </div>
+              <h3>Porcelain veneers</h3>
+              <p>Hand-matched veneers to refine chips, staining, and gaps into a smile that still feels like yours.</p>
+            </article>
           </div>
-          <h3>Teeth whitening</h3>
-          <p>Professional KöR whitening — dramatic, even results with the care your enamel deserves.</p>
-        </article>
-        <article class="service reveal">
-          <div class="service-ico">
-            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round"><path d="m12 2 3 7 7 .7-5.4 4.8L18 22l-6-4-6 4 1.4-7.5L2 9.7l7-.7z"/></svg>
-          </div>
-          <h3>Porcelain veneers</h3>
-          <p>Hand-matched veneers to refine chips, staining, and gaps into a smile that still feels like yours.</p>
-        </article>
-        <article class="service reveal d1">
-          <div class="service-ico">
-            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round"><path d="M6 10V7a6 6 0 1 1 12 0v3"/><rect x="4" y="10" width="16" height="11" rx="2"/></svg>
-          </div>
-          <h3>Crowns &amp; bridges</h3>
-          <p>Natural-looking restorations that bring back strength, shape, and confidence.</p>
-        </article>
-        <article class="service reveal d2">
-          <div class="service-ico">
-            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round"><path d="M12 2v20M5 12h14"/><circle cx="12" cy="12" r="9"/></svg>
-          </div>
-          <h3>Implant restoration</h3>
-          <p>Lifelike implant crowns and bridges — permanent solutions that feel like your own teeth.</p>
-        </article>
-        <article class="service reveal">
-          <div class="service-ico">
-            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round"><path d="M6 3v18M18 3v18M3 8h18M3 16h18"/></svg>
-          </div>
-          <h3>Extractions</h3>
-          <p>Gentle, precise extractions when they're truly needed — with a calm plan for aftercare.</p>
-        </article>
-        <article class="service reveal d1">
-          <div class="service-ico">
-            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round"><rect x="3" y="4" width="18" height="16" rx="2"/><path d="M3 10h18M9 4v16"/></svg>
-          </div>
-          <h3>Digital diagnostics</h3>
-          <p>Low-radiation digital X-rays and intraoral imaging for early, precise treatment planning.</p>
-        </article>
-        <article class="service reveal d2">
-          <div class="service-ico" style="background: var(--terracotta-soft); color: var(--terracotta);">
-            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round"><path d="M12 9v4M12 17h.01"/><path d="M10.3 3.86 1.82 18a2 2 0 0 0 1.71 3h16.94a2 2 0 0 0 1.71-3L13.71 3.86a2 2 0 0 0-3.42 0z"/></svg>
-          </div>
-          <h3>Emergency care</h3>
-          <p>Dental emergencies can't wait. Call our emergency line and we'll take care of you.</p>
-        </article>
+        </div>
+
+        <!-- Emergency -->
+        <div class="services-group">
+          <h3 class="group-title">Urgent Care</h3>
+          <article class="service reveal service-emergency">
+            <div class="service-ico">
+              <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round"><path d="M12 9v4M12 17h.01"/><path d="M10.3 3.86 1.82 18a2 2 0 0 0 1.71 3h16.94a2 2 0 0 0 1.71-3L13.71 3.86a2 2 0 0 0-3.42 0z"/></svg>
+            </div>
+            <div>
+              <h3>Emergency care</h3>
+              <p>Dental emergencies can't wait. Call our emergency line and we'll take care of you.</p>
+            </div>
+          </article>
+        </div>
       </div>
     </div>
   </section>
@@ -1550,38 +1372,36 @@
       <span class="section-label reveal">Meet your doctors</span>
       <h2 class="section-title reveal d1">Two owner-dentists. <em>One promise.</em></h2>
       <p class="section-body reveal d2">
-        Dr. Parrott and Dr. Hengehold lead the practice hands-on — you'll see
+        Dr. Parrott and Dr. Hengehold lead the practice hands-on; you'll see
         the same faces, every visit, for the long run.
       </p>
 
       <div class="doctors-grid">
         <article class="doctor reveal">
-          <div class="doctor-portrait" aria-hidden="true">
-            <span class="doctor-portrait-initials">JP</span>
-            <span class="doctor-portrait-label">[ portrait · Dr. Parrott ]</span>
+          <div class="doctor-portrait">
+            <img src="assets/dr-jeremy-parrott.jpg" alt="Dr. Jeremy Parrott" loading="lazy" />
           </div>
           <div class="doctor-body">
             <div class="doctor-role">Owner · Dentist</div>
             <h3 class="doctor-name">Dr. Jeremy Parrott</h3>
             <p class="doctor-bio">
               Dr. Parrott is committed to delivering modern, high-quality dental
-              care in a warm and welcoming environment — combining clinical
+              care in a warm and welcoming environment, combining clinical
               excellence with genuine compassion for every patient.
             </p>
           </div>
         </article>
 
         <article class="doctor reveal d1">
-          <div class="doctor-portrait" aria-hidden="true">
-            <span class="doctor-portrait-initials">JH</span>
-            <span class="doctor-portrait-label">[ portrait · Dr. Hengehold ]</span>
+          <div class="doctor-portrait">
+            <img src="assets/dr-julie-hengehold.jpg" alt="Dr. Julie Anne Hengehold" loading="lazy" />
           </div>
           <div class="doctor-body">
             <div class="doctor-role">Owner · Dentist</div>
             <h3 class="doctor-name">Dr. Julie Anne Hengehold</h3>
             <p class="doctor-bio">
               Dr. Hengehold brings expertise and a gentle touch to every
-              treatment — dedicated to helping patients of every age achieve
+              treatment, dedicated to helping patients of every age achieve
               healthy, beautiful smiles.
             </p>
           </div>
@@ -1593,11 +1413,10 @@
   <!-- ── Comfort ── -->
   <section class="comfort">
     <div class="wrap-narrow" style="text-align: left;">
-      <span class="section-label reveal">Your comfort</span>
       <h2 class="section-title reveal d1">Small touches that make a <em>real difference.</em></h2>
       <p class="section-body reveal d2">
         We've designed the little things that add up to a calmer, kinder
-        appointment — so even a dental chair can feel relaxing.
+        appointment so even a dental chair can feel relaxing.
       </p>
     </div>
     <div class="wrap">
@@ -1641,7 +1460,7 @@
       <h2 class="section-title reveal d1">Hours &amp; <em>how to find us.</em></h2>
       <p class="section-body reveal d2">
         We keep evening and Saturday hours to fit around busy weeks. Give us a
-        call — we'd love to welcome you.
+        call; we'd love to welcome you.
       </p>
 
       <div class="contact-grid">
@@ -1700,7 +1519,7 @@
           <div class="emergency">
             <div class="emergency-label">After-hours emergency</div>
             <div class="emergency-number"><a href="tel:8106894809" style="color: inherit;">810-689-4809</a></div>
-            <div class="emergency-desc">Chipped tooth, swelling, or severe pain — call any time.</div>
+            <div class="emergency-desc">Chipped tooth, swelling, or severe pain: call any time.</div>
           </div>
         </div>
 
@@ -1758,7 +1577,7 @@
     <div class="wrap-narrow">
       <div class="cta-ornament reveal">✦</div>
       <h2 class="reveal d1">Ready for a visit <em>that feels different?</em></h2>
-      <p class="reveal d2">We're accepting new patients of every age — from first tooth to full smile makeovers.</p>
+      <p class="reveal d2">We're accepting new patients of every age, from first tooth to full smile makeovers.</p>
       <div class="cta-actions reveal d2">
         <a href="tel:8109878310" class="btn btn-primary">
           <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M22 16.92v3a2 2 0 0 1-2.18 2 19.79 19.79 0 0 1-8.63-3.07 19.5 19.5 0 0 1-6-6 19.79 19.79 0 0 1-3.07-8.67A2 2 0 0 1 4.11 2h3a2 2 0 0 1 2 1.72c.13.96.37 1.9.72 2.81a2 2 0 0 1-.45 2.11L8.09 9.91a16 16 0 0 0 6 6l1.27-1.27a2 2 0 0 1 2.11-.45c.91.35 1.85.59 2.81.72A2 2 0 0 1 22 16.92z"/></svg>
@@ -1775,9 +1594,9 @@
     <div class="footer-inner">
       <div class="footer-grid">
         <div>
-          <div class="footer-brand-name" data-tw="footer_brand">Family Dentists, PLLC</div>
-          <div class="footer-brand-sub" data-tw="footer_sub">Port Huron · Michigan</div>
-          <p class="footer-tagline" data-tw="tagline">"Family dentistry that will make you smile."</p>
+          <div class="footer-brand-name">Family Dentists, PLLC</div>
+          <div class="footer-brand-sub">Port Huron · Michigan</div>
+          <p class="footer-tagline">"Family dentistry that will make you smile."</p>
         </div>
         <div class="footer-col">
           <h4>Practice</h4>
@@ -1877,337 +1696,19 @@
       const li = document.querySelector(`#hoursList li[data-day="${today}"]`);
       if (li) li.classList.add('hours-today');
     })();
-  </script>
-  <!-- ── Tweaks UI ── -->
-  <div class="tw-backdrop" id="twBackdrop"></div>
-  <button class="tw-fab" id="twFab" aria-label="Open Tweaks" title="Open Tweaks">
-    <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="3"/><path d="M19.4 15a1.65 1.65 0 0 0 .33 1.82l.06.06a2 2 0 1 1-2.83 2.83l-.06-.06a1.65 1.65 0 0 0-1.82-.33 1.65 1.65 0 0 0-1 1.51V21a2 2 0 1 1-4 0v-.09a1.65 1.65 0 0 0-1.08-1.51 1.65 1.65 0 0 0-1.82.33l-.06.06a2 2 0 1 1-2.83-2.83l.06-.06a1.65 1.65 0 0 0 .33-1.82 1.65 1.65 0 0 0-1.51-1H3a2 2 0 1 1 0-4h.09a1.65 1.65 0 0 0 1.51-1.08 1.65 1.65 0 0 0-.33-1.82l-.06-.06a2 2 0 1 1 2.83-2.83l.06.06a1.65 1.65 0 0 0 1.82.33h0a1.65 1.65 0 0 0 1-1.51V3a2 2 0 1 1 4 0v.09a1.65 1.65 0 0 0 1 1.51h0a1.65 1.65 0 0 0 1.82-.33l.06-.06a2 2 0 1 1 2.83 2.83l-.06.06a1.65 1.65 0 0 0-.33 1.82v0a1.65 1.65 0 0 0 1.51 1H21a2 2 0 1 1 0 4h-.09a1.65 1.65 0 0 0-1.51 1z"/></svg>
-  </button>
 
-  <aside class="tw-panel" id="twPanel" aria-label="Tweaks">
-    <div class="tw-header">
-      <div class="tw-title">Tweaks<small>Preview customization</small></div>
-      <button class="tw-close" id="twClose" aria-label="Close">
-        <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M18 6 6 18M6 6l12 12"/></svg>
-      </button>
-    </div>
-    <div class="tw-body" id="twBody"></div>
-  </aside>
+    (function parallax() {
+      const img = document.getElementById('heroBgImg');
+      if (!img) return;
+      window.addEventListener('scroll', () => {
+        const y = window.scrollY;
+        img.style.setProperty('--parallax', (y * 0.4) + 'px');
+      }, { passive: true });
+    })();
 
-  <script>
-    // ── Tweak defaults (persisted between sessions) ──
-    const TWEAK_DEFAULTS = /*EDITMODE-BEGIN*/{
-      "palette": "indigo",
-      "accent": "ink",
-      "paperTone": "mist",
-      "fontSerif": "Libre Caslon Text",
-      "fontSans": "Work Sans",
-      "headingWeight": 400,
-      "baseSize": 16,
-      "density": 1,
-      "radius": 0.9,
-      "heroLayout": "fullbleed",
-      "heroTextAlign": "left",
-      "brand_name": "Family Dentists",
-      "brand_sub": "Port Huron · MI",
-      "footer_brand": "Family Dentists, PLLC",
-      "footer_sub": "Port Huron · Michigan",
-      "tagline": "\"Family dentistry that will make you smile.\"",
-      "phone": "810-987-8310",
-      "emergencyPhone": "810-689-4809",
-      "hero_eyebrow": "Family dentistry · Port Huron",
-      "hero_headline": "Gentle, modern care for \u003cem>every smile\u003c\/em> in the family.",
-      "hero_desc": "Dr. Jeremy Parrott and Dr. Julie Anne Hengehold combine thoughtful, unhurried care with modern techniques — in a practice designed to feel welcoming from the moment you walk in.",
-      "hero_cta": "Call to schedule",
-      "badge_title": "Now welcoming new patients",
-      "badge_sub": "Same-week appointments often available",
-      "hide_trust": false,
-      "hide_about": false,
-      "hide_services": false,
-      "hide_doctors": false,
-      "hide_comfort": false,
-      "hide_contact": false,
-      "hide_cta": false,
-      "hide_badge": false,
-      "hide_callbar": false,
-      "motion": true
-    }/*EDITMODE-END*/;
-
-    // ── Palettes ──
-    const PALETTES = {
-      sage:    { '--sage-900':'#22332C','--sage-800':'#2F4A3F','--sage-700':'#3F6051','--sage-600':'#577F6C','--sage-400':'#9EB5A5','--sage-200':'#D6E0D6','--sage-50':'#EEF2EC', label:'Sage', swatch:'#3F6051' },
-      ocean:   { '--sage-900':'#122E3A','--sage-800':'#1A4354','--sage-700':'#245C72','--sage-600':'#3E7F96','--sage-400':'#8FB4C2','--sage-200':'#CFDFE6','--sage-50':'#EDF3F6', label:'Ocean', swatch:'#245C72' },
-      indigo:  { '--sage-900':'#1E2540','--sage-800':'#2A3358','--sage-700':'#3B4478','--sage-600':'#5B6499','--sage-400':'#9DA4C4','--sage-200':'#D6D9E6','--sage-50':'#EEEFF5', label:'Indigo', swatch:'#3B4478' },
-      plum:    { '--sage-900':'#2E1F36','--sage-800':'#432A4E','--sage-700':'#5B3B69','--sage-600':'#7F5B8D','--sage-400':'#B59FBE','--sage-200':'#E0D5E4','--sage-50':'#F2EDF4', label:'Plum', swatch:'#5B3B69' },
-      slate:   { '--sage-900':'#1F2A30','--sage-800':'#2B3A42','--sage-700':'#3C4F59','--sage-600':'#586F7C','--sage-400':'#9BACB5','--sage-200':'#D2DADE','--sage-50':'#EEF1F3', label:'Slate', swatch:'#3C4F59' },
-      forest:  { '--sage-900':'#1B2A1D','--sage-800':'#27402B','--sage-700':'#385B3E','--sage-600':'#527A59','--sage-400':'#96B09C','--sage-200':'#CFDCD1','--sage-50':'#EDF0EC', label:'Forest', swatch:'#385B3E' }
-    };
-    const ACCENTS = {
-      terracotta: { '--terracotta':'#C97B5E','--terracotta-soft':'#F1DDD3', label:'Terracotta', swatch:'#C97B5E' },
-      amber:      { '--terracotta':'#C69553','--terracotta-soft':'#F3E5CE', label:'Amber',      swatch:'#C69553' },
-      coral:      { '--terracotta':'#D46A6A','--terracotta-soft':'#F3D8D8', label:'Coral',      swatch:'#D46A6A' },
-      gold:       { '--terracotta':'#B8923A','--terracotta-soft':'#EFE3C0', label:'Gold',       swatch:'#B8923A' },
-      dusty:      { '--terracotta':'#A77E7E','--terracotta-soft':'#EADADA', label:'Dusty rose', swatch:'#A77E7E' },
-      ink:        { '--terracotta':'#4B5561','--terracotta-soft':'#DCE1E8', label:'Ink',        swatch:'#4B5561' }
-    };
-    const PAPERS = {
-      cream:   { '--paper':'#FBF9F4','--ivory':'#FFFDF8','--cream':'#F6F2EA','--line':'#E6E1D5','--line-soft':'#EFEAE0', label:'Cream',  swatch:'#FBF9F4' },
-      pure:    { '--paper':'#FFFFFF','--ivory':'#FFFFFF','--cream':'#F4F4F2','--line':'#E5E5E3','--line-soft':'#EFEFEE', label:'Pure',   swatch:'#FFFFFF' },
-      mist:    { '--paper':'#F6F8F7','--ivory':'#FCFDFC','--cream':'#EAEFEC','--line':'#DDE4E1','--line-soft':'#E8EDEB', label:'Mist',   swatch:'#F6F8F7' },
-      blush:   { '--paper':'#FAF6F3','--ivory':'#FEFBF9','--cream':'#F3EAE4','--line':'#E8DCD4','--line-soft':'#F0E6DF', label:'Blush',  swatch:'#FAF6F3' }
-    };
-    const FONTS_SERIF = ['Fraunces','Playfair Display','Lora','DM Serif Display','Libre Caslon Text','Cormorant Garamond'];
-    const FONTS_SANS  = ['Figtree','Inter','DM Sans','Manrope','Work Sans','Nunito Sans'];
-
-    let state = { ...TWEAK_DEFAULTS };
-
-    // ── Apply ──
-    function applyAll() {
-      const root = document.documentElement.style;
-      const body = document.body;
-
-      Object.entries(PALETTES[state.palette] || PALETTES.sage).forEach(([k,v]) => { if (k.startsWith('--')) root.setProperty(k, v); });
-      Object.entries(ACCENTS[state.accent] || ACCENTS.terracotta).forEach(([k,v]) => { if (k.startsWith('--')) root.setProperty(k, v); });
-      Object.entries(PAPERS[state.paperTone] || PAPERS.cream).forEach(([k,v]) => { if (k.startsWith('--')) root.setProperty(k, v); });
-
-      document.querySelector('meta[name="theme-color"]')?.remove();
-      const m = document.createElement('meta'); m.name = 'theme-color'; m.content = PALETTES[state.palette]?.['--sage-900'] || '#22332C'; document.head.appendChild(m);
-
-      root.setProperty('--font-serif', `"${state.fontSerif}", Georgia, serif`);
-      root.setProperty('--font-sans',  `"${state.fontSans}", system-ui, sans-serif`);
-      root.setProperty('--density', String(state.density));
-      root.setProperty('--radius-mul', String(state.radius));
-      body.style.fontSize = state.baseSize + 'px';
-
-      // heading weight on key headings
-      document.querySelectorAll('.section-title, .hero h1, .doctor-name, .cta h2').forEach(el => el.style.fontWeight = String(state.headingWeight));
-
-      body.setAttribute('data-hero-layout', state.heroLayout);
-      body.setAttribute('data-hero-text', state.heroTextAlign || 'left');
-      ['trust','about','services','doctors','comfort','contact','cta','badge','callbar'].forEach(k => body.setAttribute(`data-hide-${k}`, String(!!state['hide_' + k])));
-      body.classList.toggle('no-motion', !state.motion);
-
-      // text bindings
-      document.querySelectorAll('[data-tw]').forEach(el => {
-        const k = el.getAttribute('data-tw');
-        if (state[k] != null) el.textContent = state[k];
-      });
-      document.querySelectorAll('[data-tw-html]').forEach(el => {
-        const k = el.getAttribute('data-tw-html');
-        if (state[k] != null) el.innerHTML = state[k];
-      });
-      // phone tel: hrefs
-      document.querySelectorAll('[data-tw-href="phone"]').forEach(el => {
-        el.setAttribute('href', 'tel:' + String(state.phone).replace(/[^0-9+]/g, ''));
-      });
-    }
-
-    // Font loader
-    const fontLink = document.createElement('link');
-    fontLink.rel = 'stylesheet';
-    document.head.appendChild(fontLink);
-    function loadFonts() {
-      const fams = [state.fontSerif, state.fontSans].map(f => f.replace(/ /g, '+') + ':ital,wght@0,300;0,400;0,500;0,600;0,700;1,400').join('&family=');
-      fontLink.href = `https://fonts.googleapis.com/css2?family=${fams}&display=swap`;
-    }
-
-    function persist(edits) {
-      try { window.parent.postMessage({ type: '__edit_mode_set_keys', edits }, '*'); } catch(e) {}
-    }
-
-    // ── Panel render ──
-    const body = document.getElementById('twBody');
-    function groupEl(name, innerHTML, collapsed=false) {
-      return `<div class="tw-group${collapsed?' collapsed':''}">
-        <button class="tw-group-head" type="button"><h4>${name}</h4><svg class="tw-chev" width="10" height="6" viewBox="0 0 10 6"><path d="M1 1l4 4 4-4" stroke="white" stroke-opacity=".6" stroke-width="1.5" fill="none" stroke-linecap="round"/></svg></button>
-        <div class="tw-content">${innerHTML}</div>
-      </div>`;
-    }
-    function row(label, inner, valHtml='') {
-      return `<div class="tw-row"><label class="tw-label"><span>${label}</span>${valHtml?`<span class="tw-val">${valHtml}</span>`:''}</label>${inner}</div>`;
-    }
-    function swatchGrid(dict, activeKey, onKey) {
-      return `<div class="tw-swatches" data-on="${onKey}">${Object.entries(dict).map(([k,v])=>`<button class="tw-swatch${k===activeKey?' active':''}" data-key="${k}" style="background:${v.swatch}" title="${v.label}"></button>`).join('')}</div>`;
-    }
-    function segControl(opts, active, onKey) {
-      return `<div class="tw-seg" data-on="${onKey}">${opts.map(o=>`<button type="button" data-val="${o.value}" class="${o.value===active?'active':''}">${o.label}</button>`).join('')}</div>`;
-    }
-    function toggle(label, key) {
-      return `<div class="tw-toggle-row"><span>${label}</span><button class="tw-toggle${state[key]?' on':''}" data-tog="${key}" aria-pressed="${!!state[key]}" type="button"></button></div>`;
-    }
-
-    function render() {
-      body.innerHTML = [
-        groupEl('Palette',
-          row('Primary color', swatchGrid(PALETTES, state.palette, 'palette')) +
-          row('Accent color',  swatchGrid(ACCENTS,  state.accent,  'accent')) +
-          row('Paper tone',    swatchGrid(PAPERS,   state.paperTone,'paperTone'))
-        ),
-        groupEl('Typography',
-          row('Display font', `<select class="tw-select" data-on="fontSerif">${FONTS_SERIF.map(f=>`<option ${f===state.fontSerif?'selected':''}>${f}</option>`).join('')}</select>`) +
-          row('Body font',    `<select class="tw-select" data-on="fontSans">${FONTS_SANS.map(f=>`<option ${f===state.fontSans?'selected':''}>${f}</option>`).join('')}</select>`) +
-          row('Heading weight', segControl([{label:'Light',value:300},{label:'Regular',value:400},{label:'Medium',value:500}], state.headingWeight, 'headingWeight')) +
-          row('Base text size', `<input class="tw-slider" type="range" min="14" max="19" step="1" value="${state.baseSize}" data-on="baseSize">`, state.baseSize + 'px')
-        ),
-        groupEl('Layout',
-          row('Hero layout', segControl([{label:'Image right',value:'image-right'},{label:'Image left',value:'image-left'},{label:'Centered',value:'centered'},{label:'Full bleed',value:'fullbleed'}], state.heroLayout, 'heroLayout')) +
-          (state.heroLayout === 'fullbleed' ? row('Text block position', segControl([{label:'Left',value:'left'},{label:'Center',value:'center'},{label:'Right',value:'right'}], state.heroTextAlign || 'left', 'heroTextAlign')) : '') +
-          row('Density', `<input class="tw-slider" type="range" min="0.75" max="1.3" step="0.05" value="${state.density}" data-on="density">`, Math.round(state.density*100)+'%') +
-          row('Corner radius', `<input class="tw-slider" type="range" min="0" max="1.6" step="0.1" value="${state.radius}" data-on="radius">`, Math.round(state.radius*100)+'%')
-        ),
-        groupEl('Practice details',
-          row('Short brand name',  `<input class="tw-input" data-on="brand_name" value="${escapeAttr(state.brand_name)}">`) +
-          row('Nav sub-line',      `<input class="tw-input" data-on="brand_sub" value="${escapeAttr(state.brand_sub)}">`) +
-          row('Footer full name',  `<input class="tw-input" data-on="footer_brand" value="${escapeAttr(state.footer_brand)}">`) +
-          row('Footer sub-line',   `<input class="tw-input" data-on="footer_sub" value="${escapeAttr(state.footer_sub)}">`) +
-          row('Tagline',           `<input class="tw-input" data-on="tagline" value="${escapeAttr(state.tagline)}">`) +
-          row('Main phone',        `<input class="tw-input" data-on="phone" value="${escapeAttr(state.phone)}">`) +
-          row('Emergency phone',   `<input class="tw-input" data-on="emergencyPhone" value="${escapeAttr(state.emergencyPhone)}">`)
-        ),
-        groupEl('Hero copy',
-          row('Eyebrow',   `<input class="tw-input" data-on="hero_eyebrow" value="${escapeAttr(state.hero_eyebrow)}">`) +
-          row('Headline (use &lt;em&gt; for italic)', `<textarea class="tw-textarea" data-on="hero_headline">${escapeHtml(state.hero_headline)}</textarea>`) +
-          row('Description', `<textarea class="tw-textarea" data-on="hero_desc">${escapeHtml(state.hero_desc)}</textarea>`) +
-          row('CTA button', `<input class="tw-input" data-on="hero_cta" value="${escapeAttr(state.hero_cta)}">`) +
-          row('Badge title', `<input class="tw-input" data-on="badge_title" value="${escapeAttr(state.badge_title)}">`) +
-          row('Badge subtitle', `<input class="tw-input" data-on="badge_sub" value="${escapeAttr(state.badge_sub)}">`)
-        ),
-        groupEl('Show / hide sections',
-          sectionToggles()
-        , false),
-        groupEl('Behavior',
-          toggle('Scroll animations', 'motion') +
-          inverseToggle('Hero badge', 'hide_badge') +
-          inverseToggle('Mobile call bar', 'hide_callbar')
-        , false),
-        `<button class="tw-reset" id="twReset">Reset all tweaks</button>`
-      ].join('');
-      wireInputs();
-    }
-
-    function sectionToggles() {
-      const items = [
-        ['hide_trust','Trust strip'],
-        ['hide_about','About section'],
-        ['hide_services','Services'],
-        ['hide_doctors','Doctors'],
-        ['hide_comfort','Comfort'],
-        ['hide_contact','Visit & hours'],
-        ['hide_cta','Final CTA']
-      ];
-      return items.map(([k,l]) => inverseToggle(l, k)).join('');
-    }
-    function inverseToggle(label, key) {
-      // shown = !state[key]
-      const shown = !state[key];
-      return `<div class="tw-toggle-row"><span>${label}</span><button class="tw-toggle${shown?' on':''}" data-inv-tog="${key}" aria-pressed="${shown}" type="button"></button></div>`;
-    }
-
-    function escapeHtml(s){return String(s).replace(/[&<>]/g, c => ({'&':'&amp;','<':'&lt;','>':'&gt;'}[c]));}
-    function escapeAttr(s){return String(s).replace(/"/g,'&quot;').replace(/&/g,'&amp;');}
-
-    function wireInputs() {
-      body.querySelectorAll('.tw-group-head').forEach(b => b.addEventListener('click', () => b.parentElement.classList.toggle('collapsed')));
-      body.querySelectorAll('.tw-swatches').forEach(grid => {
-        const key = grid.getAttribute('data-on');
-        grid.querySelectorAll('.tw-swatch').forEach(sw => sw.addEventListener('click', () => {
-          grid.querySelectorAll('.tw-swatch').forEach(x => x.classList.remove('active'));
-          sw.classList.add('active');
-          update(key, sw.getAttribute('data-key'));
-        }));
-      });
-      body.querySelectorAll('.tw-seg').forEach(seg => {
-        const key = seg.getAttribute('data-on');
-        seg.querySelectorAll('button').forEach(btn => btn.addEventListener('click', () => {
-          seg.querySelectorAll('button').forEach(x => x.classList.remove('active'));
-          btn.classList.add('active');
-          const v = btn.getAttribute('data-val');
-          update(key, isNaN(+v) || v==='' ? v : +v);
-        }));
-      });
-      body.querySelectorAll('input.tw-slider').forEach(sl => {
-        const key = sl.getAttribute('data-on');
-        sl.addEventListener('input', () => {
-          const v = +sl.value;
-          const label = sl.closest('.tw-row')?.querySelector('.tw-val');
-          if (label) {
-            if (key==='baseSize') label.textContent = v+'px';
-            else label.textContent = Math.round(v*100)+'%';
-          }
-          update(key, v, false);
-        });
-        sl.addEventListener('change', () => persist({ [key]: state[key] }));
-      });
-      body.querySelectorAll('select.tw-select').forEach(sel => {
-        const key = sel.getAttribute('data-on');
-        sel.addEventListener('change', () => { update(key, sel.value); loadFonts(); });
-      });
-      body.querySelectorAll('input.tw-input, textarea.tw-textarea').forEach(inp => {
-        const key = inp.getAttribute('data-on');
-        let t;
-        inp.addEventListener('input', () => { update(key, inp.value, false); clearTimeout(t); t = setTimeout(() => persist({[key]:inp.value}), 500); });
-        inp.addEventListener('blur', () => persist({[key]:inp.value}));
-      });
-      body.querySelectorAll('[data-tog]').forEach(btn => {
-        const key = btn.getAttribute('data-tog');
-        btn.addEventListener('click', () => {
-          const nv = !state[key];
-          btn.classList.toggle('on', nv); btn.setAttribute('aria-pressed', nv);
-          update(key, nv);
-        });
-      });
-      body.querySelectorAll('[data-inv-tog]').forEach(btn => {
-        const key = btn.getAttribute('data-inv-tog'); // hide_* — on button = shown
-        btn.addEventListener('click', () => {
-          const shown = !btn.classList.contains('on');
-          btn.classList.toggle('on', shown); btn.setAttribute('aria-pressed', shown);
-          update(key, !shown);
-        });
-      });
-      document.getElementById('twReset')?.addEventListener('click', () => {
-        state = { ...TWEAK_DEFAULTS };
-        persist(TWEAK_DEFAULTS);
-        loadFonts();
-        applyAll();
-        render();
-      });
-    }
-
-    function update(key, value, shouldPersist=true) {
-      state[key] = value;
-      applyAll();
-      if (shouldPersist) persist({ [key]: value });
-      // Re-render panel so conditional controls appear/hide
-      if (key === 'heroLayout') render();
-    }
-
-    // ── Edit mode protocol ──
-    const panel = document.getElementById('twPanel');
-    const backdrop = document.getElementById('twBackdrop');
-    const fab = document.getElementById('twFab');
-    const openPanel = () => { panel.classList.add('open'); backdrop.classList.add('open'); };
-    const closePanel = () => { panel.classList.remove('open'); backdrop.classList.remove('open'); };
-    fab.addEventListener('click', openPanel);
-    backdrop.addEventListener('click', closePanel);
-    document.getElementById('twClose').addEventListener('click', closePanel);
-
-    window.addEventListener('message', (e) => {
-      const d = e.data;
-      if (!d || typeof d !== 'object') return;
-      if (d.type === '__activate_edit_mode') {
-        document.body.classList.add('tw-on');
-        openPanel();
-      } else if (d.type === '__deactivate_edit_mode') {
-        document.body.classList.remove('tw-on');
-        closePanel();
-      }
-    });
-
-    // init
-    loadFonts();
-    applyAll();
-    render();
-    try { window.parent.postMessage({ type: '__edit_mode_available' }, '*'); } catch(e) {}
+    console.log("%cFamily Dentists, PLLC", "color: #3B4478; font-family: serif; font-size: 20px; font-weight: bold;");
+    console.log("%cPort Huron, Michigan", "color: #5B6499; font-size: 14px;");
+    console.log("%cLike what you see? We're always looking for friendly people to join our team. 🦷", "color: #1C231F; font-size: 12px;");
   </script>
 
 </body>
