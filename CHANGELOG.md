@@ -2,6 +2,38 @@
 
 All notable changes to the Family Dentists, PLLC website will be documented in this file.
 
+## [v1.1.0] - 2026-06-13
+
+### Production-Readiness Audit Remediation (`/impeccable audit` → fixes)
+
+A technical audit pass addressing the highest-impact accessibility, performance, responsive, and theming findings before launch.
+
+### ⚡ Performance
+- **Hero image: 8.5 MB → ~40 KB.** Re-encoded the 4K PNG hero into responsive AVIF/WebP/JPEG sets (1280/1920/2560w) served via `<picture>` + `srcset`, with `fetchpriority="high"` on the LCP image. The `about` team photo got the same treatment (1.6 MB → ~167 KB, 768/1160w). Removed the duplicate eager hero download (the hidden layout-fallback `<img>` now lazy-loads optimized sources).
+- **Trimmed web-font request** to only the weights actually used (Caslon 400 + italic; Work Sans 300/400/500/600 — dropped unused 700s).
+- **`will-change`** is now applied only while a reveal is pending (`.reveal:not(.in)`) and dropped after, instead of living permanently on ~20 elements.
+
+### ♿ Accessibility
+- **Parallax now honors `prefers-reduced-motion`** (it previously did not, contradicting the project's own motion-sensitivity promise); `scroll-behavior` reverts to `auto` under reduced motion.
+- **Contrast fixes:** darkened `--ink-soft` (`#8A938C` → `#66706A`) and raised the "Closed"-hours and footer-attribution opacities to clear WCAG AA 4.5:1 on their backgrounds.
+- **Map iframe** given a `title` and `tabindex="-1"` so keyboard focus no longer lands on the hidden embed.
+- **Heading hierarchy:** service-card titles demoted `h3 → h4` so they nest correctly under their `h3` group labels.
+
+### 📐 Responsive
+- **Defined the missing `.wrap` container** (`max-width: 1240px`, centered). Five main sections (About, Services, Doctors, Comfort, Contact) previously sprawled edge-to-edge on large screens because the class had no rule.
+- **Trust strip** now wraps on narrow screens instead of silently clipping behind a hidden scrollbar.
+
+### 🎨 Theming
+- **Role-based tokens:** renamed `--sage-*` → `--brand-*` and `--terracotta(-soft)` → `--accent(-soft)` so names match the indigo values (and survive any future palette change).
+- **Purged leftover warm/green literals** that clashed with the indigo theme: the ambient canvas orbs (terracotta → indigo/periwinkle), the emergency box and mobile emergency-button border, and the Google Map backdrop/filter (now neutral).
+
+### 🔎 SEO / Production
+- Added **Open Graph + Twitter** meta, a **`theme-color`**, geo meta, and a **`Dentist` JSON-LD** block (address, geo, both phone numbers, opening hours, founders) for local search and rich social previews.
+- Regenerated **DESIGN.md** from the shipped code (the prior version still described the retired sage/Fraunces system).
+
+### 🧹 Code Quality
+- Removed dead `.services-grid` CSS rules (no element used the class).
+
 ## [v1.0.0] - 2026-06-13
 
 ### The "Sunlit Waiting Room" Release
