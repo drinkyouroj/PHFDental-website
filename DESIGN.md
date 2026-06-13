@@ -21,15 +21,15 @@ colors:
   line-soft: "#E8EDEB"
 typography:
   display:
-    fontFamily: "Libre Caslon Text, Georgia, serif"
+    fontFamily: "Libre Caslon Display, Libre Caslon Text, Georgia, serif"
     fontSize: "clamp(2.6rem, 11vw, 4.8rem)"
-    fontWeight: 300
+    fontWeight: 400
     lineHeight: 1.02
     letterSpacing: "-0.02em"
   headline:
-    fontFamily: "Libre Caslon Text, Georgia, serif"
+    fontFamily: "Libre Caslon Display, Libre Caslon Text, Georgia, serif"
     fontSize: "clamp(2rem, 6vw, 3rem)"
-    fontWeight: 300
+    fontWeight: 400
     lineHeight: 1.08
     letterSpacing: "-0.02em"
   title:
@@ -128,22 +128,27 @@ A single-theme **indigo + mist** palette, Restrained-leaning-Committed: deep ind
 
 ## 3. Typography
 
-**Display:** Libre Caslon Text (Georgia fallback) — used at weight 300/400. **Body:** Work Sans (system-ui fallback), weights 300/400/500/600.
+**Two optical cuts of one serif, plus a humanist sans:**
+- `--font-display` — **Libre Caslon Display** (Caslon Text → Georgia fallback): the high-contrast headline cut, used only on the fluid `clamp()` display headings (hero h1, section titles, CTA). This is the honest replacement for the old dead `font-variation-settings: "opsz" 144` — Caslon Text is not a variable font, so a real display cut carries the large-size refinement instead.
+- `--font-serif` — **Libre Caslon Text**: every fixed-size serif under ~2rem (card/feature/doctor titles, the pull-quote, contact headings, the wordmark) **and every italic `em`** (the Display cut has no italic, so emphasis routes back to Caslon Text Italic).
+- `--font-sans` — **Work Sans** (system-ui fallback), weights 300/400/500/600.
 
-**Character:** a light, high-contrast serif that feels hand-set and unhurried, paired with a rounded humanist sans that stays invisible. The signature move is the italic `em` inside headlines (`every <em>smile</em>`) set one weight up (400) in `--brand-700` — emphasis as warmth, not loudness.
+**Character:** a high-contrast serif that feels hand-set and unhurried, paired with a rounded humanist sans that stays invisible. The signature move is the italic `em` inside headlines (`every <em>smile</em>`) in `--brand-700` — emphasis as warmth, not loudness. The Display roman + Text italic sit together deliberately, the way an editorial masthead pairs a display face with a text italic.
 
-> Note: Libre Caslon Text ships only Regular (400) and Bold (700); headings declare `font-weight: 300`, which the browser renders at 400 (it cannot synthesize lighter). The "light serif" impression comes from the typeface's own delicacy, not a true 300 weight. Only the weights actually used are requested from Google Fonts (Caslon 400 + italic; Work Sans 300/400/500/600).
+> Weights are honest: Caslon (both cuts) is used at **400** everywhere (it ships only 400/700; the earlier `font-weight: 300` declarations were no-ops that silently rendered 400). Only used weights are requested (Caslon Display 400; Caslon Text 400 + italic; Work Sans 300/400/500/600).
 
 ### Hierarchy
-- **Display** (300, `clamp(2.6rem, 11vw, 4.8rem)`, 1.02): hero headline only.
-- **Headline** (300, `clamp(2rem, 6vw, 3rem)`, 1.08): section titles; each contains one italic `--brand-700` `em` phrase.
-- **Title** (400, 1.15rem, serif): card / service / doctor headings.
+- **Display** (400, `--font-display`, `clamp(2.6rem, 11vw, 4.8rem)`, 1.02): hero headline only.
+- **Headline** (400, `--font-display`, `clamp(2rem, 6vw, 3rem)`, 1.08): section titles; each contains one italic `--brand-700` `em` phrase (in `--font-serif`).
+- **Title** (400, `--font-serif`, 1.15rem): card / service / doctor / feature headings (the former 1.18rem `.about-point-title` was unified to the 1.15rem Title size).
 - **Body** (400, ~1rem, 1.65–1.7): prose; constrained to ≤56ch via `.section-body`.
 - **Label** (600, 0.65rem, 0.14em tracking, uppercase): the section kicker, preceded by a `+` glyph in `--brand-400`.
 
 ### Named rules
 - **The Plus-Kicker.** Section labels are uppercase Work Sans at 0.14em tracking with a leading `+` mark. Apply consistently to major sections or not at all. *(Implementation note: currently present on About / Doctors / Contact but not Services / Comfort / CTA — unify or remove for full consistency.)*
 - **The Light Serif Rule.** Caslon never appears bolder than 400 in layout. Hierarchy comes from size and the italic-`em` inflection, never from heavy weights.
+- **Aligned figures.** The office-hours times use `font-variant-numeric: tabular-nums` so digits and the AM/PM column line up down the list.
+- **Light-on-dark compensation.** Body text on the dark indigo bands gets a touch of extra tracking (`letter-spacing: 0.01em` on `.contact .section-body`) plus the looser 1.7 line-height, since light type on dark reads lighter and tighter than it measures.
 
 ## 4. Elevation
 

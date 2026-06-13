@@ -29,7 +29,7 @@
   <link rel="icon" href="data:image/svg+xml,<svg xmlns=%22http://www.w3.org/2000/svg%22 viewBox=%220 0 24 24%22 fill=%22none%22 stroke=%22%231E2540%22 stroke-width=%221.5%22 stroke-linecap=%22round%22 stroke-linejoin=%22round%22><path d=%22M12 3c-3 0-6 1-6 4.5 0 2 .6 3.4 1 5 .4 1.6.4 3 .7 5 .2 1.2.6 3 1.7 3 1.2 0 1.3-2 1.6-3.5.2-1.1.4-2 1-2s.8.9 1 2c.3 1.5.4 3.5 1.6 3.5 1.1 0 1.5-1.8 1.7-3 .3-2 .3-3.4.7-5 .4-1.6 1-3 1-5C18 4 15 3 12 3z%22/></svg>">
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-  <link href="https://fonts.googleapis.com/css2?family=Libre+Caslon+Text:ital,wght@0,400;1,400&family=Work+Sans:wght@300;400;500;600&display=swap" rel="stylesheet">
+  <link href="https://fonts.googleapis.com/css2?family=Libre+Caslon+Display&family=Libre+Caslon+Text:ital,wght@0,400;1,400&family=Work+Sans:wght@300;400;500;600&display=swap" rel="stylesheet">
   <style>
     /* ── Tokens ── */
     :root {
@@ -74,6 +74,7 @@
       --spacing-3xl: 64px;
       --spacing-section: calc(96px * var(--density));
 
+      --font-display: 'Libre Caslon Display', 'Libre Caslon Text', Georgia, serif;
       --font-serif: 'Libre Caslon Text', Georgia, serif;
       --font-sans:  'Work Sans', system-ui, -apple-system, sans-serif;
 
@@ -300,16 +301,16 @@
       content: ''; width: 24px; height: 1px; background: var(--brand-400);
     }
     .hero h1 {
-      font-family: var(--font-serif);
-      font-weight: 300;
+      font-family: var(--font-display);
+      font-weight: 400;
       font-size: clamp(2.6rem, 11vw, 4.8rem);
       line-height: 1.02;
       letter-spacing: -0.02em;
       color: var(--brand-900);
       margin: 18px 0 20px;
-      font-variation-settings: "opsz" 144;
     }
     .hero h1 em {
+      font-family: var(--font-serif);
       font-style: italic;
       font-weight: 400;
       color: var(--brand-700);
@@ -440,16 +441,15 @@
       font-size: 0.8rem;
     }
     .section-title {
-      font-family: var(--font-serif);
-      font-weight: 300;
+      font-family: var(--font-display);
+      font-weight: 400;
       font-size: clamp(2rem, 6vw, 3rem);
       line-height: 1.08;
       letter-spacing: -0.02em;
       color: var(--brand-900);
       margin: 14px 0 20px;
-      font-variation-settings: "opsz" 144;
     }
-    .section-title em { font-style: italic; font-weight: 400; color: var(--brand-700); }
+    .section-title em { font-family: var(--font-serif); font-style: italic; font-weight: 400; color: var(--brand-700); }
     .section-body {
       font-size: 1.02rem;
       color: var(--ink-mid);
@@ -477,7 +477,7 @@
     .about-point-ico svg { width: 20px; height: 20px; }
     .about-point-title {
       font-family: var(--font-serif);
-      font-size: 1.18rem;
+      font-size: 1.15rem;
       font-weight: 400;
       color: var(--brand-900);
       margin-bottom: 4px;
@@ -511,7 +511,7 @@
     .about-quote-text {
       font-family: var(--font-serif);
       font-style: italic;
-      font-weight: 300;
+      font-weight: 400;
       font-size: 1.3rem;
       line-height: 1.45;
       color: var(--brand-900);
@@ -657,7 +657,7 @@
     .doctor-name {
       font-family: var(--font-serif);
       font-size: 1.7rem;
-      font-weight: 300;
+      font-weight: 400;
       color: var(--brand-900);
       letter-spacing: -0.02em;
       margin-bottom: 14px;
@@ -675,7 +675,7 @@
     .contact .section-label::before { background: var(--brand-600); }
     .contact .section-title { color: var(--ivory); }
     .contact .section-title em { color: var(--accent-soft); }
-    .contact .section-body { color: rgba(255,253,248,0.72); }
+    .contact .section-body { color: rgba(255,253,248,0.72); letter-spacing: 0.01em; }
 
     .contact-grid {
       display: grid; gap: 36px;
@@ -704,7 +704,7 @@
       transform: translateX(2px);
     }
     .hours-day { color: rgba(255,253,248,0.7); }
-    .hours-time { color: var(--ivory); font-weight: 500; text-align: right; }
+    .hours-time { color: var(--ivory); font-weight: 500; text-align: right; font-variant-numeric: tabular-nums; }
     .hours-time.closed { color: rgba(255,253,248,0.5); font-weight: 400; }
     .hours-note { display: block; font-size: 0.74rem; color: rgba(255,253,248,0.45); font-style: italic; margin-top: 2px; }
     .hours-today {
@@ -862,16 +862,15 @@
       opacity: 0.6;
     }
     .cta h2 {
-      font-family: var(--font-serif);
-      font-weight: 300;
+      font-family: var(--font-display);
+      font-weight: 400;
       font-size: clamp(2rem, 7vw, 3.4rem);
       line-height: 1.05;
       letter-spacing: -0.02em;
       color: var(--brand-900);
       margin: 18px 0 18px;
-      font-variation-settings: "opsz" 144;
     }
-    .cta h2 em { font-style: italic; font-weight: 400; color: var(--accent); }
+    .cta h2 em { font-family: var(--font-serif); font-style: italic; font-weight: 400; color: var(--accent); }
     .cta p {
       font-size: 1rem;
       color: var(--ink-mid);
@@ -907,7 +906,7 @@
       font-family: var(--font-serif);
       font-size: 1.4rem;
       color: var(--ivory);
-      font-weight: 300;
+      font-weight: 400;
     }
     .footer-brand-sub {
       font-size: 0.7rem;
