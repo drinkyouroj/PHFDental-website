@@ -45,6 +45,15 @@
       --shadow-md: 0 12px 40px rgba(30,37,64,0.10);
 
       --nav-h: 64px;
+      --spacing-xs: 4px;
+      --spacing-sm: 8px;
+      --spacing-md: 16px;
+      --spacing-lg: 24px;
+      --spacing-xl: 32px;
+      --spacing-2xl: 48px;
+      --spacing-3xl: 64px;
+      --spacing-section: calc(96px * var(--density));
+
       --font-serif: 'Libre Caslon Text', Georgia, serif;
       --font-sans:  'Work Sans', system-ui, -apple-system, sans-serif;
 
@@ -382,10 +391,10 @@
     /* ── Section base ── */
     section { scroll-margin-top: calc(var(--nav-h) + 12px); }
     .section {
-      padding: calc(72px * var(--density)) 20px;
+      padding: var(--spacing-section) 20px;
     }
-    .comfort { padding: calc(72px * var(--density)) 20px; }
-    .cta { padding: calc(80px * var(--density)) 20px calc(100px * var(--density)); }
+    .comfort { padding: var(--spacing-section) 20px; }
+    .cta { padding: var(--spacing-section) 20px calc(var(--spacing-section) + 20px); }
     .wrap-narrow {
       max-width: 760px;
       margin: 0 auto;
