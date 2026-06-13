@@ -16,7 +16,7 @@ colors:
   accent-soft: "#DCE1E8"
   ink: "#1C231F"
   ink-mid: "#556159"
-  ink-soft: "#66706A"
+  ink-soft: "#616B65"
   line: "#DDE4E1"
   line-soft: "#E8EDEB"
 typography:
@@ -118,7 +118,7 @@ A single-theme **indigo + mist** palette, Restrained-leaning-Committed: deep ind
 - **Paper** (`#F6F8F7`): body background and card surface.
 - **Cream** (`#EAEFEC`): alternating section background (doctors) — one perceptible step deeper than paper.
 - **Ivory** (`#FCFDFC`): surfaces and text on dark indigo backgrounds.
-- **Ink / Ink-Mid / Ink-Soft** (`#1C231F` / `#556159` / `#66706A`): heading, prose, and fine-print text. (`--ink-soft` was darkened from `#8A938C` to clear WCAG AA 4.5:1 on the light surfaces.)
+- **Ink / Ink-Mid / Ink-Soft** (`#1C231F` / `#556159` / `#616B65`): heading, prose, and fine-print text. (`--ink-soft` was darkened from `#8A938C` to clear WCAG AA 4.5:1 on every light surface, including cream.)
 - **Line / Line-Soft** (`#DDE4E1` / `#E8EDEB`): hairline borders and dividers; never darker than this.
 
 ### Named rules

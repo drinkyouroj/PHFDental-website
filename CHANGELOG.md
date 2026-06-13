@@ -15,7 +15,7 @@ A technical audit pass addressing the highest-impact accessibility, performance,
 
 ### ♿ Accessibility
 - **Parallax now honors `prefers-reduced-motion`** (it previously did not, contradicting the project's own motion-sensitivity promise); `scroll-behavior` reverts to `auto` under reduced motion.
-- **Contrast fixes:** darkened `--ink-soft` (`#8A938C` → `#66706A`) and raised the "Closed"-hours and footer-attribution opacities to clear WCAG AA 4.5:1 on their backgrounds.
+- **Contrast fixes:** darkened `--ink-soft` (`#8A938C` → `#616B65`, AA-clear on paper/cream/ivory) and raised the "Closed"-hours and footer-attribution opacities to clear WCAG AA 4.5:1 on their backgrounds.
 - **Map iframe** given a `title` and `tabindex="-1"` so keyboard focus no longer lands on the hidden embed.
 - **Heading hierarchy:** service-card titles demoted `h3 → h4` so they nest correctly under their `h3` group labels.
 
