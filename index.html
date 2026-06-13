@@ -1697,15 +1697,6 @@
       if (li) li.classList.add('hours-today');
     })();
 
-    (function parallax() {
-      const img = document.getElementById('heroBgImg');
-      if (!img) return;
-      window.addEventListener('scroll', () => {
-        const y = window.scrollY;
-        img.style.setProperty('--parallax', (y * 0.4) + 'px');
-      }, { passive: true });
-    })();
-
     console.log("%cFamily Dentists, PLLC", "color: #3B4478; font-family: serif; font-size: 20px; font-weight: bold;");
     console.log("%cPort Huron, Michigan", "color: #5B6499; font-size: 14px;");
     console.log("%cLike what you see? We're always looking for friendly people to join our team. 🦷", "color: #1C231F; font-size: 12px;");
