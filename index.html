@@ -114,7 +114,7 @@
     }
 
     /* ── Delight & Interactions ── */
-    .btn, .nav-cta, .nav-links a, .service, .doctor, .comfort-item {
+    .btn, .nav-cta, .nav-links a, .doctor {
       cursor: pointer;
     }
     .btn:active, .nav-cta:active {
@@ -123,7 +123,7 @@
     }
     .btn-primary:active { background: var(--brand-900); }
 
-    .service:hover, .doctor:hover, .comfort-item:hover {
+    .doctor:hover {
       transform: translateY(-4px);
       box-shadow: var(--shadow-md);
       border-color: var(--brand-200);
@@ -546,77 +546,81 @@
     }
     .group-title::after { content: ''; flex: 1; height: 1px; background: var(--line-soft); }
 
-    .group-grid-2, .group-grid-4 {
-      display: grid; gap: 14px;
+    /* Editorial row list — no card boxes; same grammar as the About list */
+    .service-list {
+      list-style: none;
+      display: grid;
       grid-template-columns: 1fr;
+      column-gap: 48px;
+      border-top: 1px solid var(--line-soft);
     }
-
-    @media (min-width: 640px) {
-      .group-grid-2 { grid-template-columns: 1fr 1fr; }
-      .group-grid-4 { grid-template-columns: 1fr 1fr; }
+    @media (min-width: 720px) {
+      .service-list.cols-2 { grid-template-columns: 1fr 1fr; }
     }
-
-    @media (min-width: 960px) {
-      .group-grid-4 { grid-template-columns: repeat(4, 1fr); }
+    .service-row {
+      display: grid;
+      grid-template-columns: 44px 1fr;
+      gap: 18px;
+      align-items: start;
+      padding: 20px 14px;
+      border-bottom: 1px solid var(--line-soft);
+      transition: background-color .25s var(--ease);
     }
-
-    .service {
-      background: var(--paper);
-      border-radius: var(--radius);
-      padding: 26px 22px;
-      border: 1px solid var(--line-soft);
-      transition: transform .3s var(--ease), box-shadow .3s var(--ease), border-color .3s var(--ease);
-      display: flex; flex-direction: column;
-    }
-    .service:hover {
-      transform: translateY(-3px);
-      box-shadow: var(--shadow-sm);
-      border-color: var(--brand-200);
-    }
+    .service-row:hover { background: var(--brand-50); }
     .service-ico {
       width: 44px; height: 44px;
       border-radius: 12px;
       background: var(--brand-50);
       color: var(--brand-700);
       display: grid; place-items: center;
-      margin-bottom: 16px;
       flex: 0 0 auto;
+      transition: background-color .25s var(--ease);
     }
     .service-ico svg { width: 22px; height: 22px; }
-    .service h4 {
+    .service-row:hover .service-ico { background: var(--ivory); }
+    .service-row h4 {
       font-family: var(--font-serif);
       font-weight: 400;
       font-size: 1.15rem;
       color: var(--brand-900);
-      margin-bottom: 6px;
+      margin-bottom: 4px;
       letter-spacing: -0.01em;
-      line-height: 1.2;
+      line-height: 1.25;
     }
-    .service p {
-      font-size: 0.9rem;
+    .service-row p {
+      font-size: 0.92rem;
       color: var(--ink-mid);
       line-height: 1.6;
-      display: -webkit-box;
-      -webkit-line-clamp: 3;
-      -webkit-box-orient: vertical;
-      overflow: hidden;
     }
 
+    /* Urgent care — a single emphasized callout, not a repeated card */
     .service-emergency {
-      flex-direction: row;
+      display: grid;
+      grid-template-columns: 44px 1fr;
+      gap: 18px;
       align-items: center;
-      gap: 24px;
+      padding: 22px;
       background: var(--brand-50);
-      border-color: var(--accent-soft);
+      border: 1px solid var(--accent-soft);
+      border-radius: var(--radius);
     }
-    .service-emergency h4 { line-clamp: none; -webkit-line-clamp: none; }
-    .service-emergency p { line-clamp: none; -webkit-line-clamp: none; }
     .service-emergency .service-ico {
-      margin-bottom: 0;
       background: var(--accent-soft);
       color: var(--accent);
     }
-    .service-emergency h4 { color: var(--brand-900); }
+    .service-emergency h4 {
+      font-family: var(--font-serif);
+      font-weight: 400;
+      font-size: 1.15rem;
+      color: var(--brand-900);
+      margin-bottom: 4px;
+      letter-spacing: -0.01em;
+    }
+    .service-emergency p {
+      font-size: 0.92rem;
+      color: var(--ink-mid);
+      line-height: 1.6;
+    }
 
     /* ── Doctors ── */
     .doctors { background: var(--cream); }
@@ -823,19 +827,15 @@
     /* ── Comfort strip ── */
     .comfort { background: var(--paper); }
     .comfort-grid {
-      display: grid; gap: 10px;
-      grid-template-columns: repeat(2, 1fr);
-      margin-top: 40px;
+      display: grid; gap: 28px 40px;
+      grid-template-columns: 1fr;
+      margin-top: 44px;
     }
+    @media (min-width: 600px) { .comfort-grid { grid-template-columns: repeat(3, 1fr); } }
     .comfort-item {
-      background: var(--ivory);
-      border: 1px solid var(--line-soft);
-      border-radius: var(--radius);
-      padding: 24px 20px;
-      text-align: left;
-      transition: transform .3s var(--ease), border-color .3s var(--ease);
+      padding-top: 20px;
+      border-top: 1px solid var(--line);
     }
-    .comfort-item:hover { transform: translateY(-2px); border-color: var(--brand-200); }
     .comfort-ico {
       width: 36px; height: 36px;
       display: grid; place-items: center;
@@ -845,12 +845,12 @@
     .comfort-ico svg { width: 22px; height: 22px; }
     .comfort-title {
       font-family: var(--font-serif);
-      font-size: 1rem;
+      font-size: 1.05rem;
       color: var(--brand-900);
       margin-bottom: 4px;
-      font-weight: 500;
+      font-weight: 400;
     }
-    .comfort-desc { font-size: 0.82rem; color: var(--ink-mid); line-height: 1.5; }
+    .comfort-desc { font-size: 0.88rem; color: var(--ink-mid); line-height: 1.55; }
 
     /* ── Final CTA ── */
     .cta {
@@ -1001,7 +1001,6 @@
       }
 
       .doctors-grid { grid-template-columns: 1fr 1fr; gap: 24px; }
-      .comfort-grid { grid-template-columns: repeat(4, 1fr); }
       .footer-grid { grid-template-columns: 2fr 1fr 1fr; gap: 48px; }
       .footer-bottom { flex-direction: row; justify-content: space-between; align-items: center; }
 
@@ -1369,6 +1368,7 @@
   <section class="section services" id="services" aria-labelledby="services-title">
     <div class="wrap">
       <div class="services-header">
+        <span class="section-label">What we offer</span>
         <h2 class="section-title" id="services-title">Thoughtful care, from <em>routine</em> to <em>restorative.</em></h2>
         <p class="section-body">
           Whether it's a check-up for your child or a smile you've been thinking
@@ -1381,84 +1381,100 @@
         <!-- Essentials -->
         <div class="services-group">
           <h3 class="group-title">The Essentials</h3>
-          <div class="group-grid-2">
-            <article class="service reveal">
+          <ul class="service-list cols-2">
+            <li class="service-row reveal">
               <div class="service-ico" aria-hidden="true">
                 <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round"><circle cx="11" cy="11" r="7"/><path d="m21 21-4.3-4.3"/></svg>
               </div>
-              <h4>Exams &amp; cleanings</h4>
-              <p>Comprehensive check-ups with low-radiation digital X-rays and gentle hygiene visits.</p>
-            </article>
-            <article class="service reveal d1">
+              <div>
+                <h4>Exams &amp; cleanings</h4>
+                <p>Comprehensive check-ups with low-radiation digital X-rays and gentle hygiene visits.</p>
+              </div>
+            </li>
+            <li class="service-row reveal d1">
               <div class="service-ico" aria-hidden="true">
                 <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round"><rect x="3" y="4" width="18" height="16" rx="2"/><path d="M3 10h18M9 4v16"/></svg>
               </div>
-              <h4>Digital diagnostics</h4>
-              <p>Low-radiation digital X-rays and intraoral imaging for early, precise treatment planning.</p>
-            </article>
-          </div>
+              <div>
+                <h4>Digital diagnostics</h4>
+                <p>Low-radiation digital X-rays and intraoral imaging for early, precise treatment planning.</p>
+              </div>
+            </li>
+          </ul>
         </div>
 
         <!-- Restorative -->
         <div class="services-group">
           <h3 class="group-title">Restorative Care</h3>
-          <div class="group-grid-4">
-            <article class="service reveal">
+          <ul class="service-list cols-2">
+            <li class="service-row reveal">
               <div class="service-ico" aria-hidden="true">
                 <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round"><path d="M12 3c-3 0-6 1-6 4.5 0 2 .6 3.4 1 5 .4 1.6.4 3 .7 5 .2 1.2.6 3 1.7 3 1.2 0 1.3-2 1.6-3.5.2-1.1.4-2 1-2s.8.9 1 2c.3 1.5.4 3.5 1.6 3.5 1.1 0 1.5-1.8 1.7-3 .3-2 .3-3.4.7-5 .4-1.6 1-3 1-5C18 4 15 3 12 3z"/></svg>
               </div>
-              <h4>Composite fillings</h4>
-              <p>Tooth-colored fillings that blend naturally, with no metal or compromise on strength.</p>
-            </article>
-            <article class="service reveal d1">
+              <div>
+                <h4>Composite fillings</h4>
+                <p>Tooth-colored fillings that blend naturally, with no metal or compromise on strength.</p>
+              </div>
+            </li>
+            <li class="service-row reveal d1">
               <div class="service-ico" aria-hidden="true">
                 <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round"><path d="M6 10V7a6 6 0 1 1 12 0v3"/><rect x="4" y="10" width="16" height="11" rx="2"/></svg>
               </div>
-              <h4>Crowns &amp; bridges</h4>
-              <p>Natural-looking restorations that bring back strength, shape, and confidence.</p>
-            </article>
-            <article class="service reveal d2">
+              <div>
+                <h4>Crowns &amp; bridges</h4>
+                <p>Natural-looking restorations that bring back strength, shape, and confidence.</p>
+              </div>
+            </li>
+            <li class="service-row reveal d2">
               <div class="service-ico" aria-hidden="true">
                 <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round"><path d="M12 2v20M5 12h14"/><circle cx="12" cy="12" r="9"/></svg>
               </div>
-              <h4>Implant restoration</h4>
-              <p>Lifelike implant crowns and bridges: permanent solutions that feel like your own teeth.</p>
-            </article>
-            <article class="service reveal d3">
+              <div>
+                <h4>Implant restoration</h4>
+                <p>Lifelike implant crowns and bridges: permanent solutions that feel like your own teeth.</p>
+              </div>
+            </li>
+            <li class="service-row reveal d3">
               <div class="service-ico" aria-hidden="true">
                 <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round"><path d="M6 3v18M18 3v18M3 8h18M3 16h18"/></svg>
               </div>
-              <h4>Extractions</h4>
-              <p>Gentle, precise extractions when they're truly needed, with a calm plan for aftercare.</p>
-            </article>
-          </div>
+              <div>
+                <h4>Extractions</h4>
+                <p>Gentle, precise extractions when they're truly needed, with a calm plan for aftercare.</p>
+              </div>
+            </li>
+          </ul>
         </div>
 
         <!-- Aesthetic -->
         <div class="services-group">
           <h3 class="group-title">Cosmetic Care</h3>
-          <div class="group-grid-2">
-            <article class="service reveal">
+          <ul class="service-list cols-2">
+            <li class="service-row reveal">
               <div class="service-ico" aria-hidden="true">
                 <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round"><path d="M12 3v2M12 19v2M5 12H3M21 12h-2M17.7 6.3l-1.4 1.4M7.7 16.3l-1.4 1.4M17.7 17.7l-1.4-1.4M7.7 7.7 6.3 6.3"/><circle cx="12" cy="12" r="4"/></svg>
               </div>
-              <h4>Teeth whitening</h4>
-              <p>Professional KöR whitening for dramatic, even results with the care your enamel deserves.</p>
-            </article>
-            <article class="service reveal d1">
+              <div>
+                <h4>Teeth whitening</h4>
+                <p>Professional KöR whitening for dramatic, even results with the care your enamel deserves.</p>
+              </div>
+            </li>
+            <li class="service-row reveal d1">
               <div class="service-ico" aria-hidden="true">
                 <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round"><path d="m12 2 3 7 7 .7-5.4 4.8L18 22l-6-4-6 4 1.4-7.5L2 9.7l7-.7z"/></svg>
               </div>
-              <h4>Porcelain veneers</h4>
-              <p>Hand-matched veneers to refine chips, staining, and gaps into a smile that still feels like yours.</p>
-            </article>
-          </div>
+              <div>
+                <h4>Porcelain veneers</h4>
+                <p>Hand-matched veneers to refine chips, staining, and gaps into a smile that still feels like yours.</p>
+              </div>
+            </li>
+          </ul>
         </div>
 
         <!-- Emergency -->
         <div class="services-group">
           <h3 class="group-title">Urgent Care</h3>
-          <article class="service reveal service-emergency">
+          <article class="service-emergency reveal">
             <div class="service-ico" aria-hidden="true">
               <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round"><path d="M12 9v4M12 17h.01"/><path d="M10.3 3.86 1.82 18a2 2 0 0 0 1.71 3h16.94a2 2 0 0 0 1.71-3L13.71 3.86a2 2 0 0 0-3.42 0z"/></svg>
             </div>
@@ -1518,7 +1534,8 @@
 
   <!-- ── Comfort ── -->
   <section class="comfort" aria-labelledby="comfort-title">
-    <div class="wrap-narrow" style="text-align: left;">
+    <div class="wrap">
+      <span class="section-label">Your comfort</span>
       <h2 class="section-title" id="comfort-title">Small touches that make a <em>real difference.</em></h2>
       <p class="section-body">
         We've designed the little things that add up to a calmer, kinder

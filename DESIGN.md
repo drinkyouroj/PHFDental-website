@@ -147,7 +147,7 @@ A single-theme **indigo + mist** palette, Restrained-leaning-Committed: deep ind
 - **Label** (600, 0.65rem, 0.14em tracking, uppercase): the section kicker, preceded by a `+` glyph in `--brand-400`.
 
 ### Named rules
-- **The Plus-Kicker.** Section labels are uppercase Work Sans at 0.14em tracking with a leading `+` mark. Apply consistently to major sections or not at all. *(Implementation note: currently present on About / Doctors / Contact but not Services / Comfort / CTA — unify or remove for full consistency.)*
+- **The Plus-Kicker.** Section labels are uppercase Work Sans at 0.14em tracking with a leading `+` mark. Applied to **every left-aligned content section** (About, Services, Doctors, Comfort, Contact) as one deliberate wayfinding system; the hero and the centered closing CTA deliberately omit it.
 - **The Light Serif Rule.** Caslon never appears bolder than 400 in layout. Hierarchy comes from size and the italic-`em` inflection, never from heavy weights.
 - **Aligned figures.** The office-hours times use `font-variant-numeric: tabular-nums` so digits and the AM/PM column line up down the list.
 - **Light-on-dark compensation.** Body text on the dark indigo bands gets a touch of extra tracking (`letter-spacing: 0.01em` on `.contact .section-body`) plus the looser 1.7 line-height, since light type on dark reads lighter and tighter than it measures.
@@ -165,8 +165,8 @@ Depth is whisper-quiet and indigo-tinted: shadows use `rgba(30,51,64-ish → 30,
 ## 5. Components
 
 - **Buttons.** Fully rounded pill (999px), inline-flex with a 16px icon and 10px gap. *Primary:* `--brand-900` bg, ivory text, 16/26 padding; hover `--brand-800`, −2px lift, Hover-Lift shadow. *Ghost:* transparent, `--brand-400` 1px border, `--brand-900` text; hover `--brand-50` fill, `--brand-600` border.
-- **Cards / containers.** 16px standard radius (`--radius`), 25px for hero/large frames (`--radius-lg`); whole scale flexes via `--radius-mul`. Paper on tinted sections, ivory for portrait frames. 1px `--line-soft` at rest → `--brand-200` on hover. Flat-at-Rest.
-- **Service icon chips.** 44px square, 12px radius, `--brand-50` background with `--brand-700` icon at 1.6 stroke. The emergency card is a full-width horizontal variant.
+- **Cards / containers.** Used sparingly — only where content is genuinely distinct and the box earns its place: the two **doctor** portrait cards and the single **Urgent Care** callout. 16px standard radius (`--radius`), 25px for hero/large frames (`--radius-lg`); flexes via `--radius-mul`. 1px `--line-soft` at rest → `--brand-200` on hover. Flat-at-Rest. **Not** used for Services or Comfort.
+- **Service / feature lists (not cards).** Services and the About points are **editorial row lists**, not card grids: a 44px `--brand-50` icon chip + serif title + `--ink-mid` description per row, hairline-separated, flowing in 1–2 columns (`.service-list.cols-2`, 1-col under 720px). Comfort is a borderless 3-up layout with a top hairline per item. This is the page's default for "a list of things" — cards are the exception, not the reflex. The lone **Urgent Care** callout is the deliberate exception: one tinted, rounded, `--accent-soft`-bordered block for emphasis.
 - **Navigation.** Fixed 64px bar over blurred paper (`rgba(251,249,244,0.82)`, 14px backdrop blur); bottom hairline fades in on scroll. Mobile gets a full-screen drawer and a slide-up call bar (`--brand-900` call button + accent-soft emergency button). Brand mark is a `--brand-900` circle with an ivory tooth glyph.
 - **Section header (signature).** Plus-Kicker label → light Caslon headline with one italic `--brand-700` phrase → ≤56ch `--ink-mid` body.
 - **Containers.** `.wrap` caps content at 1240px and centers it (matches hero / trust); `.wrap-narrow` caps at 760px for prose-led sections.
@@ -198,5 +198,4 @@ Depth is whisper-quiet and indigo-tinted: shadows use `rgba(30,51,64-ish → 30,
 ## 8. Open decisions (for the practice / client)
 
 - **Brand color direction.** The shipped palette is indigo; the original brief leaned sage-green and warned against category-default dental blue. Confirm indigo vs. a warmer/greener brand before launch. Because tokens are role-based, this is a values-only change in `:root`.
-- **Kicker consistency.** Apply the Plus-Kicker to all major sections or remove it from the three that have it.
 - **Source-image hygiene.** The 4K source files (`hero-1.png`, `hero-2.png`, `team-sign.jpg`, `team.JPG`) remain in `assets/` but are no longer referenced by the page; the responsive `-1280/-1920/-2560` and `-768/-1160` AVIF/WebP/JPEG derivatives are what ship. Consider moving sources out of the deploy path.

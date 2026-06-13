@@ -2,6 +2,16 @@
 
 All notable changes to the Family Dentists, PLLC website will be documented in this file.
 
+## [v1.1.2] - 2026-06-13
+
+### Layout — break the card-grid pattern (`/impeccable layout`)
+
+- **Services: cards → editorial row list.** Replaced the 9 icon+heading+text cards (2/4-up grids) with hairline-separated rows (sage icon chip + serif title + description) flowing in two columns per category — the same calm, scannable grammar the About section uses. The "identical card grids" anti-pattern is gone.
+- **Urgent Care** is now one deliberate emphasized callout (tinted, rounded, accent-bordered) instead of a card in the grid.
+- **Comfort: de-carded** to an airy borderless 3-up layout with a top hairline per item — a distinct rhythm from the Services rows.
+- **Unified the section eyebrow cadence.** The Plus-Kicker now appears on every left-aligned content section (added to Services + Comfort); the hero and centered CTA deliberately omit it. Resolves the prior 3-of-6 inconsistency.
+- Removed the now-dead card CSS (`.service` card, `.group-grid-*`, `.comfort-item` box + hover-lift) and the stale 4-column comfort override.
+
 ## [v1.1.1] - 2026-06-13
 
 ### Typography & Font-Loading (`/impeccable typeset` + `/impeccable optimize`)
