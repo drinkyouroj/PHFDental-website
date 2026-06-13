@@ -135,7 +135,9 @@ A single-theme **indigo + mist** palette, Restrained-leaning-Committed: deep ind
 
 **Character:** a high-contrast serif that feels hand-set and unhurried, paired with a rounded humanist sans that stays invisible. The signature move is the italic `em` inside headlines (`every <em>smile</em>`) in `--brand-700` — emphasis as warmth, not loudness. The Display roman + Text italic sit together deliberately, the way an editorial masthead pairs a display face with a text italic.
 
-> Weights are honest: Caslon (both cuts) is used at **400** everywhere (it ships only 400/700; the earlier `font-weight: 300` declarations were no-ops that silently rendered 400). Only used weights are requested (Caslon Display 400; Caslon Text 400 + italic; Work Sans 300/400/500/600).
+> Weights are honest: Caslon (both cuts) is used at **400** everywhere (it ships only 400/700; the earlier `font-weight: 300` declarations were no-ops that silently rendered 400).
+
+> **Loading.** Fonts are **self-hosted** (latin subset) in `assets/fonts/` via inline `@font-face`, `font-display: swap` — no Google Fonts round-trip, no third-party data dependency (relevant for a medical site). Work Sans is a single variable file (`wght 300–600`); Caslon Display and Caslon Text (roman + italic) are static. The two dominant above-the-fold faces (Caslon Display, Work Sans) are `<link rel="preload">`ed. Total ≈ 100 KB across four files.
 
 ### Hierarchy
 - **Display** (400, `--font-display`, `clamp(2.6rem, 11vw, 4.8rem)`, 1.02): hero headline only.

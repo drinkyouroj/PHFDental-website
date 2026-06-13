@@ -27,10 +27,15 @@
   <meta name="twitter:image" content="https://porthuronfamilydentists.com/assets/hero-1-1920.jpg" />
 
   <link rel="icon" href="data:image/svg+xml,<svg xmlns=%22http://www.w3.org/2000/svg%22 viewBox=%220 0 24 24%22 fill=%22none%22 stroke=%22%231E2540%22 stroke-width=%221.5%22 stroke-linecap=%22round%22 stroke-linejoin=%22round%22><path d=%22M12 3c-3 0-6 1-6 4.5 0 2 .6 3.4 1 5 .4 1.6.4 3 .7 5 .2 1.2.6 3 1.7 3 1.2 0 1.3-2 1.6-3.5.2-1.1.4-2 1-2s.8.9 1 2c.3 1.5.4 3.5 1.6 3.5 1.1 0 1.5-1.8 1.7-3 .3-2 .3-3.4.7-5 .4-1.6 1-3 1-5C18 4 15 3 12 3z%22/></svg>">
-  <link rel="preconnect" href="https://fonts.googleapis.com">
-  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-  <link href="https://fonts.googleapis.com/css2?family=Libre+Caslon+Display&family=Libre+Caslon+Text:ital,wght@0,400;1,400&family=Work+Sans:wght@300;400;500;600&display=swap" rel="stylesheet">
+  <link rel="preload" as="font" type="font/woff2" href="assets/fonts/caslon-display-latin.woff2" crossorigin>
+  <link rel="preload" as="font" type="font/woff2" href="assets/fonts/work-sans-latin.woff2" crossorigin>
   <style>
+    /* ── Fonts (self-hosted, latin subset — no third-party round-trip) ── */
+    @font-face { font-family: 'Work Sans'; font-style: normal; font-weight: 300 600; font-display: swap; src: url('assets/fonts/work-sans-latin.woff2') format('woff2'); }
+    @font-face { font-family: 'Libre Caslon Display'; font-style: normal; font-weight: 400; font-display: swap; src: url('assets/fonts/caslon-display-latin.woff2') format('woff2'); }
+    @font-face { font-family: 'Libre Caslon Text'; font-style: normal; font-weight: 400; font-display: swap; src: url('assets/fonts/caslon-text-latin.woff2') format('woff2'); }
+    @font-face { font-family: 'Libre Caslon Text'; font-style: italic; font-weight: 400; font-display: swap; src: url('assets/fonts/caslon-text-italic-latin.woff2') format('woff2'); }
+
     /* ── Tokens ── */
     :root {
       /* Indigo + Mist neutrals — Calm, professional, and distinctive */

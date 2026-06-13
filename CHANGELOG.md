@@ -2,6 +2,20 @@
 
 All notable changes to the Family Dentists, PLLC website will be documented in this file.
 
+## [v1.1.1] - 2026-06-13
+
+### Typography & Font-Loading (`/impeccable typeset` + `/impeccable optimize`)
+
+**Typeset**
+- Added **Libre Caslon Display** (`--font-display`) for the fluid display headings (hero, section titles, CTA) — the honest replacement for the dead `font-variation-settings: "opsz" 144` (Caslon Text is not a variable font). Italic `<em>` emphasis routes to Caslon Text Italic.
+- Removed 3 dead `opsz` declarations and made 6 serif `font-weight: 300` → 400 (Caslon ships only 400/700; 300 was a silent no-op).
+- `tabular-nums` on the office-hours times; `+0.01em` light-on-dark tracking on `.contact .section-body`; unified `.about-point-title` 1.18rem → the documented 1.15rem Title size.
+
+**Optimize — self-hosted fonts**
+- **Removed the Google Fonts dependency entirely.** Dropped the two cross-origin preconnects + render-blocking `fonts.googleapis.com` stylesheet; fonts are now **self-hosted** (latin subset) in `assets/fonts/` via inline `@font-face`.
+- Work Sans ships as a single **variable** woff2 (`wght 300–600`); Caslon Display + Caslon Text (roman/italic) are static. ≈100 KB total across 4 files.
+- `<link rel="preload">` on the two dominant above-the-fold faces (Caslon Display, Work Sans). Net effect: no third-party round-trip, faster FCP/LCP on mobile, and no Google data dependency (privacy — relevant for a medical practice).
+
 ## [v1.1.0] - 2026-06-13
 
 ### Production-Readiness Audit Remediation (`/impeccable audit` → fixes)
