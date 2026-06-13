@@ -2,6 +2,21 @@
 
 All notable changes to the Family Dentists, PLLC website will be documented in this file.
 
+## [v1.2.0] - 2026-06-13
+
+### Brand color — Indigo → Blue Water teal
+
+The practice settled its brand-color direction (the last open item in DESIGN.md §8). After a side-by-side mockup of three candidates — indigo, sage, and deep teal (`brand-options.html`) — the choice is **Blue Water teal**: warmer and calmer than the shipped indigo, regionally rooted (the Blue Water Area / Lake Huron), and clear of both the brief's "insurance-brochure blue" anti-reference *and* the common sage/wellness-cliché reflex.
+
+- **Palette swap (values-only).** Re-themed the nine role-based tokens in `:root` — `--brand-900…50`, `--accent`, `--accent-soft` — from the indigo ramp to the teal ramp (`#1E2540` → `#14333A`, and so on). Because the audit pass had already renamed every literal to a hue-agnostic role, no component CSS or markup changed.
+- **WCAG-AA tuned, not eyeballed.** Verified every brand color against the surface it actually sits on (computed luminance/contrast). `--brand-600` (the Plus-Kicker eyebrow) was set to `#387079` — a touch darker than the mockup value — so it clears 4.5:1 on the **cream** Doctors-section background (4.80), not just on paper/ivory; the lighter mockup hex would have landed at 4.40 there.
+- **Off-token literal sweep.** Re-tinted everything the token swap doesn't reach: the `theme-color` meta (`#14333A`), the favicon's hard-coded SVG stroke, the three indigo-tinted shadow values (`rgba(30,37,64,…)` → `rgba(20,51,58,…)`), the ambient-canvas orb colors, the `console.log` brand colors, and a dead `--accent-soft` CSS fallback. No half-teal/half-indigo edges remain.
+- **Battle-tested** desktop + true-mobile via headless full-page capture (reduced-motion so reveals resolve): teal verified on the nav, hero, light content sections, the cream Doctors band, and the dark contact/CTA band. The status-green "Now welcoming new patients" dot is deliberately retained as the one sanctioned non-palette hue.
+
+### Docs
+- **DESIGN.md** re-synced to the teal system (North Star, color ramp, elevation, motion, do's/don'ts); §8 "Brand color direction" marked **settled**.
+- Added **`brand-options.html`** — the three-way comparison board, kept in-repo as decision provenance.
+
 ## [v1.1.2] - 2026-06-13
 
 ### Layout — break the card-grid pattern (`/impeccable layout`)

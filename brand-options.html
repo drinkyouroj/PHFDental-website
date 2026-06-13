@@ -1,0 +1,254 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1.0" />
+<title>Brand color — side by side · Family Dentists, PLLC</title>
+<style>
+  /* Self-hosted fonts (same as production) */
+  @font-face { font-family:'Work Sans'; font-style:normal; font-weight:300 600; font-display:swap; src:url('assets/fonts/work-sans-latin.woff2') format('woff2'); }
+  @font-face { font-family:'Libre Caslon Display'; font-style:normal; font-weight:400; font-display:swap; src:url('assets/fonts/caslon-display-latin.woff2') format('woff2'); }
+  @font-face { font-family:'Libre Caslon Text'; font-style:normal; font-weight:400; font-display:swap; src:url('assets/fonts/caslon-text-latin.woff2') format('woff2'); }
+  @font-face { font-family:'Libre Caslon Text'; font-style:italic; font-weight:400; font-display:swap; src:url('assets/fonts/caslon-text-italic-latin.woff2') format('woff2'); }
+
+  :root {
+    /* shared neutrals — held constant across all three options */
+    --cream:#EAEFEC; --paper:#F6F8F7; --ivory:#FCFDFC;
+    --ink:#1C231F; --ink-mid:#556159; --ink-soft:#616B65;
+    --line:#DDE4E1; --line-soft:#E8EDEB;
+    --font-display:'Libre Caslon Display','Libre Caslon Text',Georgia,serif;
+    --font-serif:'Libre Caslon Text',Georgia,serif;
+    --font-sans:'Work Sans',system-ui,-apple-system,sans-serif;
+    --ease:cubic-bezier(.2,.7,.2,1);
+  }
+
+  /* per-option brand ramps — the ONLY thing that changes between boards */
+  .opt-indigo{
+    --brand-900:#1E2540; --brand-800:#2A3358; --brand-700:#3B4478; --brand-600:#5B6499;
+    --brand-400:#9DA4C4; --brand-200:#D6D9E6; --brand-50:#EEEFF5;
+    --accent:#4B5561; --accent-soft:#DCE1E8;
+  }
+  .opt-teal{
+    --brand-900:#14333A; --brand-800:#1C454D; --brand-700:#2A5D66; --brand-600:#3E767F;
+    --brand-400:#8FB4BA; --brand-200:#CBDFE1; --brand-50:#E8F1F2;
+    --accent:#47585C; --accent-soft:#D6E3E4;
+  }
+  .opt-sage{
+    --brand-900:#20332A; --brand-800:#2C4638; --brand-700:#3C5A4A; --brand-600:#52705C;
+    --brand-400:#9DB3A6; --brand-200:#D2DDD5; --brand-50:#ECF2EE;
+    --accent:#4F5A52; --accent-soft:#DBE4DD;
+  }
+
+  *,*::before,*::after{box-sizing:border-box;margin:0;padding:0;}
+  body{ font-family:var(--font-sans); background:var(--paper); color:var(--ink); line-height:1.65; -webkit-font-smoothing:antialiased; }
+  img,svg{display:block;max-width:100%;}
+
+  /* ── Page header ── */
+  .page-head{ max-width:1320px; margin:0 auto; padding:48px 24px 8px; }
+  .page-kicker{ font-size:.7rem; font-weight:600; letter-spacing:.16em; text-transform:uppercase; color:var(--ink-soft); }
+  .page-head h1{ font-family:var(--font-display); font-weight:400; font-size:clamp(2rem,4vw,2.8rem); letter-spacing:-.02em; line-height:1.05; margin:10px 0 12px; color:#1E2540; }
+  .page-head p{ max-width:64ch; color:var(--ink-mid); font-size:1rem; }
+  .page-head .axis{ display:flex; align-items:center; gap:12px; margin-top:18px; font-size:.78rem; color:var(--ink-soft); letter-spacing:.04em; }
+  .page-head .axis .bar{ flex:1; height:6px; border-radius:3px; background:linear-gradient(90deg,#20332A,#2A5D66,#1E2540); max-width:340px; }
+
+  /* ── Boards grid ── */
+  .boards{ max-width:1320px; margin:0 auto; padding:28px 24px 72px; display:grid; gap:28px; grid-template-columns:repeat(3,1fr); align-items:start; }
+  @media (max-width:1080px){ .boards{ grid-template-columns:1fr; max-width:560px; } }
+
+  .board{ border:1px solid var(--line); border-radius:18px; overflow:hidden; background:var(--ivory); box-shadow:0 4px 18px rgba(30,37,64,.05); }
+  .board-head{ padding:20px 22px 16px; border-bottom:1px solid var(--line-soft); }
+  .board-name{ display:flex; align-items:baseline; justify-content:space-between; gap:10px; }
+  .board-name h2{ font-family:var(--font-display); font-weight:400; font-size:1.5rem; letter-spacing:-.01em; color:var(--brand-900); }
+  .board-temp{ font-size:.64rem; font-weight:600; letter-spacing:.12em; text-transform:uppercase; color:var(--brand-600); white-space:nowrap; }
+  .board-pos{ margin-top:6px; font-size:.86rem; color:var(--ink-mid); line-height:1.5; }
+  .board-shipped{ display:inline-block; margin-top:10px; font-size:.64rem; font-weight:600; letter-spacing:.1em; text-transform:uppercase; color:var(--brand-700); background:var(--brand-50); border:1px solid var(--brand-200); padding:3px 9px; border-radius:999px; }
+
+  /* swatches */
+  .swatches{ display:flex; padding:16px 22px 6px; gap:0; }
+  .sw{ flex:1; height:46px; position:relative; }
+  .sw:first-child{ border-radius:8px 0 0 8px; }
+  .sw:last-child{ border-radius:0 8px 8px 0; }
+  .sw span{ position:absolute; left:0; right:0; bottom:-16px; text-align:center; font-size:.52rem; color:var(--ink-soft); letter-spacing:.02em; }
+  .sw-legend{ padding:22px 22px 4px; font-size:.66rem; color:var(--ink-soft); letter-spacing:.04em; }
+
+  /* light content slice */
+  .slice-light{ padding:22px; background:var(--paper); border-top:1px solid var(--line-soft); }
+  .section-label{ display:inline-flex; align-items:center; gap:8px; font-size:.65rem; font-weight:600; letter-spacing:.14em; text-transform:uppercase; color:var(--brand-600); margin-bottom:12px; }
+  .section-label::before{ content:'+'; font-family:var(--font-sans); color:var(--brand-400); font-size:.8rem; }
+  .section-title{ font-family:var(--font-display); font-weight:400; font-size:1.7rem; line-height:1.08; letter-spacing:-.02em; color:var(--brand-900); margin:6px 0 12px; }
+  .section-title em{ font-family:var(--font-serif); font-style:italic; color:var(--brand-700); }
+  .section-body{ font-size:.92rem; color:var(--ink-mid); line-height:1.6; max-width:46ch; }
+
+  .service-row{ display:grid; grid-template-columns:44px 1fr; gap:16px; align-items:start; padding:18px 4px 4px; margin-top:14px; border-top:1px solid var(--line-soft); }
+  .service-ico{ width:44px; height:44px; border-radius:12px; background:var(--brand-50); color:var(--brand-700); display:grid; place-items:center; }
+  .service-ico svg{ width:22px; height:22px; }
+  .service-row h4{ font-family:var(--font-serif); font-weight:400; font-size:1.12rem; color:var(--brand-900); margin-bottom:3px; letter-spacing:-.01em; }
+  .service-row p{ font-size:.86rem; color:var(--ink-mid); line-height:1.55; }
+
+  .btn-row{ display:flex; flex-wrap:wrap; gap:10px; margin-top:20px; }
+  .btn{ display:inline-flex; align-items:center; gap:8px; padding:13px 22px; border-radius:999px; font-size:.86rem; font-weight:500; border:1px solid transparent; }
+  .btn svg{ width:15px; height:15px; }
+  .btn-primary{ background:var(--brand-900); color:var(--ivory); }
+  .btn-ghost{ background:transparent; color:var(--brand-900); border-color:var(--brand-400); }
+
+  /* dark CTA band — the site's closing call band + nav surface */
+  .slice-dark{ background:var(--brand-900); padding:26px 22px 28px; color:#fff; }
+  .slice-dark .section-label{ color:var(--brand-400); }
+  .slice-dark .section-label::before{ color:var(--brand-600); }
+  .slice-dark h3{ font-family:var(--font-display); font-weight:400; font-size:1.55rem; line-height:1.1; letter-spacing:-.02em; color:#fff; margin:6px 0 10px; }
+  .slice-dark h3 em{ font-family:var(--font-serif); font-style:italic; color:var(--accent-soft); }
+  .slice-dark p{ font-size:.88rem; color:rgba(255,255,255,.82); max-width:42ch; line-height:1.6; }
+  .slice-dark .btn-row{ margin-top:18px; }
+  .slice-dark .btn-light{ background:var(--ivory); color:var(--brand-900); }
+  .slice-dark .btn-outline{ background:transparent; color:#fff; border:1px solid rgba(255,255,255,.55); padding:13px 22px; border-radius:999px; font-size:.86rem; font-weight:500; display:inline-flex; align-items:center; gap:8px; }
+  .slice-label{ font-size:.6rem; font-weight:600; letter-spacing:.14em; text-transform:uppercase; padding:14px 22px 0; }
+  .slice-label.on-light{ color:var(--ink-soft); }
+  .slice-label.on-dark{ color:rgba(255,255,255,.55); background:var(--brand-900); }
+
+  footer.note{ max-width:1320px; margin:0 auto; padding:0 24px 64px; color:var(--ink-soft); font-size:.82rem; line-height:1.6; }
+  footer.note code{ font-family:ui-monospace,Menlo,monospace; font-size:.78rem; background:var(--brand-50,#eee); padding:1px 5px; border-radius:4px; }
+</style>
+</head>
+<body>
+
+<header class="page-head">
+  <div class="page-kicker">Family Dentists, PLLC · brand color decision</div>
+  <h1>Three palettes, one design</h1>
+  <p>The same layout, type, and neutral creams in three brand hues. Only the nine <code style="font-family:ui-monospace,monospace;font-size:.85em">--brand-*</code> values change between columns. Each board shows the two surfaces that actually carry the color: the light content sections and the dark closing-CTA band.</p>
+  <div class="axis"><span>Warm · organic</span><span class="bar"></span><span>Cool · formal</span></div>
+</header>
+
+<main class="boards">
+
+  <!-- ── SAGE ── -->
+  <section class="board opt-sage">
+    <div class="board-head">
+      <div class="board-name"><h2>Sage</h2><span class="board-temp">Warmest</span></div>
+      <p class="board-pos">The original direction. Calm, natural, wellness-adjacent — leans hardest into “gentle &amp; unhurried.” Risk: sage is a common spa/dental cue.</p>
+    </div>
+    <div class="swatches">
+      <div class="sw" style="background:var(--brand-900)"><span>900</span></div>
+      <div class="sw" style="background:var(--brand-800)"><span>800</span></div>
+      <div class="sw" style="background:var(--brand-700)"><span>700</span></div>
+      <div class="sw" style="background:var(--brand-600)"><span>600</span></div>
+      <div class="sw" style="background:var(--brand-400)"><span>400</span></div>
+      <div class="sw" style="background:var(--brand-200)"><span>200</span></div>
+      <div class="sw" style="background:var(--brand-50)"><span>50</span></div>
+    </div>
+    <div class="slice-label on-light">Content section</div>
+    <div class="slice-light">
+      <span class="section-label">What we offer</span>
+      <h2 class="section-title">Gentle care, <em>start to finish</em></h2>
+      <p class="section-body">Comprehensive family dentistry in an unhurried setting — cleanings to crowns, with the same two doctors every visit.</p>
+      <div class="service-row">
+        <div class="service-ico"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round"><path d="M12 3c-3 0-5 1.4-5 4 0 1.7.5 2.8.9 4.2.4 1.4.3 2.7.6 4.4.2 1 .5 2.4 1.3 2.4.9 0 1-1.7 1.2-2.9.1-.9.3-1.6 1-1.6s.9.7 1 1.6c.2 1.2.3 2.9 1.2 2.9.8 0 1.1-1.4 1.3-2.4.3-1.7.2-3 .6-4.4.4-1.4.9-2.5.9-4.2 0-2.6-2-4-5-4Z"/></svg></div>
+        <div><h4>Preventive &amp; family care</h4><p>Exams, cleanings, sealants, and kids’ visits in one calm room.</p></div>
+      </div>
+      <div class="btn-row">
+        <a class="btn btn-primary"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><path d="M22 16.9v3a2 2 0 0 1-2.2 2 19.8 19.8 0 0 1-8.6-3.1 19.5 19.5 0 0 1-6-6 19.8 19.8 0 0 1-3.1-8.7A2 2 0 0 1 4.1 2h3a2 2 0 0 1 2 1.7c.1 1 .4 1.9.7 2.8a2 2 0 0 1-.5 2.1L8.1 9.9a16 16 0 0 0 6 6l1.3-1.3a2 2 0 0 1 2.1-.4c.9.3 1.8.6 2.8.7a2 2 0 0 1 1.7 2Z"/></svg>Call to schedule</a>
+        <a class="btn btn-ghost">Our services</a>
+      </div>
+    </div>
+    <div class="slice-label on-dark">Closing CTA band</div>
+    <div class="slice-dark">
+      <span class="section-label">Visit us</span>
+      <h3>Ready when <em>you are</em></h3>
+      <p>New patients welcome. One phone call and we’ll find a time that fits your week.</p>
+      <div class="btn-row">
+        <a class="btn btn-light"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><path d="M22 16.9v3a2 2 0 0 1-2.2 2 19.8 19.8 0 0 1-8.6-3.1 19.5 19.5 0 0 1-6-6 19.8 19.8 0 0 1-3.1-8.7A2 2 0 0 1 4.1 2h3a2 2 0 0 1 2 1.7c.1 1 .4 1.9.7 2.8a2 2 0 0 1-.5 2.1L8.1 9.9a16 16 0 0 0 6 6l1.3-1.3a2 2 0 0 1 2.1-.4c.9.3 1.8.6 2.8.7a2 2 0 0 1 1.7 2Z"/></svg>810-987-8310</a>
+        <a class="btn-outline">Get directions</a>
+      </div>
+    </div>
+  </section>
+
+  <!-- ── TEAL ── -->
+  <section class="board opt-teal">
+    <div class="board-head">
+      <div class="board-name"><h2>Blue Water</h2><span class="board-temp">Balanced</span></div>
+      <p class="board-pos">Deep teal — a nod to the Blue Water Area &amp; Lake Huron. Water-calm without being corporate cyan; warmer than indigo, more distinct than sage.</p>
+    </div>
+    <div class="swatches">
+      <div class="sw" style="background:var(--brand-900)"><span>900</span></div>
+      <div class="sw" style="background:var(--brand-800)"><span>800</span></div>
+      <div class="sw" style="background:var(--brand-700)"><span>700</span></div>
+      <div class="sw" style="background:var(--brand-600)"><span>600</span></div>
+      <div class="sw" style="background:var(--brand-400)"><span>400</span></div>
+      <div class="sw" style="background:var(--brand-200)"><span>200</span></div>
+      <div class="sw" style="background:var(--brand-50)"><span>50</span></div>
+    </div>
+    <div class="slice-label on-light">Content section</div>
+    <div class="slice-light">
+      <span class="section-label">What we offer</span>
+      <h2 class="section-title">Gentle care, <em>start to finish</em></h2>
+      <p class="section-body">Comprehensive family dentistry in an unhurried setting — cleanings to crowns, with the same two doctors every visit.</p>
+      <div class="service-row">
+        <div class="service-ico"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round"><path d="M12 3c-3 0-5 1.4-5 4 0 1.7.5 2.8.9 4.2.4 1.4.3 2.7.6 4.4.2 1 .5 2.4 1.3 2.4.9 0 1-1.7 1.2-2.9.1-.9.3-1.6 1-1.6s.9.7 1 1.6c.2 1.2.3 2.9 1.2 2.9.8 0 1.1-1.4 1.3-2.4.3-1.7.2-3 .6-4.4.4-1.4.9-2.5.9-4.2 0-2.6-2-4-5-4Z"/></svg></div>
+        <div><h4>Preventive &amp; family care</h4><p>Exams, cleanings, sealants, and kids’ visits in one calm room.</p></div>
+      </div>
+      <div class="btn-row">
+        <a class="btn btn-primary"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><path d="M22 16.9v3a2 2 0 0 1-2.2 2 19.8 19.8 0 0 1-8.6-3.1 19.5 19.5 0 0 1-6-6 19.8 19.8 0 0 1-3.1-8.7A2 2 0 0 1 4.1 2h3a2 2 0 0 1 2 1.7c.1 1 .4 1.9.7 2.8a2 2 0 0 1-.5 2.1L8.1 9.9a16 16 0 0 0 6 6l1.3-1.3a2 2 0 0 1 2.1-.4c.9.3 1.8.6 2.8.7a2 2 0 0 1 1.7 2Z"/></svg>Call to schedule</a>
+        <a class="btn btn-ghost">Our services</a>
+      </div>
+    </div>
+    <div class="slice-label on-dark">Closing CTA band</div>
+    <div class="slice-dark">
+      <span class="section-label">Visit us</span>
+      <h3>Ready when <em>you are</em></h3>
+      <p>New patients welcome. One phone call and we’ll find a time that fits your week.</p>
+      <div class="btn-row">
+        <a class="btn btn-light"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><path d="M22 16.9v3a2 2 0 0 1-2.2 2 19.8 19.8 0 0 1-8.6-3.1 19.5 19.5 0 0 1-6-6 19.8 19.8 0 0 1-3.1-8.7A2 2 0 0 1 4.1 2h3a2 2 0 0 1 2 1.7c.1 1 .4 1.9.7 2.8a2 2 0 0 1-.5 2.1L8.1 9.9a16 16 0 0 0 6 6l1.3-1.3a2 2 0 0 1 2.1-.4c.9.3 1.8.6 2.8.7a2 2 0 0 1 1.7 2Z"/></svg>810-987-8310</a>
+        <a class="btn-outline">Get directions</a>
+      </div>
+    </div>
+  </section>
+
+  <!-- ── INDIGO ── -->
+  <section class="board opt-indigo">
+    <div class="board-head">
+      <div class="board-name"><h2>Indigo</h2><span class="board-temp">Coolest</span></div>
+      <p class="board-pos">What’s shipped today. Sophisticated and distinct from “insurance blue,” but the coolest, most formal of the three — warmth comes only from the creams.</p>
+      <span class="board-shipped">● Currently live</span>
+    </div>
+    <div class="swatches">
+      <div class="sw" style="background:var(--brand-900)"><span>900</span></div>
+      <div class="sw" style="background:var(--brand-800)"><span>800</span></div>
+      <div class="sw" style="background:var(--brand-700)"><span>700</span></div>
+      <div class="sw" style="background:var(--brand-600)"><span>600</span></div>
+      <div class="sw" style="background:var(--brand-400)"><span>400</span></div>
+      <div class="sw" style="background:var(--brand-200)"><span>200</span></div>
+      <div class="sw" style="background:var(--brand-50)"><span>50</span></div>
+    </div>
+    <div class="slice-label on-light">Content section</div>
+    <div class="slice-light">
+      <span class="section-label">What we offer</span>
+      <h2 class="section-title">Gentle care, <em>start to finish</em></h2>
+      <p class="section-body">Comprehensive family dentistry in an unhurried setting — cleanings to crowns, with the same two doctors every visit.</p>
+      <div class="service-row">
+        <div class="service-ico"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round"><path d="M12 3c-3 0-5 1.4-5 4 0 1.7.5 2.8.9 4.2.4 1.4.3 2.7.6 4.4.2 1 .5 2.4 1.3 2.4.9 0 1-1.7 1.2-2.9.1-.9.3-1.6 1-1.6s.9.7 1 1.6c.2 1.2.3 2.9 1.2 2.9.8 0 1.1-1.4 1.3-2.4.3-1.7.2-3 .6-4.4.4-1.4.9-2.5.9-4.2 0-2.6-2-4-5-4Z"/></svg></div>
+        <div><h4>Preventive &amp; family care</h4><p>Exams, cleanings, sealants, and kids’ visits in one calm room.</p></div>
+      </div>
+      <div class="btn-row">
+        <a class="btn btn-primary"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><path d="M22 16.9v3a2 2 0 0 1-2.2 2 19.8 19.8 0 0 1-8.6-3.1 19.5 19.5 0 0 1-6-6 19.8 19.8 0 0 1-3.1-8.7A2 2 0 0 1 4.1 2h3a2 2 0 0 1 2 1.7c.1 1 .4 1.9.7 2.8a2 2 0 0 1-.5 2.1L8.1 9.9a16 16 0 0 0 6 6l1.3-1.3a2 2 0 0 1 2.1-.4c.9.3 1.8.6 2.8.7a2 2 0 0 1 1.7 2Z"/></svg>Call to schedule</a>
+        <a class="btn btn-ghost">Our services</a>
+      </div>
+    </div>
+    <div class="slice-label on-dark">Closing CTA band</div>
+    <div class="slice-dark">
+      <span class="section-label">Visit us</span>
+      <h3>Ready when <em>you are</em></h3>
+      <p>New patients welcome. One phone call and we’ll find a time that fits your week.</p>
+      <div class="btn-row">
+        <a class="btn btn-light"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><path d="M22 16.9v3a2 2 0 0 1-2.2 2 19.8 19.8 0 0 1-8.6-3.1 19.5 19.5 0 0 1-6-6 19.8 19.8 0 0 1-3.1-8.7A2 2 0 0 1 4.1 2h3a2 2 0 0 1 2 1.7c.1 1 .4 1.9.7 2.8a2 2 0 0 1-.5 2.1L8.1 9.9a16 16 0 0 0 6 6l1.3-1.3a2 2 0 0 1 2.1-.4c.9.3 1.8.6 2.8.7a2 2 0 0 1 1.7 2Z"/></svg>810-987-8310</a>
+        <a class="btn-outline">Get directions</a>
+      </div>
+    </div>
+  </section>
+
+</main>
+
+<footer class="note">
+  Neutral creams, ink ramp, fonts, and layout are identical in all three — only the brand hue changes, mirroring the real one-block token swap in <code>index.html</code>. Hex values shown are mockup-grade; the chosen palette gets a precise WCAG-AA contrast tune (the same computed check the audit used) before it ships.
+</footer>
+
+</body>
+</html>
