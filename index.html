@@ -686,7 +686,7 @@
     .hours-today::before {
       content: 'TODAY';
       position: absolute;
-      left: -8px; top: 50%; transform: translate(-100%, -50%);
+      left: 12px; top: 50%; transform: translateY(-50%);
       font-size: 0.6rem; letter-spacing: 0.2em;
       color: var(--terracotta-soft);
       font-weight: 600;
@@ -694,7 +694,7 @@
     }
     @media (min-width: 480px) {
       .hours-today::before { display: block; }
-      .hours li { padding-left: 64px; }
+      .hours li { padding-left: 72px; }
     }
 
     .contact-list { list-style: none; display: grid; gap: 20px; }
