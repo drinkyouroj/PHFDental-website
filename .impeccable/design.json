@@ -1,0 +1,112 @@
+{
+  "schemaVersion": 2,
+  "generatedAt": "2026-06-11T19:00:00.000Z",
+  "title": "Design System: Family Dentists, PLLC",
+  "extensions": {
+    "colorMeta": {
+      "sage-deepest": { "role": "primary", "displayName": "Deepest Sage", "canonical": "#22332C", "tonalRamp": ["#101A15", "#22332C", "#2F4A3F", "#3F6051", "#577F6C", "#9EB5A5", "#D6E0D6", "#EEF2EC"] },
+      "sage": { "role": "primary", "displayName": "Sage", "canonical": "#3F6051", "tonalRamp": ["#1B2A23", "#2F4A3F", "#3F6051", "#577F6C", "#7A9A87", "#9EB5A5", "#C3D4C8", "#EEF2EC"] },
+      "terracotta": { "role": "secondary", "displayName": "Warm Terracotta", "canonical": "#C97B5E", "tonalRamp": ["#4A2417", "#74392A", "#9E563F", "#C97B5E", "#D89880", "#E5B7A4", "#F1DDD3", "#FAF0EA"] },
+      "warm-paper": { "role": "neutral", "displayName": "Warm Paper", "canonical": "#FBF9F4", "tonalRamp": ["#3A372F", "#6B665A", "#998F7E", "#C2BBAB", "#E6E1D5", "#F6F2EA", "#FBF9F4", "#FFFDF8"] },
+      "ink": { "role": "neutral", "displayName": "Ink", "canonical": "#1C231F", "tonalRamp": ["#1C231F", "#333D37", "#556159", "#6F7B73", "#8A938C", "#ADB5AE", "#D2D7D2", "#EFF1EF"] }
+    },
+    "typographyMeta": {
+      "display": { "displayName": "Display", "purpose": "Hero headline only; Fraunces light at opsz 144 with one italic sage em phrase." },
+      "headline": { "displayName": "Headline", "purpose": "Section titles; always contains an italic sage em inflection." },
+      "label": { "displayName": "Dash-Kicker", "purpose": "Uppercase tracked section label preceded by a 20px sage hairline dash." }
+    },
+    "shadows": [
+      { "name": "hairline", "value": "0 1px 2px rgba(34,51,44,0.04), 0 2px 6px rgba(34,51,44,0.04)", "purpose": "Resting definition for badges and small floats." },
+      { "name": "hover-lift", "value": "0 4px 18px rgba(34,51,44,0.06)", "purpose": "Cards and primary buttons on hover, paired with -2/-3px translateY." },
+      { "name": "float", "value": "0 12px 40px rgba(34,51,44,0.10)", "purpose": "Hero media, map block, mobile action bar." }
+    ],
+    "motion": [
+      { "name": "ease-brand", "value": "cubic-bezier(.2,.7,.2,1)", "purpose": "Shared easing for all transitions and reveals." },
+      { "name": "reveal", "value": "opacity .9s + translateY(14px), stagger .08s/.16s/.24s", "purpose": "Gentle scroll reveal; instant under prefers-reduced-motion." }
+    ],
+    "breakpoints": [
+      { "name": "tablet", "value": "720px" },
+      { "name": "desktop", "value": "960px" }
+    ]
+  },
+  "components": [
+    {
+      "name": "Primary Button",
+      "kind": "button",
+      "refersTo": "button-primary",
+      "description": "The call-to-schedule pill; the page's only conversion action.",
+      "html": "<button class=\"ds-btn-primary\"><svg viewBox=\"0 0 24 24\" width=\"16\" height=\"16\" fill=\"none\" stroke=\"currentColor\" stroke-width=\"2\" stroke-linecap=\"round\" stroke-linejoin=\"round\"><path d=\"M22 16.92v3a2 2 0 0 1-2.18 2 19.79 19.79 0 0 1-8.63-3.07 19.5 19.5 0 0 1-6-6 19.79 19.79 0 0 1-3.07-8.67A2 2 0 0 1 4.11 2h3a2 2 0 0 1 2 1.72c.13.96.37 1.9.72 2.81a2 2 0 0 1-.45 2.11L8.09 9.91a16 16 0 0 0 6 6l1.27-1.27a2 2 0 0 1 2.11-.45c.91.35 1.85.59 2.81.72A2 2 0 0 1 22 16.92z\"/></svg>Call to schedule</button>",
+      "css": ".ds-btn-primary { display: inline-flex; align-items: center; gap: 10px; padding: 16px 26px; border-radius: 999px; border: 1px solid transparent; background: #22332C; color: #FFFDF8; font-family: 'Figtree', system-ui, sans-serif; font-size: 0.92rem; font-weight: 500; letter-spacing: 0.01em; cursor: pointer; transition: transform .2s cubic-bezier(.2,.7,.2,1), background .25s cubic-bezier(.2,.7,.2,1), box-shadow .3s cubic-bezier(.2,.7,.2,1); } .ds-btn-primary:hover { background: #2F4A3F; transform: translateY(-2px); box-shadow: 0 4px 18px rgba(34,51,44,0.06); } .ds-btn-primary:focus-visible { outline: 2px solid #577F6C; outline-offset: 2px; }"
+    },
+    {
+      "name": "Ghost Button",
+      "kind": "button",
+      "refersTo": "button-ghost",
+      "description": "Secondary in-page action (Explore services, See hours).",
+      "html": "<button class=\"ds-btn-ghost\">Explore services</button>",
+      "css": ".ds-btn-ghost { display: inline-flex; align-items: center; gap: 10px; padding: 16px 26px; border-radius: 999px; background: transparent; color: #22332C; border: 1px solid #9EB5A5; font-family: 'Figtree', system-ui, sans-serif; font-size: 0.92rem; font-weight: 500; cursor: pointer; transition: background .25s cubic-bezier(.2,.7,.2,1), border-color .25s cubic-bezier(.2,.7,.2,1); } .ds-btn-ghost:hover { background: #EEF2EC; border-color: #577F6C; } .ds-btn-ghost:focus-visible { outline: 2px solid #577F6C; outline-offset: 2px; }"
+    },
+    {
+      "name": "Service Card",
+      "kind": "card",
+      "refersTo": "card-service",
+      "description": "Icon chip + serif title + short body; flat at rest, lifts on hover.",
+      "html": "<article class=\"ds-service\"><div class=\"ds-service-ico\"><svg viewBox=\"0 0 24 24\" width=\"22\" height=\"22\" fill=\"none\" stroke=\"currentColor\" stroke-width=\"1.6\" stroke-linecap=\"round\" stroke-linejoin=\"round\"><circle cx=\"11\" cy=\"11\" r=\"7\"/><path d=\"m21 21-4.3-4.3\"/></svg></div><h3>Exams &amp; cleanings</h3><p>Comprehensive check-ups with low-radiation digital X-rays and gentle hygiene visits.</p></article>",
+      "css": ".ds-service { background: #FBF9F4; border-radius: 18px; padding: 26px 22px; border: 1px solid #EFEAE0; max-width: 300px; font-family: 'Figtree', system-ui, sans-serif; transition: transform .3s cubic-bezier(.2,.7,.2,1), box-shadow .3s cubic-bezier(.2,.7,.2,1), border-color .3s cubic-bezier(.2,.7,.2,1); } .ds-service:hover { transform: translateY(-3px); box-shadow: 0 4px 18px rgba(34,51,44,0.06); border-color: #D6E0D6; } .ds-service-ico { width: 44px; height: 44px; border-radius: 12px; background: #EEF2EC; color: #3F6051; display: grid; place-items: center; margin-bottom: 16px; } .ds-service h3 { font-family: 'Fraunces', Georgia, serif; font-weight: 400; font-size: 1.15rem; color: #22332C; margin: 0 0 6px; letter-spacing: -0.01em; } .ds-service p { font-size: 0.9rem; color: #556159; line-height: 1.6; margin: 0; }"
+    },
+    {
+      "name": "Dash-Kicker Section Header",
+      "kind": "custom",
+      "description": "The signature section grammar: dashed kicker, light serif headline with italic sage em, constrained body.",
+      "html": "<div class=\"ds-secthead\"><span class=\"ds-kicker\">What we offer</span><h2 class=\"ds-secttitle\">Thoughtful care, from <em>routine</em> to <em>restorative.</em></h2><p class=\"ds-sectbody\">Whether it's a check-up for your child or a smile you've been thinking about for years.</p></div>",
+      "css": ".ds-secthead { font-family: 'Figtree', system-ui, sans-serif; max-width: 560px; } .ds-kicker { display: inline-flex; align-items: center; gap: 10px; font-size: 0.72rem; font-weight: 500; letter-spacing: 0.2em; text-transform: uppercase; color: #3F6051; } .ds-kicker::before { content: ''; width: 20px; height: 1px; background: #9EB5A5; } .ds-secttitle { font-family: 'Fraunces', Georgia, serif; font-weight: 300; font-size: clamp(2rem, 6vw, 3rem); line-height: 1.08; letter-spacing: -0.02em; color: #22332C; margin: 14px 0 20px; } .ds-secttitle em { font-style: italic; font-weight: 400; color: #3F6051; } .ds-sectbody { font-size: 1.02rem; color: #556159; line-height: 1.7; margin: 0; }"
+    },
+    {
+      "name": "Hero Badge",
+      "kind": "chip",
+      "description": "Floating reassurance chip with pulsing status dot (Now welcoming new patients).",
+      "html": "<div class=\"ds-badge\"><span class=\"ds-badge-dot\"></span><span><strong>Now welcoming new patients</strong><span class=\"ds-badge-sub\">Same-week appointments often available</span></span></div>",
+      "css": ".ds-badge { display: inline-flex; align-items: center; gap: 12px; padding: 12px 18px; background: #FFFDF8; border: 1px solid #EFEAE0; border-radius: 999px; box-shadow: 0 1px 2px rgba(34,51,44,0.04), 0 2px 6px rgba(34,51,44,0.04); font-family: 'Figtree', system-ui, sans-serif; } .ds-badge strong { display: block; font-size: 0.82rem; font-weight: 600; color: #22332C; } .ds-badge-sub { display: block; font-size: 0.74rem; color: #8A938C; } .ds-badge-dot { width: 9px; height: 9px; border-radius: 50%; background: #577F6C; flex: 0 0 auto; }"
+    },
+    {
+      "name": "Nav Link",
+      "kind": "nav",
+      "description": "Quiet ink-mid link with a left-to-right sage underline slide on hover.",
+      "html": "<a class=\"ds-navlink\" href=\"#\">Services</a>",
+      "css": ".ds-navlink { position: relative; display: inline-block; font-family: 'Figtree', system-ui, sans-serif; font-size: 0.9rem; font-weight: 500; color: #556159; padding: 8px 2px; text-decoration: none; transition: color .25s cubic-bezier(.2,.7,.2,1); } .ds-navlink::after { content: ''; position: absolute; left: 0; right: 100%; bottom: 2px; height: 1px; background: #3F6051; transition: right .35s cubic-bezier(.2,.7,.2,1); } .ds-navlink:hover { color: #22332C; } .ds-navlink:hover::after { right: 0; }"
+    }
+  ],
+  "narrative": {
+    "northStar": "The Sunlit Waiting Room",
+    "overview": "This system translates the feeling of a calm, plant-filled practice lobby into an interface: warm paper light, deep sage authority, and one terracotta highlight like a friendly object in the room. Everything is soft-spoken on purpose — the audience includes anxious patients, and the design persuades by lowering their shoulders, not by raising its voice. The serif (Fraunces at light weights, optical size maxed) carries warmth and humanity; the sans (Figtree) does the practical talking. The system explicitly rejects corporate dental-chain aesthetics, sterile hospital whites, and cutesy pediatric clichés. It is gentle without being childish, and modern without being cold.",
+    "keyCharacteristics": [
+      "Warm paper surfaces with sage-tinted structure; color temperature never drops to clinical white-gray",
+      "Light-weight serif display type with italic em inflections as the signature emphasis move",
+      "Fully rounded pill buttons; generously rounded cards (10/18/28px scale)",
+      "Whisper-quiet elevation: sage-tinted shadows that only assert on hover",
+      "Gentle 14px scroll-reveals with full reduced-motion fallback"
+    ],
+    "rules": [
+      { "name": "The One Warm Thing Rule", "body": "Terracotta appears at most once per viewport, always small (an icon, a highlight) and always meaningful (emergency care). If terracotta is carrying layout-scale area, it's wrong.", "section": "colors" },
+      { "name": "The Never-Clinical Rule", "body": "No pure white (#FFFFFF) backgrounds and no cool grays anywhere. Every neutral leans warm; every gray is actually a desaturated sage or warm ink.", "section": "colors" },
+      { "name": "The Dash-Kicker Rule", "body": "Section labels are a committed brand system: uppercase Figtree at 0.2em tracking with a leading 20px sage hairline. Use it on every major section or not at all — it is the one allowed eyebrow, and the dash is what makes it ours.", "section": "typography" },
+      { "name": "The Light Serif Rule", "body": "Fraunces never appears bolder than 400. Hierarchy comes from size and the italic-sage inflection, never from heavy weights.", "section": "typography" },
+      { "name": "The Flat-at-Rest Rule", "body": "Cards rest on borders, not shadows. A shadow is a response to attention (hover) or genuine float (fixed bars), never decoration.", "section": "elevation" }
+    ],
+    "dos": [
+      "Do keep a tap-to-call action reachable in every fold — tel:8109878310 is the only conversion.",
+      "Do use the italic sage em inside every Fraunces headline; it is the brand's emphasis voice.",
+      "Do tint every shadow with sage (rgba(34,51,44,…)) and every neutral warm.",
+      "Do honor prefers-reduced-motion for any new animation — instant reveals, no exceptions.",
+      "Do keep scroll-reveal motion at or below the current gentleness: 14px translate, .9s ease-out, ≤0.24s stagger."
+    ],
+    "donts": [
+      "Don't introduce corporate dental-chain aesthetics: insurance-brochure blue, stock bleached-smile photography, discount banners, or urgency offers.",
+      "Don't go clinical: no pure white backgrounds, no cool grays, no portal-density layouts.",
+      "Don't go cutesy: no cartoon tooth mascots or primary-color confetti — family-friendly is not childish.",
+      "Don't use terracotta as a button color or at layout scale; it is an accent for one warm thing per view.",
+      "Don't set Fraunces above weight 400 or below −0.02em letter-spacing.",
+      "Don't add gradient text, side-stripe card borders, glassmorphism beyond the existing nav blur, or hero-metric stat blocks."
+    ]
+  }
+}

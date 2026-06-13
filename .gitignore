@@ -1,0 +1,8 @@
+# OS metadata
+.DS_Store
+Thumbs.db
+
+# Local settings & Tool cache
+.claude/settings.local.json
+.impeccable/live/
+uploads/
