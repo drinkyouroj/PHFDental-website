@@ -1015,6 +1015,15 @@
       transform: translate3d(0, var(--parallax, 0px), 0) scale(1.06);
       will-change: transform;
     }
+    .ambient-canvas {
+      position: absolute; inset: 0;
+      width: 100%; height: 100%;
+      pointer-events: none;
+      z-index: 1;
+      mix-blend-mode: soft-light;
+      opacity: 0.85;
+      transition: opacity 2s var(--ease);
+    }
     body[data-hero-layout="fullbleed"] .hero-bg::after {
       content: '';
       position: absolute; inset: 0;
@@ -1151,6 +1160,7 @@
   <header class="hero" id="home" role="banner">
     <div class="hero-bg" aria-hidden="true">
       <img src="assets/hero-1.png" alt="Friendly dental staff in a modern, sunlit office" loading="eager" decoding="async" id="heroBgImg" />
+      <canvas id="ambientCanvas" class="ambient-canvas"></canvas>
     </div>
     <div class="hero-inner">
       <div class="hero-copy">
@@ -1724,6 +1734,88 @@
       const today = new Date().getDay();
       const li = document.querySelector(`#hoursList li[data-day="${today}"]`);
       if (li) li.classList.add('hours-today');
+    })();
+
+    // Ambient Sunlit Canvas
+    (function initAmbientCanvas() {
+      const canvas = document.getElementById('ambientCanvas');
+      if (!canvas) return;
+      
+      const prefersReducedMotion = window.matchMedia('(prefers-reduced-motion: reduce)').matches;
+      if (prefersReducedMotion) {
+        canvas.style.display = 'none';
+        return;
+      }
+
+      const ctx = canvas.getContext('2d', { alpha: true });
+      let width, height;
+
+      function resize() {
+        width = canvas.offsetWidth;
+        height = canvas.offsetHeight;
+        // Render at 1/4 resolution for performance, letting CSS scale it up (blurry is fine)
+        canvas.width = width / 4;
+        canvas.height = height / 4;
+      }
+      window.addEventListener('resize', resize, { passive: true });
+      resize();
+
+      // Organic, slow-moving warm light blobs
+      const orbs = [
+        { x: 0.2, y: 0.3, r: 0.7, vx: 0.00015, vy: 0.0002, color: 'rgba(201, 123, 94, 0.45)' }, // Terracotta
+        { x: 0.8, y: 0.6, r: 0.6, vx: -0.0002, vy: -0.0001, color: 'rgba(251, 249, 244, 0.35)' }, // Warm paper
+        { x: 0.4, y: 0.7, r: 0.8, vx: 0.0001, vy: -0.00015, color: 'rgba(201, 123, 94, 0.25)' }
+      ];
+
+      let animationFrameId;
+      let lastTime = 0;
+      let isVisible = false;
+
+      function render(time) {
+        if (!isVisible) return;
+        if (!lastTime) lastTime = time;
+        const dt = Math.min(time - lastTime, 50); // Cap dt to prevent massive jumps
+        lastTime = time;
+
+        ctx.clearRect(0, 0, canvas.width, canvas.height);
+        ctx.globalCompositeOperation = 'screen';
+
+        orbs.forEach(orb => {
+          orb.x += orb.vx * dt;
+          orb.y += orb.vy * dt;
+
+          // Gentle bounds
+          if (orb.x < -0.3 || orb.x > 1.3) orb.vx *= -1;
+          if (orb.y < -0.3 || orb.y > 1.3) orb.vy *= -1;
+
+          const cx = orb.x * canvas.width;
+          const cy = orb.y * canvas.height;
+          const radius = orb.r * Math.max(canvas.width, canvas.height);
+
+          const grad = ctx.createRadialGradient(cx, cy, 0, cx, cy, radius);
+          grad.addColorStop(0, orb.color);
+          grad.addColorStop(1, 'rgba(0,0,0,0)');
+
+          ctx.fillStyle = grad;
+          ctx.beginPath();
+          ctx.arc(cx, cy, radius, 0, Math.PI * 2);
+          ctx.fill();
+        });
+
+        animationFrameId = requestAnimationFrame(render);
+      }
+
+      const io = new IntersectionObserver(entries => {
+        if (entries[0].isIntersecting) {
+          isVisible = true;
+          lastTime = 0;
+          animationFrameId = requestAnimationFrame(render);
+        } else {
+          isVisible = false;
+          cancelAnimationFrame(animationFrameId);
+        }
+      });
+      io.observe(canvas);
     })();
 
     console.log("%cFamily Dentists, PLLC", "color: #3B4478; font-family: serif; font-size: 20px; font-weight: bold;");
