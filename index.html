@@ -670,6 +670,11 @@
       padding: 12px 0;
       border-bottom: 1px dashed rgba(255,253,248,0.12);
       font-size: 0.94rem;
+      transition: background-color 0.2s var(--ease), transform 0.2s var(--ease);
+    }
+    .hours li:hover {
+      background-color: rgba(255,253,248,0.03);
+      transform: translateX(2px);
     }
     .hours-day { color: rgba(255,253,248,0.7); }
     .hours-time { color: var(--ivory); font-weight: 500; text-align: right; }
