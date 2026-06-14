@@ -167,7 +167,7 @@ Depth is whisper-quiet and teal-tinted: shadows use `rgba(20,51,58,…)`, never 
 - **Buttons.** Fully rounded pill (999px), inline-flex with a 16px icon and 10px gap. *Primary:* `--brand-900` bg, ivory text, 16/26 padding; hover `--brand-800`, −2px lift, Hover-Lift shadow. *Ghost:* transparent, `--brand-400` 1px border, `--brand-900` text; hover `--brand-50` fill, `--brand-600` border.
 - **Cards / containers.** Used sparingly — only where content is genuinely distinct and the box earns its place: the two **doctor** portrait cards and the single **Urgent Care** callout. 16px standard radius (`--radius`), 25px for hero/large frames (`--radius-lg`); flexes via `--radius-mul`. 1px `--line-soft` at rest → `--brand-200` on hover. Flat-at-Rest. **Not** used for Services or Comfort.
 - **Service / feature lists (not cards).** Services and the About points are **editorial row lists**, not card grids: a 44px `--brand-50` icon chip + serif title + `--ink-mid` description per row, hairline-separated, flowing in 1–2 columns (`.service-list.cols-2`, 1-col under 720px). Comfort is a borderless 3-up layout with a top hairline per item. This is the page's default for "a list of things" — cards are the exception, not the reflex. The lone **Urgent Care** callout is the deliberate exception: one tinted, rounded, `--accent-soft`-bordered block for emphasis.
-- **Navigation.** Fixed 64px bar over blurred paper (`rgba(251,249,244,0.82)`, 14px backdrop blur); bottom hairline fades in on scroll. Mobile gets a full-screen drawer and a slide-up call bar (`--brand-900` call button + accent-soft emergency button). Brand mark is a `--brand-900` circle with an ivory tooth glyph.
+- **Navigation.** Fixed 64px bar over blurred paper (`rgba(251,249,244,0.82)`, 14px backdrop blur); bottom hairline fades in on scroll. Desktop nav links carry a **44px min hit area** (flex-centered, hover underline re-anchored) for touch-capable laptops. Mobile gets a full-screen drawer and a slide-up call bar (`--brand-900` call button + accent-soft emergency button). Brand mark is a `--brand-900` circle with an ivory tooth glyph.
 - **Section header (signature).** Plus-Kicker label → light Caslon headline with one italic `--brand-700` phrase → ≤56ch `--ink-mid` body.
 - **Containers.** `.wrap` caps content at 1240px and centers it (matches hero / trust); `.wrap-narrow` caps at 760px for prose-led sections.
 
@@ -182,6 +182,7 @@ Depth is whisper-quiet and teal-tinted: shadows use `rgba(20,51,58,…)`, never 
 
 ### Do
 - Keep a tap-to-call (`tel:8109878310`) reachable in every fold — it is the only conversion.
+- Keep the full-bleed hero text legible **independent of the photo**: white type carries a soft `text-shadow` plus a strengthened bottom-left scrim, so a brighter hero image can't silently break contrast.
 - Use the italic `--brand-700` `em` inside every Caslon headline; it is the brand's emphasis voice.
 - Tint every shadow teal (`rgba(20,51,58,…)`) and keep neutrals just-off-white and cool.
 - Honor `prefers-reduced-motion` for any new animation — no exceptions.

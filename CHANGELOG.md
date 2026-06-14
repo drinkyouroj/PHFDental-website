@@ -2,6 +2,13 @@
 
 All notable changes to the Family Dentists, PLLC website will be documented in this file.
 
+## [v1.2.1] - 2026-06-13
+
+### Polish — hero legibility & nav tap targets
+
+- **Hero text no longer depends on the photo.** The full-bleed hero's white headline / eyebrow / description now carry a soft two-layer `text-shadow` (a tight 2px for crispness + an 18px halo), and the bottom-left scrim ramps earlier and deeper (`rgba(0,0,0,0.84)` floor, `0.62` left anchor). White type stays legible even where it crosses brighter areas of the photo — so swapping the hero image can't silently break contrast.
+- **Desktop nav links get a 44px hit area.** `.nav-links a` was `padding: 8px 2px` (~40px tall); it is now `min-height: 44px` with flex-centered text and `0 8px` padding (the comfortable WCAG 2.5.5 / Apple HIG target), with the hover underline re-anchored. Touch-capable laptops get a forgiving target with no change to the visual.
+
 ## [v1.2.0] - 2026-06-13
 
 ### Brand color — Indigo → Blue Water teal
