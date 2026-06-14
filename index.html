@@ -6,32 +6,57 @@
   <title>Family Dentists, PLLC — Port Huron, Michigan</title>
   <meta name="description" content="Welcoming, modern family dentistry in Port Huron, Michigan. Dr. Jeremy Parrott and Dr. Julie Anne Hengehold." />
   <link rel="canonical" href="https://porthuronfamilydentists.com" />
-  <link rel="icon" href="data:image/svg+xml,<svg xmlns=%22http://www.w3.org/2000/svg%22 viewBox=%220 0 24 24%22 fill=%22none%22 stroke=%22%231E2540%22 stroke-width=%221.5%22 stroke-linecap=%22round%22 stroke-linejoin=%22round%22><path d=%22M12 3c-3 0-6 1-6 4.5 0 2 .6 3.4 1 5 .4 1.6.4 3 .7 5 .2 1.2.6 3 1.7 3 1.2 0 1.3-2 1.6-3.5.2-1.1.4-2 1-2s.8.9 1 2c.3 1.5.4 3.5 1.6 3.5 1.1 0 1.5-1.8 1.7-3 .3-2 .3-3.4.7-5 .4-1.6 1-3 1-5C18 4 15 3 12 3z%22/></svg>">
-  <link rel="preconnect" href="https://fonts.googleapis.com">
-  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-  <link href="https://fonts.googleapis.com/css2?family=Libre+Caslon+Text:ital,wght@0,400;0,700;1,400&family=Work+Sans:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+  <meta name="theme-color" content="#14333A" />
+  <meta name="robots" content="index, follow" />
+  <meta name="geo.region" content="US-MI" />
+  <meta name="geo.placename" content="Port Huron, Michigan" />
+
+  <!-- Open Graph / social sharing -->
+  <meta property="og:type" content="website" />
+  <meta property="og:site_name" content="Family Dentists, PLLC" />
+  <meta property="og:title" content="Family Dentists, PLLC — Gentle Family Dentistry in Port Huron, MI" />
+  <meta property="og:description" content="Welcoming, modern family dentistry in Port Huron, Michigan. Dr. Jeremy Parrott and Dr. Julie Anne Hengehold. Now accepting new patients — call 810-987-8310." />
+  <meta property="og:url" content="https://porthuronfamilydentists.com" />
+  <meta property="og:image" content="https://porthuronfamilydentists.com/assets/hero-1-1920.jpg" />
+  <meta property="og:image:width" content="1920" />
+  <meta property="og:image:height" content="1080" />
+  <meta property="og:image:alt" content="The Family Dentists, PLLC team in their Port Huron office" />
+  <meta name="twitter:card" content="summary_large_image" />
+  <meta name="twitter:title" content="Family Dentists, PLLC — Port Huron, Michigan" />
+  <meta name="twitter:description" content="Gentle, modern family dentistry in Port Huron. Now accepting new patients — call 810-987-8310." />
+  <meta name="twitter:image" content="https://porthuronfamilydentists.com/assets/hero-1-1920.jpg" />
+
+  <link rel="icon" href="data:image/svg+xml,<svg xmlns=%22http://www.w3.org/2000/svg%22 viewBox=%220 0 24 24%22 fill=%22none%22 stroke=%22%2314333A%22 stroke-width=%221.5%22 stroke-linecap=%22round%22 stroke-linejoin=%22round%22><path d=%22M12 3c-3 0-6 1-6 4.5 0 2 .6 3.4 1 5 .4 1.6.4 3 .7 5 .2 1.2.6 3 1.7 3 1.2 0 1.3-2 1.6-3.5.2-1.1.4-2 1-2s.8.9 1 2c.3 1.5.4 3.5 1.6 3.5 1.1 0 1.5-1.8 1.7-3 .3-2 .3-3.4.7-5 .4-1.6 1-3 1-5C18 4 15 3 12 3z%22/></svg>">
+  <link rel="preload" as="font" type="font/woff2" href="assets/fonts/caslon-display-latin.woff2" crossorigin>
+  <link rel="preload" as="font" type="font/woff2" href="assets/fonts/work-sans-latin.woff2" crossorigin>
   <style>
+    /* ── Fonts (self-hosted, latin subset — no third-party round-trip) ── */
+    @font-face { font-family: 'Work Sans'; font-style: normal; font-weight: 300 600; font-display: swap; src: url('assets/fonts/work-sans-latin.woff2') format('woff2'); }
+    @font-face { font-family: 'Libre Caslon Display'; font-style: normal; font-weight: 400; font-display: swap; src: url('assets/fonts/caslon-display-latin.woff2') format('woff2'); }
+    @font-face { font-family: 'Libre Caslon Text'; font-style: normal; font-weight: 400; font-display: swap; src: url('assets/fonts/caslon-text-latin.woff2') format('woff2'); }
+    @font-face { font-family: 'Libre Caslon Text'; font-style: italic; font-weight: 400; font-display: swap; src: url('assets/fonts/caslon-text-italic-latin.woff2') format('woff2'); }
+
     /* ── Tokens ── */
     :root {
-      /* Indigo + Mist neutrals — Calm, professional, and distinctive */
-      --sage-900: #1E2540;
-      --sage-800: #2A3358;
-      --sage-700: #3B4478;
-      --sage-600: #5B6499;
-      --sage-400: #9DA4C4;
-      --sage-200: #D6D9E6;
-      --sage-50:  #EEEFF5;
+      /* Blue Water teal + Mist neutrals — calm, regional, distinct from "insurance blue" */
+      --brand-900: #14333A;
+      --brand-800: #1C454D;
+      --brand-700: #2A5D66;
+      --brand-600: #387079;
+      --brand-400: #8FB4BA;
+      --brand-200: #CBDFE1;
+      --brand-50:  #E8F1F2;
 
       --cream:    #EAEFEC;
       --paper:    #F6F8F7;
       --ivory:    #FCFDFC;
 
-      --terracotta: #4B5561;   /* ink accent — subtle and professional */
-      --terracotta-soft: #DCE1E8;
+      --accent: #47585C;   /* ink accent — subtle and professional */
+      --accent-soft: #D6E3E4;
 
       --ink:      #1C231F;
       --ink-mid:  #556159;
-      --ink-soft: #8A938C;
+      --ink-soft: #616B65;
       --line:     #DDE4E1;
       --line-soft: #E8EDEB;
 
@@ -40,9 +65,9 @@
       --radius:    calc(18px * var(--radius-mul));
       --radius-lg: calc(28px * var(--radius-mul));
       --density: 1;
-      --shadow-xs: 0 1px 2px rgba(30,37,64,0.04), 0 2px 6px rgba(30,37,64,0.04);
-      --shadow-sm: 0 4px 18px rgba(30,37,64,0.06);
-      --shadow-md: 0 12px 40px rgba(30,37,64,0.10);
+      --shadow-xs: 0 1px 2px rgba(20,51,58,0.04), 0 2px 6px rgba(20,51,58,0.04);
+      --shadow-sm: 0 4px 18px rgba(20,51,58,0.06);
+      --shadow-md: 0 12px 40px rgba(20,51,58,0.10);
 
       --nav-h: 64px;
       --spacing-xs: 4px;
@@ -54,6 +79,7 @@
       --spacing-3xl: 64px;
       --spacing-section: calc(96px * var(--density));
 
+      --font-display: 'Libre Caslon Display', 'Libre Caslon Text', Georgia, serif;
       --font-serif: 'Libre Caslon Text', Georgia, serif;
       --font-sans:  'Work Sans', system-ui, -apple-system, sans-serif;
 
@@ -83,32 +109,33 @@
 
     /* ── Accessibility ── */
     :focus-visible {
-      outline: 2px solid var(--sage-700);
+      outline: 2px solid var(--brand-700);
       outline-offset: 4px;
     }
 
     /* ── Delight & Interactions ── */
-    .btn, .nav-cta, .nav-links a, .service, .doctor, .comfort-item {
+    .btn, .nav-cta, .nav-links a, .doctor {
       cursor: pointer;
     }
     .btn:active, .nav-cta:active {
       transform: translateY(1px) scale(0.98);
       transition: transform 0.1s var(--ease);
     }
-    .btn-primary:active { background: var(--sage-900); }
+    .btn-primary:active { background: var(--brand-900); }
 
-    .service:hover, .doctor:hover, .comfort-item:hover {
+    .doctor:hover {
       transform: translateY(-4px);
       box-shadow: var(--shadow-md);
-      border-color: var(--sage-200);
+      border-color: var(--brand-200);
     }
 
     /* Selection delight */
-    ::selection { background: var(--sage-200); color: var(--sage-900); }
-    ::-moz-selection { background: var(--sage-200); color: var(--sage-900); }
+    ::selection { background: var(--brand-200); color: var(--brand-900); }
+    ::-moz-selection { background: var(--brand-200); color: var(--brand-900); }
 
     /* ── Scroll reveal (gentle) ── */
-    .reveal { opacity: 0; transform: translateY(14px); transition: opacity .9s var(--ease), transform .9s var(--ease); will-change: opacity, transform; }
+    .reveal { opacity: 0; transform: translateY(14px); transition: opacity .9s var(--ease), transform .9s var(--ease); }
+    .reveal:not(.in) { will-change: opacity, transform; }
     .reveal.in { opacity: 1; transform: none; }
     .reveal.d1 { transition-delay: .08s; }
     .reveal.d2 { transition-delay: .16s; }
@@ -135,7 +162,7 @@
       width: 34px; height: 34px; flex: 0 0 auto;
       display: grid; place-items: center;
       border-radius: 50%;
-      background: var(--sage-900);
+      background: var(--brand-900);
       color: var(--ivory);
     }
     .brand-mark svg { width: 20px; height: 20px; }
@@ -143,7 +170,7 @@
       font-family: var(--font-serif);
       font-size: 1.02rem;
       font-weight: 400;
-      color: var(--sage-900);
+      color: var(--brand-900);
       letter-spacing: -0.01em;
       line-height: 1;
     }
@@ -169,23 +196,23 @@
     .nav-links a::after {
       content: ''; position: absolute;
       left: 0; right: 100%; bottom: 2px; height: 1px;
-      background: var(--sage-700);
+      background: var(--brand-700);
       transition: right .35s var(--ease);
     }
-    .nav-links a:hover { color: var(--sage-900); }
+    .nav-links a:hover { color: var(--brand-900); }
     .nav-links a:hover::after { right: 0; }
 
     .nav-cta {
       display: none;
       align-items: center; gap: 8px;
       padding: 10px 18px;
-      background: var(--sage-900);
+      background: var(--brand-900);
       color: var(--ivory);
       border-radius: 999px;
       font-size: 0.85rem; font-weight: 500;
       transition: background .25s var(--ease), transform .2s var(--ease);
     }
-    .nav-cta:hover { background: var(--sage-800); transform: translateY(-1px); }
+    .nav-cta:hover { background: var(--brand-800); transform: translateY(-1px); }
     .nav-cta svg { width: 14px; height: 14px; }
 
     .hamburger {
@@ -194,10 +221,10 @@
       display: grid; place-items: center;
       border-radius: 12px;
     }
-    .hamburger:hover { background: var(--sage-50); }
+    .hamburger:hover { background: var(--brand-50); }
     .hamburger span {
       display: block; width: 20px; height: 1.5px;
-      background: var(--sage-900);
+      background: var(--brand-900);
       border-radius: 2px;
       position: relative;
       transition: transform .3s var(--ease), opacity .2s var(--ease), top .3s var(--ease);
@@ -227,7 +254,7 @@
       font-family: var(--font-serif);
       font-size: 1.5rem;
       font-weight: 400;
-      color: var(--sage-900);
+      color: var(--brand-900);
       border-bottom: 1px solid var(--line-soft);
     }
     .drawer a.drawer-link::after {
@@ -243,7 +270,7 @@
     .drawer-call {
       display: flex; align-items: center; justify-content: center; gap: 10px;
       padding: 16px;
-      background: var(--sage-900); color: var(--ivory);
+      background: var(--brand-900); color: var(--ivory);
       border-radius: 12px;
       font-weight: 500; font-size: 0.95rem;
     }
@@ -251,7 +278,7 @@
       text-align: center;
       font-size: 0.82rem; color: var(--ink-mid);
     }
-    .drawer-emergency a { color: var(--terracotta); font-weight: 600; }
+    .drawer-emergency a { color: var(--accent); font-weight: 600; }
 
     /* ── Hero ── */
     .hero {
@@ -273,25 +300,25 @@
       font-size: 0.72rem; font-weight: 500;
       letter-spacing: 0.2em;
       text-transform: uppercase;
-      color: var(--sage-700);
+      color: var(--brand-700);
     }
     .hero-eyebrow::before {
-      content: ''; width: 24px; height: 1px; background: var(--sage-400);
+      content: ''; width: 24px; height: 1px; background: var(--brand-400);
     }
     .hero h1 {
-      font-family: var(--font-serif);
-      font-weight: 300;
+      font-family: var(--font-display);
+      font-weight: 400;
       font-size: clamp(2.6rem, 11vw, 4.8rem);
       line-height: 1.02;
       letter-spacing: -0.02em;
-      color: var(--sage-900);
+      color: var(--brand-900);
       margin: 18px 0 20px;
-      font-variation-settings: "opsz" 144;
     }
     .hero h1 em {
+      font-family: var(--font-serif);
       font-style: italic;
       font-weight: 400;
-      color: var(--sage-700);
+      color: var(--brand-700);
     }
     .hero-desc {
       font-size: 1.02rem;
@@ -315,14 +342,14 @@
     }
     .btn svg { width: 16px; height: 16px; }
     .btn-primary {
-      background: var(--sage-900); color: var(--ivory);
+      background: var(--brand-900); color: var(--ivory);
     }
-    .btn-primary:hover { background: var(--sage-800); transform: translateY(-2px); box-shadow: var(--shadow-sm); }
+    .btn-primary:hover { background: var(--brand-800); transform: translateY(-2px); box-shadow: var(--shadow-sm); }
     .btn-ghost {
-      background: transparent; color: var(--sage-900);
-      border-color: var(--sage-400);
+      background: transparent; color: var(--brand-900);
+      border-color: var(--brand-400);
     }
-    .btn-ghost:hover { background: var(--sage-50); border-color: var(--sage-600); }
+    .btn-ghost:hover { background: var(--brand-50); border-color: var(--brand-600); }
 
     /* Hero visual */
     .hero-media {
@@ -360,7 +387,7 @@
       100% { box-shadow: 0 0 0 0 rgba(82,167,124,0); }
     }
     .hero-badge-text { font-size: 0.82rem; color: var(--ink); line-height: 1.4; }
-    .hero-badge-text strong { display: block; font-weight: 600; color: var(--sage-900); }
+    .hero-badge-text strong { display: block; font-weight: 600; color: var(--brand-900); }
     .hero-badge-text span { color: var(--ink-mid); }
 
     /* Trust strip */
@@ -374,7 +401,8 @@
       margin: 0 auto;
       padding: 22px 20px;
       display: flex;
-      gap: 28px;
+      flex-wrap: wrap;
+      gap: 14px 28px;
       overflow-x: auto;
       scrollbar-width: none;
     }
@@ -387,7 +415,7 @@
       letter-spacing: 0.02em;
       white-space: nowrap;
     }
-    .trust-item svg { width: 16px; height: 16px; color: var(--sage-700); flex: 0 0 auto; }
+    .trust-item svg { width: 16px; height: 16px; color: var(--brand-700); flex: 0 0 auto; }
 
     /* ── Section base ── */
     section { scroll-margin-top: calc(var(--nav-h) + 12px); }
@@ -396,6 +424,10 @@
     }
     .comfort { padding: var(--spacing-section) 20px; }
     .cta { padding: var(--spacing-section) 20px calc(var(--spacing-section) + 20px); }
+    .wrap {
+      max-width: 1240px;
+      margin: 0 auto;
+    }
     .wrap-narrow {
       max-width: 760px;
       margin: 0 auto;
@@ -404,26 +436,25 @@
       display: inline-flex; align-items: center; gap: 8px;
       font-size: 0.65rem; font-weight: 600;
       letter-spacing: 0.14em; text-transform: uppercase;
-      color: var(--sage-600);
+      color: var(--brand-600);
       margin-bottom: 12px;
     }
     .section-label::before {
       content: '+';
       font-family: var(--font-sans);
-      color: var(--sage-400);
+      color: var(--brand-400);
       font-size: 0.8rem;
     }
     .section-title {
-      font-family: var(--font-serif);
-      font-weight: 300;
+      font-family: var(--font-display);
+      font-weight: 400;
       font-size: clamp(2rem, 6vw, 3rem);
       line-height: 1.08;
       letter-spacing: -0.02em;
-      color: var(--sage-900);
+      color: var(--brand-900);
       margin: 14px 0 20px;
-      font-variation-settings: "opsz" 144;
     }
-    .section-title em { font-style: italic; font-weight: 400; color: var(--sage-700); }
+    .section-title em { font-family: var(--font-serif); font-style: italic; font-weight: 400; color: var(--brand-700); }
     .section-body {
       font-size: 1.02rem;
       color: var(--ink-mid);
@@ -445,15 +476,15 @@
       width: 42px; height: 42px;
       display: grid; place-items: center;
       border-radius: 12px;
-      background: var(--sage-50);
-      color: var(--sage-600);
+      background: var(--brand-50);
+      color: var(--brand-600);
     }
     .about-point-ico svg { width: 20px; height: 20px; }
     .about-point-title {
       font-family: var(--font-serif);
-      font-size: 1.18rem;
+      font-size: 1.15rem;
       font-weight: 400;
-      color: var(--sage-900);
+      color: var(--brand-900);
       margin-bottom: 4px;
     }
     .about-point-desc {
@@ -485,10 +516,10 @@
     .about-quote-text {
       font-family: var(--font-serif);
       font-style: italic;
-      font-weight: 300;
+      font-weight: 400;
       font-size: 1.3rem;
       line-height: 1.45;
-      color: var(--sage-900);
+      color: var(--brand-900);
       letter-spacing: -0.01em;
     }
     .about-quote-by {
@@ -509,83 +540,87 @@
       font-weight: 600;
       letter-spacing: 0.12em;
       text-transform: uppercase;
-      color: var(--sage-600);
+      color: var(--brand-600);
       margin-bottom: 20px;
       display: flex; align-items: center; gap: 12px;
     }
     .group-title::after { content: ''; flex: 1; height: 1px; background: var(--line-soft); }
 
-    .group-grid-2, .group-grid-4 {
-      display: grid; gap: 14px;
+    /* Editorial row list — no card boxes; same grammar as the About list */
+    .service-list {
+      list-style: none;
+      display: grid;
       grid-template-columns: 1fr;
+      column-gap: 48px;
+      border-top: 1px solid var(--line-soft);
     }
-
-    @media (min-width: 640px) {
-      .group-grid-2 { grid-template-columns: 1fr 1fr; }
-      .group-grid-4 { grid-template-columns: 1fr 1fr; }
+    @media (min-width: 720px) {
+      .service-list.cols-2 { grid-template-columns: 1fr 1fr; }
     }
-
-    @media (min-width: 960px) {
-      .group-grid-4 { grid-template-columns: repeat(4, 1fr); }
+    .service-row {
+      display: grid;
+      grid-template-columns: 44px 1fr;
+      gap: 18px;
+      align-items: start;
+      padding: 20px 14px;
+      border-bottom: 1px solid var(--line-soft);
+      transition: background-color .25s var(--ease);
     }
-
-    .service {
-      background: var(--paper);
-      border-radius: var(--radius);
-      padding: 26px 22px;
-      border: 1px solid var(--line-soft);
-      transition: transform .3s var(--ease), box-shadow .3s var(--ease), border-color .3s var(--ease);
-      display: flex; flex-direction: column;
-    }
-    .service:hover {
-      transform: translateY(-3px);
-      box-shadow: var(--shadow-sm);
-      border-color: var(--sage-200);
-    }
+    .service-row:hover { background: var(--brand-50); }
     .service-ico {
       width: 44px; height: 44px;
       border-radius: 12px;
-      background: var(--sage-50);
-      color: var(--sage-700);
+      background: var(--brand-50);
+      color: var(--brand-700);
       display: grid; place-items: center;
-      margin-bottom: 16px;
       flex: 0 0 auto;
+      transition: background-color .25s var(--ease);
     }
     .service-ico svg { width: 22px; height: 22px; }
-    .service h3 {
+    .service-row:hover .service-ico { background: var(--ivory); }
+    .service-row h4 {
       font-family: var(--font-serif);
       font-weight: 400;
       font-size: 1.15rem;
-      color: var(--sage-900);
-      margin-bottom: 6px;
+      color: var(--brand-900);
+      margin-bottom: 4px;
       letter-spacing: -0.01em;
-      line-height: 1.2;
+      line-height: 1.25;
     }
-    .service p {
-      font-size: 0.9rem;
+    .service-row p {
+      font-size: 0.92rem;
       color: var(--ink-mid);
       line-height: 1.6;
-      display: -webkit-box;
-      -webkit-line-clamp: 3;
-      -webkit-box-orient: vertical;
-      overflow: hidden;
     }
 
+    /* Urgent care — a single emphasized callout, not a repeated card */
     .service-emergency {
-      flex-direction: row;
+      display: grid;
+      grid-template-columns: 44px 1fr;
+      gap: 18px;
       align-items: center;
-      gap: 24px;
-      background: var(--sage-50);
-      border-color: var(--terracotta-soft);
+      padding: 22px;
+      background: var(--brand-50);
+      border: 1px solid var(--accent-soft);
+      border-radius: var(--radius);
     }
-    .service-emergency h3 { line-clamp: none; -webkit-line-clamp: none; }
-    .service-emergency p { line-clamp: none; -webkit-line-clamp: none; }
     .service-emergency .service-ico {
-      margin-bottom: 0;
-      background: var(--terracotta-soft);
-      color: var(--terracotta);
+      background: var(--accent-soft);
+      color: var(--accent);
     }
-    .service-emergency h3 { color: var(--sage-900); }
+    .service-emergency h4 {
+      font-family: var(--font-serif);
+      font-weight: 400;
+      font-size: 1.15rem;
+      color: var(--brand-900);
+      margin-bottom: 4px;
+      letter-spacing: -0.01em;
+    }
+    .service-emergency p {
+      font-size: 0.92rem;
+      color: var(--ink-mid);
+      line-height: 1.6;
+    }
 
     /* ── Doctors ── */
     .doctors { background: var(--cream); }
@@ -609,7 +644,7 @@
     .doctor:hover { transform: translateY(-2px); box-shadow: var(--shadow-sm); }
     .doctor-portrait {
       aspect-ratio: 4 / 3;
-      background: var(--sage-50);
+      background: var(--brand-50);
       position: relative;
       overflow: hidden;
       flex-shrink: 0;
@@ -625,14 +660,14 @@
       font-weight: 500;
       text-transform: uppercase;
       letter-spacing: 0.18em;
-      color: var(--sage-600);
+      color: var(--brand-600);
       margin-bottom: 6px;
     }
     .doctor-name {
       font-family: var(--font-serif);
       font-size: 1.7rem;
-      font-weight: 300;
-      color: var(--sage-900);
+      font-weight: 400;
+      color: var(--brand-900);
       letter-spacing: -0.02em;
       margin-bottom: 14px;
       line-height: 1.1;
@@ -644,12 +679,12 @@
     }
 
     /* ── Hours & Contact ── */
-    .contact { background: var(--sage-900); color: var(--ivory); }
-    .contact .section-label { color: var(--sage-400); }
-    .contact .section-label::before { background: var(--sage-600); }
+    .contact { background: var(--brand-900); color: var(--ivory); }
+    .contact .section-label { color: var(--brand-400); }
+    .contact .section-label::before { background: var(--brand-600); }
     .contact .section-title { color: var(--ivory); }
-    .contact .section-title em { color: var(--terracotta-soft); }
-    .contact .section-body { color: rgba(255,253,248,0.72); }
+    .contact .section-title em { color: var(--accent-soft); }
+    .contact .section-body { color: rgba(255,253,248,0.72); letter-spacing: 0.01em; }
 
     .contact-grid {
       display: grid; gap: 36px;
@@ -678,8 +713,8 @@
       transform: translateX(2px);
     }
     .hours-day { color: rgba(255,253,248,0.7); }
-    .hours-time { color: var(--ivory); font-weight: 500; text-align: right; }
-    .hours-time.closed { color: rgba(255,253,248,0.35); font-weight: 400; }
+    .hours-time { color: var(--ivory); font-weight: 500; text-align: right; font-variant-numeric: tabular-nums; }
+    .hours-time.closed { color: rgba(255,253,248,0.5); font-weight: 400; }
     .hours-note { display: block; font-size: 0.74rem; color: rgba(255,253,248,0.45); font-style: italic; margin-top: 2px; }
     .hours-today {
       position: relative;
@@ -689,7 +724,7 @@
       position: absolute;
       left: 12px; top: 50%; transform: translateY(-50%);
       font-size: 0.6rem; letter-spacing: 0.2em;
-      color: var(--terracotta-soft);
+      color: var(--accent-soft);
       font-weight: 600;
       display: none;
     }
@@ -708,7 +743,7 @@
       background: rgba(255,253,248,0.08);
       border: 1px solid rgba(255,253,248,0.12);
       display: grid; place-items: center;
-      color: var(--sage-400);
+      color: var(--brand-400);
     }
     .contact-item-ico svg { width: 16px; height: 16px; }
     .contact-item-label {
@@ -725,15 +760,15 @@
     .emergency {
       margin-top: 28px;
       padding: 20px 22px;
-      background: rgba(201,123,94,0.14);
-      border: 1px solid rgba(201,123,94,0.3);
+      background: rgba(255,253,248,0.06);
+      border: 1px solid rgba(220,225,232,0.28);
       border-radius: var(--radius);
     }
     .emergency-label {
       font-size: 0.7rem;
       letter-spacing: 0.18em;
       text-transform: uppercase;
-      color: var(--terracotta-soft);
+      color: var(--accent-soft);
       font-weight: 600;
       margin-bottom: 6px;
     }
@@ -760,7 +795,7 @@
     .map-visual {
       aspect-ratio: 16 / 9;
       position: relative;
-      background: #2A3E34;
+      background: var(--brand-800);
     }
     .map-visual iframe {
       position: absolute;
@@ -768,11 +803,11 @@
       width: 100%; height: 100%;
       border: 0;
       pointer-events: none; /* Let the parent <a> tag handle the click */
-      filter: grayscale(80%) sepia(20%) hue-rotate(40deg) contrast(1.1) brightness(0.85);
+      filter: grayscale(55%) contrast(1.05) brightness(0.9);
       transition: filter 0.3s var(--ease), transform 0.3s var(--ease);
     }
     .map-card:hover .map-visual iframe {
-      filter: grayscale(40%) sepia(10%) hue-rotate(20deg) contrast(1) brightness(0.95);
+      filter: grayscale(20%) contrast(1) brightness(0.97);
       transform: scale(1.02);
     }
     .map-cta {
@@ -783,7 +818,7 @@
     }
     .map-cta-addr { color: rgba(255,253,248,0.8); }
     .map-cta a {
-      color: var(--terracotta-soft);
+      color: var(--accent-soft);
       font-weight: 600;
       display: inline-flex; align-items: center; gap: 6px;
       white-space: nowrap;
@@ -792,34 +827,30 @@
     /* ── Comfort strip ── */
     .comfort { background: var(--paper); }
     .comfort-grid {
-      display: grid; gap: 10px;
-      grid-template-columns: repeat(2, 1fr);
-      margin-top: 40px;
+      display: grid; gap: 28px 40px;
+      grid-template-columns: 1fr;
+      margin-top: 44px;
     }
+    @media (min-width: 600px) { .comfort-grid { grid-template-columns: repeat(3, 1fr); } }
     .comfort-item {
-      background: var(--ivory);
-      border: 1px solid var(--line-soft);
-      border-radius: var(--radius);
-      padding: 24px 20px;
-      text-align: left;
-      transition: transform .3s var(--ease), border-color .3s var(--ease);
+      padding-top: 20px;
+      border-top: 1px solid var(--line);
     }
-    .comfort-item:hover { transform: translateY(-2px); border-color: var(--sage-200); }
     .comfort-ico {
       width: 36px; height: 36px;
       display: grid; place-items: center;
-      color: var(--sage-700);
+      color: var(--brand-700);
       margin-bottom: 14px;
     }
     .comfort-ico svg { width: 22px; height: 22px; }
     .comfort-title {
       font-family: var(--font-serif);
-      font-size: 1rem;
-      color: var(--sage-900);
+      font-size: 1.05rem;
+      color: var(--brand-900);
       margin-bottom: 4px;
-      font-weight: 500;
+      font-weight: 400;
     }
-    .comfort-desc { font-size: 0.82rem; color: var(--ink-mid); line-height: 1.5; }
+    .comfort-desc { font-size: 0.88rem; color: var(--ink-mid); line-height: 1.55; }
 
     /* ── Final CTA ── */
     .cta {
@@ -830,22 +861,21 @@
     }
     .cta-ornament {
       font-family: var(--font-serif);
-      color: var(--sage-400);
+      color: var(--brand-400);
       font-size: 2rem;
       font-style: italic;
       opacity: 0.6;
     }
     .cta h2 {
-      font-family: var(--font-serif);
-      font-weight: 300;
+      font-family: var(--font-display);
+      font-weight: 400;
       font-size: clamp(2rem, 7vw, 3.4rem);
       line-height: 1.05;
       letter-spacing: -0.02em;
-      color: var(--sage-900);
+      color: var(--brand-900);
       margin: 18px 0 18px;
-      font-variation-settings: "opsz" 144;
     }
-    .cta h2 em { font-style: italic; font-weight: 400; color: var(--terracotta); }
+    .cta h2 em { font-family: var(--font-serif); font-style: italic; font-weight: 400; color: var(--accent); }
     .cta p {
       font-size: 1rem;
       color: var(--ink-mid);
@@ -862,11 +892,11 @@
       font-size: 0.82rem;
       color: var(--ink-soft);
     }
-    .cta-sub strong { color: var(--sage-900); font-weight: 600; }
+    .cta-sub strong { color: var(--brand-900); font-weight: 600; }
 
     /* ── Footer ── */
     .footer {
-      background: var(--sage-900);
+      background: var(--brand-900);
       color: rgba(255,253,248,0.6);
       padding: 52px 20px 28px;
     }
@@ -881,13 +911,13 @@
       font-family: var(--font-serif);
       font-size: 1.4rem;
       color: var(--ivory);
-      font-weight: 300;
+      font-weight: 400;
     }
     .footer-brand-sub {
       font-size: 0.7rem;
       letter-spacing: 0.18em;
       text-transform: uppercase;
-      color: var(--sage-400);
+      color: var(--brand-400);
       margin-top: 4px;
       margin-bottom: 14px;
     }
@@ -917,7 +947,7 @@
       display: flex; flex-direction: column; gap: 8px;
       padding-top: 24px;
       font-size: 0.8rem;
-      color: rgba(255,253,248,0.45);
+      color: rgba(255,253,248,0.6);
     }
 
     /* ── Mobile sticky call bar ── */
@@ -942,10 +972,10 @@
       border-radius: 12px;
       font-size: 0.88rem; font-weight: 500;
     }
-    .mobile-bar .mb-call { background: var(--sage-900); color: var(--ivory); }
+    .mobile-bar .mb-call { background: var(--brand-900); color: var(--ivory); }
     .mobile-bar .mb-emerg {
-      background: var(--terracotta-soft); color: var(--sage-900);
-      border: 1px solid rgba(201,123,94,0.3);
+      background: var(--accent-soft); color: var(--brand-900);
+      border: 1px solid var(--brand-200);
     }
     .mobile-bar a svg { width: 14px; height: 14px; }
 
@@ -970,9 +1000,7 @@
         align-items: center;
       }
 
-      .services-grid { grid-template-columns: 1fr 1fr; gap: 16px; }
       .doctors-grid { grid-template-columns: 1fr 1fr; gap: 24px; }
-      .comfort-grid { grid-template-columns: repeat(4, 1fr); }
       .footer-grid { grid-template-columns: 2fr 1fr 1fr; gap: 48px; }
       .footer-bottom { flex-direction: row; justify-content: space-between; align-items: center; }
 
@@ -987,7 +1015,6 @@
       .hero { padding-top: calc(var(--nav-h) + 56px); padding-bottom: 80px; }
       .hero-inner { gap: 72px; }
 
-      .services-grid { grid-template-columns: repeat(3, 1fr); }
       .contact-grid { grid-template-columns: 1.1fr 1fr 1fr; gap: 44px; }
     }
 
@@ -1041,11 +1068,11 @@
       padding-right: clamp(24px, 8vw, 220px);
       gap: 24px;
     }
-    body[data-hero-layout="fullbleed"] .hero-copy { max-width: clamp(480px, 42vw, 780px); }
+    body[data-hero-layout="fullbleed"] .hero-copy { max-width: min(780px, 100%); }
     body[data-hero-layout="fullbleed"] .hero-eyebrow { color: rgba(255,255,255,0.85); }
     body[data-hero-layout="fullbleed"] .hero-eyebrow::before { background: rgba(255,255,255,0.5); }
     body[data-hero-layout="fullbleed"] .hero h1 { color: #fff; }
-    body[data-hero-layout="fullbleed"] .hero h1 em { color: var(--terracotta-soft, #DCE1E8); }
+    body[data-hero-layout="fullbleed"] .hero h1 em { color: var(--accent-soft, #D6E3E4); }
     body[data-hero-layout="fullbleed"] .hero-desc { color: rgba(255,255,255,0.88); max-width: 60ch; }
     body[data-hero-layout="fullbleed"] .btn-ghost { color: #fff; border-color: rgba(255,255,255,0.55); }
     body[data-hero-layout="fullbleed"] .btn-ghost:hover { background: rgba(255,255,255,0.1); border-color: #fff; }
@@ -1100,11 +1127,52 @@
 
     /* ── Reduced motion ── */
     @media (prefers-reduced-motion: reduce) {
+      html { scroll-behavior: auto; }
       .reveal { opacity: 1; transform: none; transition: none; }
       *, *::before, *::after { transition-duration: 0.01ms !important; animation-duration: 0.01ms !important; animation-iteration-count: 1 !important; }
       .hero-badge-dot { animation: none; }
     }
   </style>
+
+  <script type="application/ld+json">
+  {
+    "@context": "https://schema.org",
+    "@type": "Dentist",
+    "name": "Family Dentists, PLLC",
+    "description": "Gentle, modern family dentistry in Port Huron, Michigan — exams, cleanings, restorative and cosmetic care, and same-day emergencies.",
+    "url": "https://porthuronfamilydentists.com",
+    "image": "https://porthuronfamilydentists.com/assets/hero-1-1920.jpg",
+    "logo": "https://porthuronfamilydentists.com/assets/hero-1-1280.jpg",
+    "telephone": "+1-810-987-8310",
+    "faxNumber": "+1-810-987-2692",
+    "priceRange": "$$",
+    "currenciesAccepted": "USD",
+    "address": {
+      "@type": "PostalAddress",
+      "streetAddress": "1936 Holland Avenue",
+      "addressLocality": "Port Huron",
+      "addressRegion": "MI",
+      "postalCode": "48060",
+      "addressCountry": "US"
+    },
+    "geo": {
+      "@type": "GeoCoordinates",
+      "latitude": 42.991754,
+      "longitude": -82.441066
+    },
+    "hasMap": "https://maps.google.com/?q=1936+Holland+Avenue,+Port+Huron,+Michigan+48060",
+    "areaServed": "Port Huron and the Blue Water Area, Michigan",
+    "founder": [
+      { "@type": "Person", "name": "Dr. Jeremy Parrott" },
+      { "@type": "Person", "name": "Dr. Julie Anne Hengehold" }
+    ],
+    "openingHoursSpecification": [
+      { "@type": "OpeningHoursSpecification", "dayOfWeek": "Monday", "opens": "11:00", "closes": "19:00" },
+      { "@type": "OpeningHoursSpecification", "dayOfWeek": ["Tuesday", "Wednesday"], "opens": "08:30", "closes": "17:00" },
+      { "@type": "OpeningHoursSpecification", "dayOfWeek": "Thursday", "opens": "08:30", "closes": "16:00" }
+    ]
+  }
+  </script>
 </head>
 <body data-hero-layout="fullbleed" data-hero-text="left">
 
@@ -1160,7 +1228,11 @@
   <!-- ── Hero ── -->
   <header class="hero" id="home" role="banner">
     <div class="hero-bg" aria-hidden="true">
-      <img src="assets/hero-1.png" alt="Friendly dental staff in a modern, sunlit office" loading="eager" decoding="async" id="heroBgImg" />
+      <picture>
+        <source type="image/avif" srcset="assets/hero-1-1280.avif 1280w, assets/hero-1-1920.avif 1920w, assets/hero-1-2560.avif 2560w" sizes="100vw" />
+        <source type="image/webp" srcset="assets/hero-1-1280.webp 1280w, assets/hero-1-1920.webp 1920w, assets/hero-1-2560.webp 2560w" sizes="100vw" />
+        <img src="assets/hero-1-1920.jpg" srcset="assets/hero-1-1280.jpg 1280w, assets/hero-1-1920.jpg 1920w, assets/hero-1-2560.jpg 2560w" sizes="100vw" width="3840" height="2160" alt="" loading="eager" decoding="async" fetchpriority="high" id="heroBgImg" />
+      </picture>
       <canvas id="ambientCanvas" class="ambient-canvas"></canvas>
     </div>
     <div class="hero-inner">
@@ -1193,7 +1265,11 @@
       </div>
 
       <figure class="hero-media reveal d2">
-        <img src="assets/hero-1.png" alt="Warm, smiling staff member" loading="eager" decoding="async" />
+        <picture>
+          <source type="image/avif" srcset="assets/hero-1-1280.avif" />
+          <source type="image/webp" srcset="assets/hero-1-1280.webp" />
+          <img src="assets/hero-1-1280.jpg" width="3840" height="2160" alt="Dr. Parrott, Dr. Hengehold, and team welcoming patients in the Port Huron office" loading="lazy" decoding="async" />
+        </picture>
         <figcaption class="hero-badge">
           <span class="hero-badge-dot" aria-hidden="true"></span>
           <span class="hero-badge-text">
@@ -1273,7 +1349,11 @@
 
         <aside aria-label="Practice atmosphere">
           <div class="about-image">
-            <img src="assets/team-sign.jpg" alt="Dr. Parrott, Dr. Hengehold, and the Family Dentists PLLC team smiling together" loading="lazy" />
+            <picture>
+              <source type="image/avif" srcset="assets/team-sign-768.avif 768w, assets/team-sign-1160.avif 1160w" sizes="(min-width: 720px) 580px, 100vw" />
+              <source type="image/webp" srcset="assets/team-sign-768.webp 768w, assets/team-sign-1160.webp 1160w" sizes="(min-width: 720px) 580px, 100vw" />
+              <img src="assets/team-sign-1160.jpg" srcset="assets/team-sign-768.jpg 768w, assets/team-sign-1160.jpg 1160w" sizes="(min-width: 720px) 580px, 100vw" width="2822" height="2117" alt="Dr. Parrott, Dr. Hengehold, and the Family Dentists PLLC team smiling together" loading="lazy" decoding="async" />
+            </picture>
           </div>
           <div class="about-quote">
             <p class="about-quote-text">"We want every patient to feel like family; the best dental care starts with trust."</p>
@@ -1288,6 +1368,7 @@
   <section class="section services" id="services" aria-labelledby="services-title">
     <div class="wrap">
       <div class="services-header">
+        <span class="section-label">What we offer</span>
         <h2 class="section-title" id="services-title">Thoughtful care, from <em>routine</em> to <em>restorative.</em></h2>
         <p class="section-body">
           Whether it's a check-up for your child or a smile you've been thinking
@@ -1300,89 +1381,105 @@
         <!-- Essentials -->
         <div class="services-group">
           <h3 class="group-title">The Essentials</h3>
-          <div class="group-grid-2">
-            <article class="service reveal">
+          <ul class="service-list cols-2">
+            <li class="service-row reveal">
               <div class="service-ico" aria-hidden="true">
                 <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round"><circle cx="11" cy="11" r="7"/><path d="m21 21-4.3-4.3"/></svg>
               </div>
-              <h3>Exams &amp; cleanings</h3>
-              <p>Comprehensive check-ups with low-radiation digital X-rays and gentle hygiene visits.</p>
-            </article>
-            <article class="service reveal d1">
+              <div>
+                <h4>Exams &amp; cleanings</h4>
+                <p>Comprehensive check-ups with low-radiation digital X-rays and gentle hygiene visits.</p>
+              </div>
+            </li>
+            <li class="service-row reveal d1">
               <div class="service-ico" aria-hidden="true">
                 <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round"><rect x="3" y="4" width="18" height="16" rx="2"/><path d="M3 10h18M9 4v16"/></svg>
               </div>
-              <h3>Digital diagnostics</h3>
-              <p>Low-radiation digital X-rays and intraoral imaging for early, precise treatment planning.</p>
-            </article>
-          </div>
+              <div>
+                <h4>Digital diagnostics</h4>
+                <p>Low-radiation digital X-rays and intraoral imaging for early, precise treatment planning.</p>
+              </div>
+            </li>
+          </ul>
         </div>
 
         <!-- Restorative -->
         <div class="services-group">
           <h3 class="group-title">Restorative Care</h3>
-          <div class="group-grid-4">
-            <article class="service reveal">
+          <ul class="service-list cols-2">
+            <li class="service-row reveal">
               <div class="service-ico" aria-hidden="true">
                 <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round"><path d="M12 3c-3 0-6 1-6 4.5 0 2 .6 3.4 1 5 .4 1.6.4 3 .7 5 .2 1.2.6 3 1.7 3 1.2 0 1.3-2 1.6-3.5.2-1.1.4-2 1-2s.8.9 1 2c.3 1.5.4 3.5 1.6 3.5 1.1 0 1.5-1.8 1.7-3 .3-2 .3-3.4.7-5 .4-1.6 1-3 1-5C18 4 15 3 12 3z"/></svg>
               </div>
-              <h3>Composite fillings</h3>
-              <p>Tooth-colored fillings that blend naturally, with no metal or compromise on strength.</p>
-            </article>
-            <article class="service reveal d1">
+              <div>
+                <h4>Composite fillings</h4>
+                <p>Tooth-colored fillings that blend naturally, with no metal or compromise on strength.</p>
+              </div>
+            </li>
+            <li class="service-row reveal d1">
               <div class="service-ico" aria-hidden="true">
                 <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round"><path d="M6 10V7a6 6 0 1 1 12 0v3"/><rect x="4" y="10" width="16" height="11" rx="2"/></svg>
               </div>
-              <h3>Crowns &amp; bridges</h3>
-              <p>Natural-looking restorations that bring back strength, shape, and confidence.</p>
-            </article>
-            <article class="service reveal d2">
+              <div>
+                <h4>Crowns &amp; bridges</h4>
+                <p>Natural-looking restorations that bring back strength, shape, and confidence.</p>
+              </div>
+            </li>
+            <li class="service-row reveal d2">
               <div class="service-ico" aria-hidden="true">
                 <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round"><path d="M12 2v20M5 12h14"/><circle cx="12" cy="12" r="9"/></svg>
               </div>
-              <h3>Implant restoration</h3>
-              <p>Lifelike implant crowns and bridges: permanent solutions that feel like your own teeth.</p>
-            </article>
-            <article class="service reveal d3">
+              <div>
+                <h4>Implant restoration</h4>
+                <p>Lifelike implant crowns and bridges: permanent solutions that feel like your own teeth.</p>
+              </div>
+            </li>
+            <li class="service-row reveal d3">
               <div class="service-ico" aria-hidden="true">
                 <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round"><path d="M6 3v18M18 3v18M3 8h18M3 16h18"/></svg>
               </div>
-              <h3>Extractions</h3>
-              <p>Gentle, precise extractions when they're truly needed, with a calm plan for aftercare.</p>
-            </article>
-          </div>
+              <div>
+                <h4>Extractions</h4>
+                <p>Gentle, precise extractions when they're truly needed, with a calm plan for aftercare.</p>
+              </div>
+            </li>
+          </ul>
         </div>
 
         <!-- Aesthetic -->
         <div class="services-group">
           <h3 class="group-title">Cosmetic Care</h3>
-          <div class="group-grid-2">
-            <article class="service reveal">
+          <ul class="service-list cols-2">
+            <li class="service-row reveal">
               <div class="service-ico" aria-hidden="true">
                 <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round"><path d="M12 3v2M12 19v2M5 12H3M21 12h-2M17.7 6.3l-1.4 1.4M7.7 16.3l-1.4 1.4M17.7 17.7l-1.4-1.4M7.7 7.7 6.3 6.3"/><circle cx="12" cy="12" r="4"/></svg>
               </div>
-              <h3>Teeth whitening</h3>
-              <p>Professional KöR whitening for dramatic, even results with the care your enamel deserves.</p>
-            </article>
-            <article class="service reveal d1">
+              <div>
+                <h4>Teeth whitening</h4>
+                <p>Professional KöR whitening for dramatic, even results with the care your enamel deserves.</p>
+              </div>
+            </li>
+            <li class="service-row reveal d1">
               <div class="service-ico" aria-hidden="true">
                 <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round"><path d="m12 2 3 7 7 .7-5.4 4.8L18 22l-6-4-6 4 1.4-7.5L2 9.7l7-.7z"/></svg>
               </div>
-              <h3>Porcelain veneers</h3>
-              <p>Hand-matched veneers to refine chips, staining, and gaps into a smile that still feels like yours.</p>
-            </article>
-          </div>
+              <div>
+                <h4>Porcelain veneers</h4>
+                <p>Hand-matched veneers to refine chips, staining, and gaps into a smile that still feels like yours.</p>
+              </div>
+            </li>
+          </ul>
         </div>
 
         <!-- Emergency -->
         <div class="services-group">
           <h3 class="group-title">Urgent Care</h3>
-          <article class="service reveal service-emergency">
+          <article class="service-emergency reveal">
             <div class="service-ico" aria-hidden="true">
               <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round"><path d="M12 9v4M12 17h.01"/><path d="M10.3 3.86 1.82 18a2 2 0 0 0 1.71 3h16.94a2 2 0 0 0 1.71-3L13.71 3.86a2 2 0 0 0-3.42 0z"/></svg>
             </div>
             <div>
-              <h3>Emergency care</h3>
+              <h4>Emergency care</h4>
               <p>Dental emergencies can't wait. Call our emergency line and we'll take care of you.</p>
             </div>
           </article>
@@ -1437,7 +1534,8 @@
 
   <!-- ── Comfort ── -->
   <section class="comfort" aria-labelledby="comfort-title">
-    <div class="wrap-narrow" style="text-align: left;">
+    <div class="wrap">
+      <span class="section-label">Your comfort</span>
       <h2 class="section-title" id="comfort-title">Small touches that make a <em>real difference.</em></h2>
       <p class="section-body">
         We've designed the little things that add up to a calmer, kinder
@@ -1545,7 +1643,7 @@
           <div class="map-card">
             <a href="https://maps.google.com/?q=1936+Holland+Avenue,+Port+Huron,+Michigan+48060" target="_blank" rel="noopener noreferrer" aria-label="Open location in Google Maps" style="display:block; overflow: hidden;">
               <div class="map-visual" aria-hidden="true">
-                <iframe src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d2925.337032731872!2d-82.44106592398462!3d42.99175407114138!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x88259b3628e3b0bf%3A0xc3f8e5f7b8c7e9a8!2s1936%20Holland%20Ave%2C%20Port%20Huron%2C%20MI%2048060!5e0!3m2!1sen!2sus!4v1718281358043!5m2!1sen!2sus" loading="lazy" referrerpolicy="no-referrer-when-downgrade"></iframe>
+                <iframe src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d2925.337032731872!2d-82.44106592398462!3d42.99175407114138!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x88259b3628e3b0bf%3A0xc3f8e5f7b8c7e9a8!2s1936%20Holland%20Ave%2C%20Port%20Huron%2C%20MI%2048060!5e0!3m2!1sen!2sus!4v1718281358043!5m2!1sen!2sus" title="Map showing Family Dentists, PLLC at 1936 Holland Avenue, Port Huron, MI" tabindex="-1" loading="lazy" referrerpolicy="no-referrer-when-downgrade"></iframe>
               </div>
             </a>
             <div class="map-cta">
@@ -1653,6 +1751,7 @@
     const heroBgImg = document.getElementById('heroBgImg');
     let lastY = 0;
     let parallaxTicking = false;
+    const reduceMotion = window.matchMedia('(prefers-reduced-motion: reduce)');
     const onScroll = () => {
       const y = window.scrollY;
       nav.classList.toggle('scrolled', y > 12);
@@ -1660,7 +1759,7 @@
       if (y > 400) mobileBar.classList.add('show');
       else mobileBar.classList.remove('show');
       // Parallax — only when full-bleed hero is active
-      if (!parallaxTicking && document.body.getAttribute('data-hero-layout') === 'fullbleed') {
+      if (!parallaxTicking && !reduceMotion.matches && document.body.getAttribute('data-hero-layout') === 'fullbleed') {
         parallaxTicking = true;
         requestAnimationFrame(() => {
           if (heroBgImg) heroBgImg.style.setProperty('--parallax', (y * 0.35) + 'px');
@@ -1750,9 +1849,9 @@
 
       // Organic, slow-moving warm light blobs
       const orbs = [
-        { x: 0.2, y: 0.3, r: 0.7, vx: 0.00015, vy: 0.0002, color: 'rgba(201, 123, 94, 0.45)' }, // Terracotta
-        { x: 0.8, y: 0.6, r: 0.6, vx: -0.0002, vy: -0.0001, color: 'rgba(251, 249, 244, 0.35)' }, // Warm paper
-        { x: 0.4, y: 0.7, r: 0.8, vx: 0.0001, vy: -0.00015, color: 'rgba(201, 123, 94, 0.25)' }
+        { x: 0.2, y: 0.3, r: 0.7, vx: 0.00015, vy: 0.0002, color: 'rgba(143, 180, 186, 0.40)' }, // soft teal (brand-400)
+        { x: 0.8, y: 0.6, r: 0.6, vx: -0.0002, vy: -0.0001, color: 'rgba(232, 241, 242, 0.30)' }, // cool light (brand-50)
+        { x: 0.4, y: 0.7, r: 0.8, vx: 0.0001, vy: -0.00015, color: 'rgba(56, 112, 121, 0.22)' }  // brand-600
       ];
 
       let animationFrameId;
@@ -1806,8 +1905,8 @@
       io.observe(canvas);
     })();
 
-    console.log("%cFamily Dentists, PLLC", "color: #3B4478; font-family: serif; font-size: 20px; font-weight: bold;");
-    console.log("%cPort Huron, Michigan", "color: #5B6499; font-size: 14px;");
+    console.log("%cFamily Dentists, PLLC", "color: #2A5D66; font-family: serif; font-size: 20px; font-weight: bold;");
+    console.log("%cPort Huron, Michigan", "color: #387079; font-size: 14px;");
     console.log("%cLike what you see? We're always looking for friendly people to join our team. 🦷", "color: #1C231F; font-size: 12px;");
   </script>
 
