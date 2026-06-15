@@ -2,6 +2,33 @@
 
 All notable changes to the Family Dentists, PLLC website will be documented in this file.
 
+## [v1.4.0] - 2026-06-14
+
+### New — Live "Open now / Closed" status
+
+- **A calm status pill by the office hours, computed from the real schedule.** The hours list already flagged "TODAY" but never answered the question an anxious visitor actually has at 7pm on a Monday — *can I call right now?* The pill resolves to `Open now · until 7:00 PM`, `Closed · opens tomorrow at 11:00 AM`, or (Fridays) `Emergencies only today · call 810-689-4809`. Chosen as the single highest-value delight moment because it reinforces the one conversion (the phone call) and the "local & tangible" principle, in the brand's calm register — a *helpful surprise*, not decoration.
+- **Computed in the office's timezone, not the visitor's.** Everything derives from `America/Detroit` via `Intl.DateTimeFormat`, so an out-of-town visitor never sees a false "Open." A `HOLIDAYS` array (empty, commented) lets the practice close specific dates so the badge never reads "Open" when the office is dark; `nextOpening()` skips holidays and the Friday emergencies-only day when computing "opens …".
+- **Echoed where it matters.** A quiet live dot appears beside the desktop nav's phone number — but only when the office is actually open — and today's row in the hours list is tinted as the visual anchor for the pill above it.
+- **Resting state stays visible.** The pill has no opacity-gated entrance: an informational element must never depend on a reveal that can be skipped on a hidden tab or headless render. Motion is enhancement, never the gate.
+
+### New — Time-of-day hero warmth
+
+- **The ambient "sunlit canvas" now shifts with the office clock** — cooler and brighter at midday, warmer and lower toward evening, deep and dim at night (`data-daypart` on `<body>`). Pure atmosphere over the existing drifting light orbs; no new UI, and untouched under `prefers-reduced-motion` (the canvas is already disabled there). It deepens the "soft light, unhurried pacing" the brand sells without touching the hard-won hero legibility scrim.
+
+### New — Tap-to-call cue & discovery touches
+
+- **The phone icon gives one soft, settled lift** (translate + slight tilt, not a wiggle) on hover/focus of every Call button, signalling tap-to-call; the ghost "Explore services" arrow nudges *down* to echo the scroll it triggers.
+- **Quiet discovery:** the tooth brand-mark warms with a soft halo on hover, and the doctor portraits carry richer alt text ("…owner-dentist at Family Dentists, PLLC in Port Huron").
+
+### Design system — the status green becomes a token
+
+- **`--positive` (`#52A77C`) now owns every "available / open" signal.** The delight work briefly introduced three greens for one meaning; they are consolidated into a single token feeding the hero "welcoming patients" dot, the new Open-now pill, and the nav live dot — and all three reuse the one `pulse` keyframe (the duplicate `statusPulse` was removed). DESIGN.md's "Status-Green Exception" rule is updated to match.
+
+### Polish
+
+- **No narrow-screen overflow.** Dropped `white-space: nowrap` on the status pill so the long "Emergencies only today" string wraps cleanly; verified zero horizontal overflow at 320px and 375px.
+- All new motion honors `prefers-reduced-motion` (the two new pulse dots are in the kill-list; resting states remain visible).
+
 ## [v1.3.0] - 2026-06-14
 
 ### New — Members Plan (membership) section

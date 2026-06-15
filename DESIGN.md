@@ -14,6 +14,7 @@ colors:
   ivory: "#FCFDFC"
   accent: "#47585C"
   accent-soft: "#D6E3E4"
+  positive: "#52A77C"
   ink: "#1C231F"
   ink-mid: "#556159"
   ink-soft: "#616B65"
@@ -124,7 +125,7 @@ A single-theme **Blue Water teal + mist** palette, Restrained-leaning-Committed:
 ### Named rules
 - **The Never-Clinical Rule.** No pure white (`#FFFFFF`) backgrounds and no cold blue-grays for structure; the teal ramp itself supplies the cool, and neutrals stay just off-white.
 - **The Single-Theme Rule.** This site ships one theme. There is no dark mode; the dark teal bands (contact, footer, hero overlay) are compositional, not a theme toggle.
-- **The Status-Green Exception.** The one non-palette hue is the "Now welcoming new patients" pulse dot (`#52A77C`) — a semantic availability indicator, deliberately not a brand color.
+- **The Status-Green Exception.** The one non-palette hue is `--positive` (`#52A77C`) — a semantic availability indicator, deliberately not a brand color. It is the single source for every "available / open" signal: the "Now welcoming new patients" pulse dot, the live **Open now** status pill by the office hours, and the matching live dot on the desktop nav call button. All three share the one `pulse` keyframe.
 
 ## 3. Typography
 
