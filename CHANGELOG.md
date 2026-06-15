@@ -2,6 +2,22 @@
 
 All notable changes to the Family Dentists, PLLC website will be documented in this file.
 
+## [v1.3.0] - 2026-06-14
+
+### New — Members Plan (membership) section
+
+- **Recreated the old site's "Members Plan" as a homepage section**, placed after Services with a **Membership** link added to both the desktop nav and the mobile drawer. Chosen over a standalone subpage to fit the single-page architecture and keep the affordability message inside the conversion funnel — the "no insurance" objection is answered before the closing call, not buried one click away.
+- **On-system, not a pricing block.** Built from the existing editorial row primitives (`.service-list` / `.service-row` / `.service-ico`), not cards or a discount banner — honoring the brief's corporate-chain anti-references. Two groups: *What's included* (Adults 19 & over / Children 18 & under) and *Every plan also brings* (10% off other care / a periodic full-mouth or panoramic X-ray set). Closes with a tap-to-call. The only new CSS is `.membership-foot`.
+- **No dollar values.** The source page's per-tier prices were struck through (stale), so the section stays evergreen and routes pricing to "Ask us for the current details."
+
+### Fix — CTA ghost-button legibility
+
+- **Scoped the full-bleed white ghost-button override to the hero.** `body[data-hero-layout="fullbleed"] .btn-ghost` painted *every* ghost button white — including the closing CTA's "See hours & address", which sits on the cream band (white-on-cream, effectively invisible). Added `.hero` to the selector so the white treatment stays on the dark hero photo and the CTA button falls back to the documented dark `--brand-900` text / `--brand-400` border.
+
+### Housekeeping
+
+- Removed `IMG_6832.heic` — the source screenshot of the old Members Plan page, used to recreate the section.
+
 ## [v1.2.1] - 2026-06-13
 
 ### Polish — hero legibility & nav tap targets
