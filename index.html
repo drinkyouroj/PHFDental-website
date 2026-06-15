@@ -1150,12 +1150,90 @@
     .hero-bg { display: none; }
     body[data-hero-layout="fullbleed"] .hero-bg { display: block; }
 
+    /* ── Live open / closed status (computed from the real schedule, Eastern time) ── */
+    .hours-head {
+      display: flex; align-items: center; flex-wrap: wrap;
+      gap: 8px 14px;
+      margin-bottom: 22px;
+    }
+    .hours-head h3 { margin-bottom: 0; }
+    .open-status {
+      display: inline-flex; align-items: center; gap: 8px;
+      padding: 5px 13px 5px 10px;
+      border-radius: 999px;
+      background: rgba(255,253,248,0.06);
+      border: 1px solid rgba(255,253,248,0.14);
+      font-size: 0.78rem; line-height: 1.2; letter-spacing: 0.01em;
+      color: rgba(255,253,248,0.92);
+      white-space: nowrap;
+    }
+    .open-status[hidden] { display: none; }
+    /* Resting state is fully visible — no opacity-gated entrance that could strand it blank. */
+    .open-status-text strong { font-weight: 600; }
+    .open-status-sub { color: rgba(255,253,248,0.72); }
+    .open-status-dot {
+      width: 8px; height: 8px; border-radius: 50%;
+      flex: 0 0 auto;
+      background: rgba(255,253,248,0.4);
+    }
+    .open-status[data-state="open"] {
+      background: rgba(82,167,124,0.16);
+      border-color: rgba(111,195,149,0.42);
+    }
+    .open-status[data-state="open"] .open-status-dot {
+      background: #6FC395;
+      box-shadow: 0 0 0 0 rgba(111,195,149,0.5);
+      animation: statusPulse 2.4s ease-out infinite;
+    }
+    .open-status[data-state="emergency"] {
+      background: rgba(214,227,228,0.12);
+      border-color: rgba(214,227,228,0.34);
+    }
+    .open-status[data-state="emergency"] .open-status-dot { background: var(--accent-soft); }
+    @keyframes statusPulse {
+      0%   { box-shadow: 0 0 0 0 rgba(111,195,149,0.5); }
+      70%  { box-shadow: 0 0 0 7px rgba(111,195,149,0); }
+      100% { box-shadow: 0 0 0 0 rgba(111,195,149,0); }
+    }
+    /* Today's row reads as the anchor for the status pill above it */
+    .hours li.hours-today { background-color: rgba(255,253,248,0.045); }
+    .hours li.hours-today .hours-day { color: var(--ivory); font-weight: 500; }
+
+    /* Nav call button — a quiet live "open now" dot beside the number */
+    .nav-live-dot { display: none; flex: 0 0 auto; width: 7px; height: 7px; border-radius: 50%; background: #2F9B63; }
+    .nav-cta.is-open .nav-live-dot {
+      display: block;
+      box-shadow: 0 0 0 0 rgba(47,155,99,0.5);
+      animation: statusPulse 2.4s ease-out infinite;
+    }
+
+    /* ── Tap-to-call cue: the phone icon gives one soft, settled lift on hover/focus ── */
+    .btn-primary svg, .nav-cta > svg, .mb-call svg, .drawer-call svg, .btn-ghost svg {
+      transition: transform .25s var(--ease);
+    }
+    .btn-primary:hover svg, .btn-primary:focus-visible svg,
+    .nav-cta:hover > svg, .nav-cta:focus-visible > svg,
+    .mb-call:hover svg, .mb-call:focus-visible svg,
+    .drawer-call:hover svg, .drawer-call:focus-visible svg {
+      transform: translateY(-1px) rotate(-8deg);
+    }
+    /* Ghost "Explore services" arrow nudges down, echoing the scroll it triggers */
+    .btn-ghost:hover svg, .btn-ghost:focus-visible svg { transform: translateY(2px); }
+
+    /* ── Discovery: the brand-mark warms with a soft halo on hover ── */
+    .brand-mark { transition: box-shadow .35s var(--ease), transform .35s var(--ease); }
+    .brand:hover .brand-mark,
+    .brand:focus-visible .brand-mark {
+      transform: translateY(-1px);
+      box-shadow: 0 0 0 5px rgba(143,180,186,0.22), 0 6px 18px rgba(20,51,58,0.14);
+    }
+
     /* ── Reduced motion ── */
     @media (prefers-reduced-motion: reduce) {
       html { scroll-behavior: auto; }
       .reveal { opacity: 1; transform: none; transition: none; }
       *, *::before, *::after { transition-duration: 0.01ms !important; animation-duration: 0.01ms !important; animation-iteration-count: 1 !important; }
-      .hero-badge-dot { animation: none; }
+      .hero-badge-dot, .open-status-dot, .nav-cta.is-open .nav-live-dot { animation: none; }
     }
   </style>
 
@@ -1225,6 +1303,7 @@
     </ul>
 
     <a href="tel:8109878310" class="nav-cta">
+      <span class="nav-live-dot" aria-hidden="true"></span>
       <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M22 16.92v3a2 2 0 0 1-2.18 2 19.79 19.79 0 0 1-8.63-3.07 19.5 19.5 0 0 1-6-6 19.79 19.79 0 0 1-3.07-8.67A2 2 0 0 1 4.11 2h3a2 2 0 0 1 2 1.72c.13.96.37 1.9.72 2.81a2 2 0 0 1-.45 2.11L8.09 9.91a16 16 0 0 0 6 6l1.27-1.27a2 2 0 0 1 2.11-.45c.91.35 1.85.59 2.81.72A2 2 0 0 1 22 16.92z"/></svg>
       <span>810-987-8310</span>
     </a>
@@ -1602,7 +1681,7 @@
       <div class="doctors-grid">
         <article class="doctor reveal">
           <div class="doctor-portrait">
-            <img src="assets/dr-jeremy-parrott.jpg" alt="Dr. Jeremy Parrott" loading="lazy" />
+            <img src="assets/dr-jeremy-parrott.jpg" alt="Dr. Jeremy Parrott, owner-dentist at Family Dentists, PLLC in Port Huron" loading="lazy" />
           </div>
           <div class="doctor-body">
             <div class="doctor-role">Owner · Dentist</div>
@@ -1617,7 +1696,7 @@
 
         <article class="doctor reveal d1">
           <div class="doctor-portrait">
-            <img src="assets/dr-julie-hengehold.jpg" alt="Dr. Julie Anne Hengehold" loading="lazy" />
+            <img src="assets/dr-julie-hengehold.jpg" alt="Dr. Julie Anne Hengehold, owner-dentist at Family Dentists, PLLC in Port Huron" loading="lazy" />
           </div>
           <div class="doctor-body">
             <div class="doctor-role">Owner · Dentist</div>
@@ -1683,7 +1762,13 @@
       <div class="contact-grid">
         <!-- Hours -->
         <div class="contact-block" role="region" aria-label="Office hours">
-          <h3>Office hours</h3>
+          <div class="hours-head">
+            <h3>Office hours</h3>
+            <span class="open-status" id="openStatus" role="status" hidden>
+              <span class="open-status-dot" aria-hidden="true"></span>
+              <span class="open-status-text"></span>
+            </span>
+          </div>
           <ul class="hours" id="hoursList">
             <li data-day="1"><span class="hours-day">Monday</span><span class="hours-time">11:00 AM – 7:00 PM</span></li>
             <li data-day="2"><span class="hours-day">Tuesday</span><span class="hours-time">8:30 AM – 5:00 PM</span></li>
@@ -1917,18 +2002,105 @@
       document.querySelectorAll('.reveal').forEach(el => el.classList.add('in'));
     }
 
-    // Highlight "today" in hours
+    // ── Eastern-time helper (the practice runs on Port Huron / Detroit time, not the visitor's) ──
+    function easternNow() {
+      const parts = new Intl.DateTimeFormat('en-US', {
+        timeZone: 'America/Detroit',
+        weekday: 'short', hour: '2-digit', minute: '2-digit',
+        year: 'numeric', month: '2-digit', day: '2-digit', hour12: false
+      }).formatToParts(new Date());
+      const get = (t) => { const p = parts.find(x => x.type === t); return p ? p.value : ''; };
+      const wk = { Sun: 0, Mon: 1, Tue: 2, Wed: 3, Thu: 4, Fri: 5, Sat: 6 };
+      const hour = parseInt(get('hour'), 10) % 24;   // some engines emit "24" at midnight
+      const minute = parseInt(get('minute'), 10);
+      return { day: wk[get('weekday')], hour, minutes: hour * 60 + minute, iso: `${get('year')}-${get('month')}-${get('day')}` };
+    }
+
+    // Highlight "today" in hours — the office's day, so it agrees with the status pill
     (function markToday() {
-      const today = new Date().getDay();
-      const li = document.querySelector(`#hoursList li[data-day="${today}"]`);
+      const li = document.querySelector(`#hoursList li[data-day="${easternNow().day}"]`);
       if (li) li.classList.add('hours-today');
+    })();
+
+    // ── Live "Open now / Closed" status, computed from the real schedule ──
+    (function initOpenStatus() {
+      const el = document.getElementById('openStatus');
+      if (!el) return;
+
+      // Office hours as Eastern minutes-from-midnight. Friday is emergencies-only.
+      const SCHEDULE = {
+        0: null,                       // Sunday    — closed
+        1: { open: 660, close: 1140 }, // Monday    11:00 AM – 7:00 PM
+        2: { open: 510, close: 1020 }, // Tuesday    8:30 AM – 5:00 PM
+        3: { open: 510, close: 1020 }, // Wednesday  8:30 AM – 5:00 PM
+        4: { open: 510, close: 960 },  // Thursday   8:30 AM – 4:00 PM
+        5: { emergency: true },        // Friday    — emergencies only
+        6: null                        // Saturday  — closed
+      };
+      // Fully-closed dates (Eastern, 'YYYY-MM-DD'). Add holidays here so the badge
+      // never reads "Open" when the office is dark, e.g. '2026-12-25'.
+      const HOLIDAYS = [];
+
+      const DAY_NAMES = ['Sunday', 'Monday', 'Tuesday', 'Wednesday', 'Thursday', 'Friday', 'Saturday'];
+      const fmt = (mins) => {
+        let h = Math.floor(mins / 60); const m = mins % 60;
+        const ap = h >= 12 ? 'PM' : 'AM'; h = h % 12 || 12;
+        return m ? `${h}:${String(m).padStart(2, '0')} ${ap}` : `${h}:00 ${ap}`;
+      };
+      const nextOpening = (iso) => {
+        const [y, mo, d] = iso.split('-').map(Number);
+        const base = Date.UTC(y, mo - 1, d);              // date-only → UTC weekday is stable
+        for (let i = 1; i <= 7; i++) {
+          const dt = new Date(base + i * 86400000);
+          const day = dt.getUTCDay();
+          const dIso = dt.toISOString().slice(0, 10);
+          const s = SCHEDULE[day];
+          if (s && s.open != null && HOLIDAYS.indexOf(dIso) === -1) return { i, day, open: s.open };
+        }
+        return null;
+      };
+
+      const now = easternNow();
+      const today = SCHEDULE[now.day];
+      const holiday = HOLIDAYS.indexOf(now.iso) !== -1;
+      let state = 'closed', html = '';
+
+      if (!holiday && today && today.open != null && now.minutes >= today.open && now.minutes < today.close) {
+        state = 'open';
+        html = `<strong>Open now</strong> <span class="open-status-sub">· until ${fmt(today.close)}</span>`;
+      } else if (!holiday && today && today.emergency) {
+        state = 'emergency';
+        html = `<strong>Emergencies only today</strong> <span class="open-status-sub">· call 810-689-4809</span>`;
+      } else if (!holiday && today && today.open != null && now.minutes < today.open) {
+        html = `<strong>Closed</strong> <span class="open-status-sub">· opens today at ${fmt(today.open)}</span>`;
+      } else {
+        const nxt = nextOpening(now.iso);
+        html = nxt
+          ? `<strong>Closed</strong> <span class="open-status-sub">· opens ${nxt.i === 1 ? 'tomorrow' : DAY_NAMES[nxt.day]} at ${fmt(nxt.open)}</span>`
+          : `<strong>Closed</strong>`;
+      }
+
+      el.setAttribute('data-state', state);
+      el.querySelector('.open-status-text').innerHTML = html;
+      el.setAttribute('aria-label', 'Office status: ' + el.textContent.replace(/·\s*/g, '').replace(/\s+/g, ' ').trim());
+      el.hidden = false;
+
+      const navCta = document.querySelector('.nav-cta');
+      if (navCta) navCta.classList.toggle('is-open', state === 'open');
     })();
 
     // Ambient Sunlit Canvas
     (function initAmbientCanvas() {
       const canvas = document.getElementById('ambientCanvas');
       if (!canvas) return;
-      
+
+      // Time-of-day light: cooler & brighter at midday, warmer & lower toward evening, deep at night.
+      const hr = easternNow().hour;
+      const daypart = (hr >= 10 && hr < 17) ? 'day'
+        : ((hr >= 5 && hr < 10) || (hr >= 17 && hr < 21)) ? 'golden'
+        : 'night';
+      document.body.setAttribute('data-daypart', daypart);
+
       const prefersReducedMotion = window.matchMedia('(prefers-reduced-motion: reduce)').matches;
       if (prefersReducedMotion) {
         canvas.style.display = 'none';
@@ -1948,11 +2120,17 @@
       window.addEventListener('resize', resize, { passive: true });
       resize();
 
-      // Organic, slow-moving warm light blobs
+      // Organic, slow-moving light blobs — palette shifts gently with the time of day.
+      const PALETTES = {
+        day:    ['rgba(143,180,186,0.40)', 'rgba(232,241,242,0.34)', 'rgba(56,112,121,0.22)'],  // cool mist, brand teal
+        golden: ['rgba(214,182,140,0.22)', 'rgba(143,180,186,0.30)', 'rgba(201,170,120,0.16)'], // a little warm light at the edges of the day
+        night:  ['rgba(40,93,102,0.32)',   'rgba(143,180,186,0.18)', 'rgba(150,140,128,0.12)']   // deep, dim teal
+      };
+      const pal = PALETTES[daypart];
       const orbs = [
-        { x: 0.2, y: 0.3, r: 0.7, vx: 0.00015, vy: 0.0002, color: 'rgba(143, 180, 186, 0.40)' }, // soft teal (brand-400)
-        { x: 0.8, y: 0.6, r: 0.6, vx: -0.0002, vy: -0.0001, color: 'rgba(232, 241, 242, 0.30)' }, // cool light (brand-50)
-        { x: 0.4, y: 0.7, r: 0.8, vx: 0.0001, vy: -0.00015, color: 'rgba(56, 112, 121, 0.22)' }  // brand-600
+        { x: 0.2, y: 0.3, r: 0.7, vx: 0.00015, vy: 0.0002,  color: pal[0] },
+        { x: 0.8, y: 0.6, r: 0.6, vx: -0.0002, vy: -0.0001, color: pal[1] },
+        { x: 0.4, y: 0.7, r: 0.8, vx: 0.0001,  vy: -0.00015, color: pal[2] }
       ];
 
       let animationFrameId;
