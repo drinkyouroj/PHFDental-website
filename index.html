@@ -53,6 +53,7 @@
 
       --accent: #47585C;   /* ink accent — subtle and professional */
       --accent-soft: #D6E3E4;
+      --positive: #52A77C; /* "available / open now" — single source for the status green */
 
       --ink:      #1C231F;
       --ink-mid:  #556159;
@@ -379,7 +380,7 @@
     }
     .hero-badge-dot {
       width: 10px; height: 10px; border-radius: 50%;
-      background: #52A77C;
+      background: var(--positive);
       box-shadow: 0 0 0 0 rgba(82,167,124,0.4);
       flex: 0 0 auto;
       animation: pulse 2s ease-out infinite;
@@ -1165,7 +1166,6 @@
       border: 1px solid rgba(255,253,248,0.14);
       font-size: 0.78rem; line-height: 1.2; letter-spacing: 0.01em;
       color: rgba(255,253,248,0.92);
-      white-space: nowrap;
     }
     .open-status[hidden] { display: none; }
     /* Resting state is fully visible — no opacity-gated entrance that could strand it blank. */
@@ -1178,33 +1178,26 @@
     }
     .open-status[data-state="open"] {
       background: rgba(82,167,124,0.16);
-      border-color: rgba(111,195,149,0.42);
+      border-color: rgba(82,167,124,0.42);
     }
     .open-status[data-state="open"] .open-status-dot {
-      background: #6FC395;
-      box-shadow: 0 0 0 0 rgba(111,195,149,0.5);
-      animation: statusPulse 2.4s ease-out infinite;
+      background: var(--positive);
+      animation: pulse 2s ease-out infinite;   /* reuses the hero badge's pulse */
     }
     .open-status[data-state="emergency"] {
       background: rgba(214,227,228,0.12);
       border-color: rgba(214,227,228,0.34);
     }
     .open-status[data-state="emergency"] .open-status-dot { background: var(--accent-soft); }
-    @keyframes statusPulse {
-      0%   { box-shadow: 0 0 0 0 rgba(111,195,149,0.5); }
-      70%  { box-shadow: 0 0 0 7px rgba(111,195,149,0); }
-      100% { box-shadow: 0 0 0 0 rgba(111,195,149,0); }
-    }
     /* Today's row reads as the anchor for the status pill above it */
     .hours li.hours-today { background-color: rgba(255,253,248,0.045); }
     .hours li.hours-today .hours-day { color: var(--ivory); font-weight: 500; }
 
     /* Nav call button — a quiet live "open now" dot beside the number */
-    .nav-live-dot { display: none; flex: 0 0 auto; width: 7px; height: 7px; border-radius: 50%; background: #2F9B63; }
+    .nav-live-dot { display: none; flex: 0 0 auto; width: 7px; height: 7px; border-radius: 50%; background: var(--positive); }
     .nav-cta.is-open .nav-live-dot {
       display: block;
-      box-shadow: 0 0 0 0 rgba(47,155,99,0.5);
-      animation: statusPulse 2.4s ease-out infinite;
+      animation: pulse 2s ease-out infinite;
     }
 
     /* ── Tap-to-call cue: the phone icon gives one soft, settled lift on hover/focus ── */
